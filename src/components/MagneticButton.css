@@ -1,0 +1,72 @@
+.magnetic-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  isolation: isolate;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+
+.magnetic-btn--primary {
+  color: #0f1210;
+  background: var(--green);
+}
+
+.magnetic-btn--primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--green-bright);
+  transform: translateY(102%);
+  transition: transform 0.45s var(--ease-soft);
+  z-index: -1;
+}
+
+.magnetic-btn--primary:hover::before {
+  transform: translateY(0%);
+}
+
+.magnetic-btn--primary:hover {
+  box-shadow: 0 8px 30px -6px rgba(127, 166, 107, 0.55);
+}
+
+.magnetic-btn--ghost {
+  color: var(--text);
+  border: 1px solid var(--line-strong);
+  background: transparent;
+}
+
+.magnetic-btn--ghost::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--bg-card);
+  transform: scale(0);
+  border-radius: 100px;
+  transition: transform 0.45s var(--ease-soft);
+  z-index: -1;
+}
+
+.magnetic-btn--ghost:hover::before {
+  transform: scale(1);
+}
+
+.magnetic-btn--ghost:hover {
+  border-color: var(--green);
+}
+
+.magnetic-btn__label {
+  position: relative;
+  z-index: 1;
+}
+
+.magnetic-btn:active {
+  transform: scale(0.96);
+}
