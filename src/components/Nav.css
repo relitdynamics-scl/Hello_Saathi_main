@@ -24,11 +24,11 @@
 }
 
 .nav--scrolled .nav__inner {
-  background: rgba(15, 18, 16, 0.72);
+  background: var(--bg-translucent);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-color: var(--line);
-  box-shadow: 0 10px 40px -20px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 40px -20px rgba(0, 0, 0, 0.3);
 }
 
 .nav__brand {
@@ -94,6 +94,12 @@
   color: var(--text);
 }
 
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
 .nav__cta {
   font-size: 13.5px;
   font-weight: 600;
@@ -109,8 +115,13 @@
   color: #0f1210;
 }
 
-.nav__menu-btn {
+.nav__mobile-controls {
   display: none;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav__menu-btn {
   color: var(--text);
   padding: 8px;
 }
@@ -151,11 +162,11 @@
 
 @media (max-width: 860px) {
   .nav__links,
-  .nav__cta {
+  .nav__right {
     display: none;
   }
-  .nav__menu-btn {
-    display: block;
+  .nav__mobile-controls {
+    display: flex;
   }
   .nav__inner {
     padding-top: 12px;
@@ -165,7 +176,7 @@
 
 @media (max-width: 640px) {
   .nav__inner {
-    background: rgba(15, 18, 16, 0.55);
+    background: var(--bg-translucent-strong);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-color: var(--line);

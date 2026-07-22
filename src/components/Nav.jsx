@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Leaf } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 import './Nav.css';
 
 const LINKS = [
@@ -53,18 +54,24 @@ export default function Nav() {
           ))}
         </nav>
 
-        <Link to="/contact" className="nav__cta">
-          Visit the nursery
-        </Link>
+        <div className="nav__right">
+          <ThemeToggle />
+          <Link to="/contact" className="nav__cta">
+            Visit the nursery
+          </Link>
+        </div>
 
-        <button
-          className="nav__menu-btn"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="nav__mobile-controls">
+          <ThemeToggle />
+          <button
+            className="nav__menu-btn"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>

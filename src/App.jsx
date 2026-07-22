@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Plants from './pages/Plants';
 import Contact from './pages/Contact';
+import { ThemeProvider } from './context/ThemeContext';
 import './styles/global.css';
 
 function PageTransition({ children }) {
@@ -65,11 +66,13 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Nav />
-      <AnimatedRoutes />
-      <Footer />
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Nav />
+        <AnimatedRoutes />
+        <Footer />
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }

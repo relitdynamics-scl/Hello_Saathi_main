@@ -1,6 +1,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --container: 1200px;
+}
+
+/* Light theme (default) */
+:root,
+[data-theme='light'] {
+  --bg: #faf9f5;
+  --bg-raised: #f2f0e8;
+  --bg-card: #ffffff;
+  --line: rgba(20, 24, 20, 0.08);
+  --line-strong: rgba(20, 24, 20, 0.14);
+
+  --green: #5f8a4f;
+  --green-bright: #4c6b40;
+  --green-deep: #3a5a44;
+  --terracotta: #c97b4a;
+  --terracotta-bright: #a35a30;
+
+  --text: #1c211c;
+  --text-dim: #4b5248;
+  --text-mute: #7c8378;
+
+  --shadow-color: rgba(30, 35, 28, 0.12);
+  --grain-opacity: 0.02;
+  --scrollbar-track: var(--bg);
+  --scrollbar-thumb: #e4e1d6;
+  --bg-translucent: rgba(250, 249, 245, 0.72);
+  --bg-translucent-strong: rgba(250, 249, 245, 0.55);
+  --backdrop: rgba(28, 33, 28, 0.4);
+}
+
+/* Dark theme */
+[data-theme='dark'] {
   --bg: #0f1210;
   --bg-raised: #151a16;
   --bg-card: #171d18;
@@ -17,14 +57,13 @@
   --text-dim: #a8ada3;
   --text-mute: #6d746a;
 
-  --font-display: 'Fraunces', serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
-
-  --container: 1200px;
+  --shadow-color: rgba(0, 0, 0, 0.55);
+  --grain-opacity: 0.035;
+  --scrollbar-track: var(--bg);
+  --scrollbar-thumb: var(--bg-card);
+  --bg-translucent: rgba(15, 18, 16, 0.72);
+  --bg-translucent-strong: rgba(15, 18, 16, 0.55);
+  --backdrop: rgba(8, 10, 8, 0.72);
 }
 
 * {
@@ -44,6 +83,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
 }
 
 body::before {
@@ -56,6 +96,7 @@ body::before {
     radial-gradient(ellipse 900px 600px at 15% -10%, rgba(127, 166, 107, 0.14), transparent 60%),
     radial-gradient(ellipse 700px 500px at 100% 20%, rgba(201, 123, 74, 0.08), transparent 55%),
     radial-gradient(ellipse 800px 700px at 0% 80%, rgba(127, 166, 107, 0.08), transparent 60%);
+  transition: opacity 0.4s var(--ease);
 }
 
 /* film-grain texture */
@@ -65,9 +106,10 @@ body::after {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.035;
-  mix-blend-mode: overlay;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: soft-light;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  transition: opacity 0.4s var(--ease);
 }
 
 #root {
@@ -107,12 +149,12 @@ ul, ol {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg);
+  background: var(--scrollbar-track);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-card);
+  background: var(--scrollbar-thumb);
   border-radius: 10px;
-  border: 2px solid var(--bg);
+  border: 2px solid var(--scrollbar-track);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--green-deep);
