@@ -208,10 +208,18 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
   margin-top: 48px;
+  align-items: stretch;
+}
+
+.featured__reveal {
+  height: 100%;
 }
 
 .plant-card {
   position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   background: var(--bg-card);
   border: 1px solid var(--line);
   border-radius: 20px;
@@ -275,32 +283,6 @@
   font-size: 13px;
   font-style: italic;
   color: var(--text-mute);
-  margin-bottom: 16px;
-}
-
-.plant-card__benefits {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.plant-card__benefits li {
-  font-size: 13.5px;
-  line-height: 1.4;
-  color: var(--text-dim);
-  padding-left: 16px;
-  position: relative;
-}
-
-.plant-card__benefits li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 6px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--green);
 }
 
 /* CTA band */

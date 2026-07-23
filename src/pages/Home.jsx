@@ -133,7 +133,7 @@ export default function Home() {
 
           <div className="featured__grid">
             {featured.map((p, i) => (
-              <Reveal key={p.id} delay={0.05 * i} y={40}>
+              <Reveal key={p.id} delay={0.05 * i} y={40} className="featured__reveal">
                 <FeaturedCard plant={p} />
               </Reveal>
             ))}
@@ -185,11 +185,6 @@ function FeaturedCard({ plant }) {
         <span className="plant-card__family">{plant.family}</span>
         <h3 className="plant-card__common">{plant.common}</h3>
         <p className="plant-card__botanical">{plant.botanical}</p>
-        <ul className="plant-card__benefits">
-          {plant.benefits.slice(0, 2).map((b) => (
-            <li key={b}>{b}</li>
-          ))}
-        </ul>
       </div>
     </div>
   );
