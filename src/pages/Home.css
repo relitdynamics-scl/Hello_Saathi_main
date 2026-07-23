@@ -309,10 +309,7 @@
 }
 
 .cta-band__inner {
-  background: linear-gradient(135deg, rgba(127, 166, 107, 0.14), rgba(201, 123, 74, 0.08));
-  border: 1px solid var(--line-strong);
-  border-radius: 28px;
-  padding: 96px 56px;
+  padding: 40px 24px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -356,13 +353,14 @@
     grid-template-columns: 1fr;
   }
   .featured__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
   .hero__vine {
     display: none;
   }
   .cta-band__inner {
-    padding: 48px 24px;
-    border-radius: 20px;
+    padding: 32px 20px;
+    gap: 28px;
   }
 }
