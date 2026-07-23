@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Wind } from 'lucide-react';
+import { Search, Sparkles } from 'lucide-react';
 import Reveal from '../components/Reveal';
 import PlantPhoto from '../components/PlantPhoto';
+import PlantPortrait from '../components/PlantPortrait';
 import { PLANTS, FAMILIES } from '../data/plants';
 import './Plants.css';
 
@@ -90,14 +91,18 @@ export default function Plants() {
                   onClick={() => setActive(p)}
                 >
                   <div className="plant-tile__portrait">
-                    <PlantPhoto id={p.id} alt={p.common} size={104} />
+                    {p.photo ? (
+                      <PlantPhoto id={p.id} alt={p.common} size={104} />
+                    ) : (
+                      <PlantPortrait family={p.family} id={p.id} size={104} />
+                    )}
                   </div>
                   <span className="plant-tile__family">{p.family}</span>
                   <h3>{p.common}</h3>
                   {p.alt && <p className="plant-tile__alt">a.k.a. {p.alt}</p>}
                   <p className="plant-tile__botanical">{p.botanical}</p>
                   <span className="plant-tile__benefit-count">
-                    <Wind size={12} /> {p.benefits.length} air benefit{p.benefits.length > 1 ? 's' : ''}
+                    <Sparkles size={12} /> {p.benefits.length} highlight{p.benefits.length > 1 ? 's' : ''}
                   </span>
                 </motion.button>
               ))}
@@ -152,7 +157,11 @@ function PlantModal({ plant, onClose }) {
           ×
         </button>
         <div className="plant-modal__portrait">
-          <PlantPhoto id={plant.id} alt={plant.common} size={140} />
+          {plant.photo ? (
+            <PlantPhoto id={plant.id} alt={plant.common} size={140} />
+          ) : (
+            <PlantPortrait family={plant.family} id={plant.id} size={140} />
+          )}
         </div>
         <div className="plant-modal__body">
           <span className="plant-tile__family">{plant.family}</span>
@@ -161,7 +170,7 @@ function PlantModal({ plant, onClose }) {
           <p className="plant-modal__botanical">{plant.botanical}</p>
 
           <div className="plant-modal__section">
-            <span className="plant-modal__label">Air benefits</span>
+            <span className="plant-modal__label">Highlights</span>
             <ul>
               {plant.benefits.map((b) => (
                 <li key={b}>{b}</li>

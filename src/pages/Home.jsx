@@ -179,7 +179,11 @@ function FeaturedCard({ plant }) {
   return (
     <div className="plant-card">
       <div className="plant-card__portrait-wrap">
-        <PlantPhoto id={plant.id} alt={plant.common} size={110} />
+        {plant.photo ? (
+          <PlantPhoto id={plant.id} alt={plant.common} size={110} />
+        ) : (
+          <PlantPortrait family={plant.family} id={plant.id} size={110} />
+        )}
       </div>
       <div className="plant-card__body">
         <span className="plant-card__family">{plant.family}</span>
