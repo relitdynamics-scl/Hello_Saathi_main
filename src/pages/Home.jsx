@@ -6,6 +6,7 @@ import MagneticButton from '../components/MagneticButton';
 import GrowingVine from '../components/GrowingVine';
 import Reveal from '../components/Reveal';
 import PlantPortrait from '../components/PlantPortrait';
+import PlantPhoto from '../components/PlantPhoto';
 import { PLANTS } from '../data/plants';
 import './Home.css';
 
@@ -178,7 +179,7 @@ function FeaturedCard({ plant }) {
   return (
     <div className="plant-card">
       <div className="plant-card__portrait-wrap">
-        <PlantPortrait family={plant.family} id={plant.id} size={110} />
+        <PlantPhoto id={plant.id} alt={plant.common} size={110} />
       </div>
       <div className="plant-card__body">
         <span className="plant-card__family">{plant.family}</span>

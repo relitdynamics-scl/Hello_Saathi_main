@@ -137,11 +137,13 @@
   transform: scale(1.04);
 }
 
-.plant-tile__portrait svg {
+.plant-tile__portrait svg,
+.plant-tile__portrait img {
   transition: transform 0.5s var(--ease-soft);
 }
 
-.plant-tile:hover .plant-tile__portrait svg {
+.plant-tile:hover .plant-tile__portrait svg,
+.plant-tile:hover .plant-tile__portrait img {
   transform: translateY(-2px) rotate(-2deg);
 }
 

@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Wind } from 'lucide-react';
 import Reveal from '../components/Reveal';
-import PlantPortrait from '../components/PlantPortrait';
+import PlantPhoto from '../components/PlantPhoto';
 import { PLANTS, FAMILIES } from '../data/plants';
 import './Plants.css';
 
@@ -90,7 +90,7 @@ export default function Plants() {
                   onClick={() => setActive(p)}
                 >
                   <div className="plant-tile__portrait">
-                    <PlantPortrait family={p.family} id={p.id} size={104} />
+                    <PlantPhoto id={p.id} alt={p.common} size={104} />
                   </div>
                   <span className="plant-tile__family">{p.family}</span>
                   <h3>{p.common}</h3>
@@ -152,7 +152,7 @@ function PlantModal({ plant, onClose }) {
           ×
         </button>
         <div className="plant-modal__portrait">
-          <PlantPortrait family={plant.family} id={plant.id} size={140} />
+          <PlantPhoto id={plant.id} alt={plant.common} size={140} />
         </div>
         <div className="plant-modal__body">
           <span className="plant-tile__family">{plant.family}</span>

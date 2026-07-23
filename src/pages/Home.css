@@ -242,11 +242,13 @@
   transform: scale(1.04);
 }
 
-.plant-card__portrait-wrap svg {
+.plant-card__portrait-wrap svg,
+.plant-card__portrait-wrap img {
   transition: transform 0.5s var(--ease-soft);
 }
 
-.plant-card:hover .plant-card__portrait-wrap svg {
+.plant-card:hover .plant-card__portrait-wrap svg,
+.plant-card:hover .plant-card__portrait-wrap img {
   transform: translateY(-2px) rotate(-3deg);
 }
 

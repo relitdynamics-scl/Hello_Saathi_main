@@ -200,6 +200,13 @@ textarea:focus-visible {
   border-radius: 4px;
 }
 
+.plant-photo {
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 10px 24px -12px var(--shadow-color);
+  border: 1px solid var(--line);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
