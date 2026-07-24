@@ -76,37 +76,50 @@ export default function Nav() {
 
       <AnimatePresence>
         {open && (
-          <motion.div
-            className="nav__mobile"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="nav__mobile-links">
-              {LINKS.map((l, i) => (
+          <>
+            <motion.div
+              className="nav__mobile-backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              onClick={() => setOpen(false)}
+            />
+            <motion.div
+              className="nav__mobile-panel"
+              initial={{ x: '-100%' }}
+              animate={{ x: '0%' }}
+              exit={{ x: '-100%' }}
+              transition={{ type: 'spring', stiffness: 280, damping: 30, mass: 0.9 }}
+            >
+              <div className="nav__mobile-links">
+                {LINKS.map((l, i) => (
+                  <motion.div
+                    key={l.to}
+                    initial={{ opacity: 0, x: -18 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.16 + i * 0.07, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <Link
+                      to={l.to}
+                      className={`nav__mobile-link ${location.pathname === l.to ? 'nav__mobile-link--active' : ''}`}
+                    >
+                      {l.label}
+                    </Link>
+                  </motion.div>
+                ))}
                 <motion.div
-                  key={l.to}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  initial={{ opacity: 0, x: -18 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.16 + LINKS.length * 0.07, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <Link to={l.to} className="nav__mobile-link">
-                    {l.label}
+                  <Link to="/contact" className="nav__mobile-cta">
+                    Visit the nursery
                   </Link>
                 </motion.div>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + LINKS.length * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <Link to="/contact" className="nav__mobile-cta">
-                  Visit the nursery
-                </Link>
-              </motion.div>
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>
