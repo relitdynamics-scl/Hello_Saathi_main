@@ -13,7 +13,7 @@ const morphTransition = { type: 'tween', duration: 0.55, ease: [0.16, 1, 0.3, 1]
 export default function WelcomePopup() {
   const location = useLocation();
   const [stage, setStage] = useState('closed'); // closed | open | minimized
-  const [form, setForm] = useState({ name: '', phone: '', message: '' });
+  const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
   const [errors, setErrors] = useState({});
   const [sent, setSent] = useState(false);
   const [waLink, setWaLink] = useState('');
@@ -41,6 +41,9 @@ export default function WelcomePopup() {
     const nextErrors = {};
     if (!form.name.trim()) nextErrors.name = 'Tell us your name';
     if (!form.phone.trim()) nextErrors.phone = 'Add a phone number';
+    if (form.email.trim() && !/^\S+@\S+\.\S+$/.test(form.email.trim())) {
+      nextErrors.email = 'That email looks off';
+    }
     if (!form.message.trim()) nextErrors.message = "What are you looking for?";
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length === 0) {
@@ -136,6 +139,19 @@ export default function WelcomePopup() {
                             aria-label="Phone or WhatsApp"
                           />
                           {errors.phone && <span className="welcome-field__error">{errors.phone}</span>}
+                        </div>
+
+                        <div className={`welcome-field ${errors.email ? 'welcome-field--error' : ''}`}>
+                          <input
+                            name="email"
+                            type="email"
+                            value={form.email}
+                            onChange={handleChange}
+                            placeholder="Email address"
+                            autoComplete="email"
+                            aria-label="Email address"
+                          />
+                          {errors.email && <span className="welcome-field__error">{errors.email}</span>}
                         </div>
 
                         <div className={`welcome-field ${errors.message ? 'welcome-field--error' : ''}`}>

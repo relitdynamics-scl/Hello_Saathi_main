@@ -6,7 +6,6 @@ import MagneticButton from '../components/MagneticButton';
 import GrowingVine from '../components/GrowingVine';
 import Reveal from '../components/Reveal';
 import PlantPortrait from '../components/PlantPortrait';
-import PlantPhoto from '../components/PlantPhoto';
 import { PLANTS } from '../data/plants';
 import './Home.css';
 
@@ -74,7 +73,7 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.7 }}
           >
             <MagneticButton to="/plants" variant="primary">
-              Browse our plants <ArrowRight size={16} />
+              Search plants <ArrowRight size={16} />
             </MagneticButton>
             <MagneticButton to="/contact" variant="ghost">
               Visit us
@@ -133,7 +132,7 @@ export default function Home() {
 
           <div className="featured__grid">
             {featured.map((p, i) => (
-              <Reveal key={p.id} delay={0.05 * i} y={40} className="featured__reveal">
+              <Reveal key={p.id} delay={0.05 * i} y={40}>
                 <FeaturedCard plant={p} />
               </Reveal>
             ))}
@@ -179,16 +178,17 @@ function FeaturedCard({ plant }) {
   return (
     <div className="plant-card">
       <div className="plant-card__portrait-wrap">
-        {plant.photo ? (
-          <PlantPhoto id={plant.id} alt={plant.common} size={110} />
-        ) : (
-          <PlantPortrait family={plant.family} id={plant.id} size={110} />
-        )}
+        <PlantPortrait family={plant.family} id={plant.id} size={110} />
       </div>
       <div className="plant-card__body">
         <span className="plant-card__family">{plant.family}</span>
         <h3 className="plant-card__common">{plant.common}</h3>
         <p className="plant-card__botanical">{plant.botanical}</p>
+        <ul className="plant-card__benefits">
+          {plant.benefits.slice(0, 2).map((b) => (
+            <li key={b}>{b}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
