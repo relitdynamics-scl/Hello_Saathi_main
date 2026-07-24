@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { MapPin, Phone, Clock, Camera, MessageCircle, Check } from 'lucide-react';
 import Reveal from '../components/Reveal';
 import MagneticButton from '../components/MagneticButton';
+import { WHATSAPP_NUMBER, buildWhatsAppLink } from '../utils/whatsapp';
 import './Contact.css';
 
 const INFO = [
@@ -15,6 +16,7 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', phone: '', message: '' });
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState({});
+  const [waLink, setWaLink] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +31,10 @@ export default function Contact() {
     if (!form.message.trim()) nextErrors.message = "What are you looking for?";
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length === 0) {
+      const link = buildWhatsAppLink(form);
+      setWaLink(link);
       setSent(true);
+      window.open(link, '_blank', 'noopener,noreferrer');
     }
   };
 
@@ -82,7 +87,12 @@ export default function Contact() {
               <a href="#" className="contact-social__link">
                 <Camera size={16} /> @hellosaathi
               </a>
-              <a href="#" className="contact-social__link">
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-social__link"
+              >
                 <MessageCircle size={16} /> Message on WhatsApp
               </a>
             </div>
@@ -146,8 +156,11 @@ export default function Contact() {
                 <div className="contact-success__icon">
                   <Check size={26} strokeWidth={2.4} />
                 </div>
-                <h3>Message sent.</h3>
-                <p>We'll write back shortly — usually within the day.</p>
+                <h3>Opening WhatsApp…</h3>
+                <p>Finish sending your message there — we reply fastest on WhatsApp.</p>
+                <a href={waLink} target="_blank" rel="noopener noreferrer" className="contact-success__link">
+                  Didn't open? Tap here
+                </a>
               </motion.div>
             )}
           </Reveal>

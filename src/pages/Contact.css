@@ -193,6 +193,15 @@
   color: var(--text-mute);
 }
 
+.contact-success__link {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--green-bright);
+  border-bottom: 1px solid var(--green-bright);
+}
+
 @media (max-width: 900px) {
   .contact-grid {
     grid-template-columns: 1fr;

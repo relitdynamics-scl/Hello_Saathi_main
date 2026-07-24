@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect } from 'react';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+import WelcomePopup from './components/WelcomePopup';
 import Home from './pages/Home';
 import Plants from './pages/Plants';
 import Contact from './pages/Contact';
@@ -72,6 +73,7 @@ export default function App() {
         <Nav />
         <AnimatedRoutes />
         <Footer />
+        <WelcomePopup />
       </BrowserRouter>
     </ThemeProvider>
   );

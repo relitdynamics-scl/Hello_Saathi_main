@@ -1,0 +1,239 @@
+.welcome-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--backdrop);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 250;
+}
+
+.welcome-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 260;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  pointer-events: none;
+}
+
+.welcome-card {
+  pointer-events: auto;
+  width: min(400px, 100%);
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  border-radius: 24px;
+  box-shadow: 0 40px 90px -20px rgba(0, 0, 0, 0.55);
+}
+
+.welcome-card__inner {
+  position: relative;
+  padding: 30px 28px 28px;
+}
+
+.welcome-card__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: var(--bg-translucent-strong);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--ease);
+}
+
+.welcome-card__close:hover {
+  border-color: var(--green);
+  color: var(--text);
+  transform: rotate(90deg);
+}
+
+.welcome-card__eyebrow {
+  margin-bottom: 12px;
+}
+
+.welcome-card__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.welcome-card__title em {
+  color: var(--green-bright);
+  font-style: italic;
+}
+
+.welcome-card__subtitle {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text-mute);
+  margin-bottom: 20px;
+}
+
+.welcome-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.welcome-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.welcome-field input,
+.welcome-field textarea {
+  background: var(--bg-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  resize: vertical;
+  transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.welcome-field input::placeholder,
+.welcome-field textarea::placeholder {
+  color: var(--text-mute);
+}
+
+.welcome-field input:focus,
+.welcome-field textarea:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(127, 166, 107, 0.16);
+}
+
+.welcome-field--error input,
+.welcome-field--error textarea {
+  border-color: var(--terracotta);
+}
+
+.welcome-field__error {
+  font-size: 12px;
+  color: var(--terracotta-bright);
+}
+
+.welcome-form .magnetic-btn {
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 13px 26px;
+  font-size: 13.5px;
+}
+
+.welcome-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px 4px 6px;
+}
+
+.welcome-success__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #0f1210;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.welcome-success h3 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.welcome-success p {
+  font-size: 13.5px;
+  color: var(--text-mute);
+}
+
+.welcome-success__link {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green-bright);
+  border-bottom: 1px solid var(--green-bright);
+}
+
+.welcome-bubble {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 260;
+  width: 58px;
+  height: 58px;
+  border-radius: 999px;
+  border: none;
+  background: var(--green);
+  color: #0f1210;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 16px 32px -10px rgba(127, 166, 107, 0.6);
+}
+
+.welcome-bubble__ping {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 2px solid var(--green-bright);
+  animation: welcome-ping 2.4s var(--ease-soft) infinite;
+}
+
+.welcome-bubble__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes welcome-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-stage {
+    padding: 16px;
+  }
+  .welcome-card__inner {
+    padding: 26px 22px 24px;
+  }
+  .welcome-bubble {
+    left: 16px;
+    bottom: 16px;
+    width: 52px;
+    height: 52px;
+  }
+}
