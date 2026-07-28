@@ -156,10 +156,16 @@
   bottom: 0;
   z-index: 90;
   width: min(74%, 320px);
-  background: var(--bg-translucent-strong);
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-  border-right: 1px solid var(--line);
+  /* Opaque, not frosted.
+
+     This was --bg-translucent-strong (the same colour at 55%) relying on
+     backdrop-filter to become legible. esbuild strips the unprefixed
+     `backdrop-filter` from the production bundle and keeps only the -webkit-
+     form, so any browser that ignores the prefixed property rendered no blur
+     at all — leaving a 55% panel you could read the page straight through.
+     Same hue, just solid, so nothing depends on blur support. */
+  background: var(--bg);
+  border-right: 1px solid var(--line-strong);
   box-shadow: 40px 0 70px -30px rgba(0, 0, 0, 0.45);
   padding: calc(104px + env(safe-area-inset-top)) 30px
     calc(40px + env(safe-area-inset-bottom))
@@ -225,9 +231,9 @@
      it, so nothing shifts in either state. */
   .nav {
     padding-top: env(safe-area-inset-top);
-    background: var(--bg-translucent);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    /* opaque for the same reason as the drawer — the blur that made the
+       translucent version readable does not survive the production build */
+    background: var(--bg);
     border-bottom: 1px solid transparent;
     transition: border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
   }
