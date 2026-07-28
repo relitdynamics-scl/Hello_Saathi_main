@@ -63,10 +63,46 @@
   font-size: 14px;
   width: 100%;
   outline: none;
+  min-width: 0;
 }
 
 .plants-search input::placeholder {
   color: var(--text-mute);
+}
+
+/* strip the native clear affordance — we render our own */
+.plants-search input[type='search']::-webkit-search-decoration,
+.plants-search input[type='search']::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.plants-search__clear {
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  margin: -6px -6px -6px 0;
+  border-radius: 50%;
+  color: var(--text-mute);
+  transition: color 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+.plants-search__clear:hover {
+  color: var(--text);
+  background: var(--line);
+}
+
+.plants-count {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin: -24px 0 22px;
+  display: none;
 }
 
 .plants-filters {
@@ -115,10 +151,21 @@
   transition: transform 0.4s var(--ease-soft), border-color 0.3s var(--ease), box-shadow 0.4s var(--ease);
 }
 
-.plant-tile:hover {
-  transform: translateY(-4px) scale(1.015);
-  border-color: rgba(127, 166, 107, 0.4);
-  box-shadow: 0 20px 40px -22px rgba(0, 0, 0, 0.5);
+/* Hover effects only where a real pointer exists — on touch these stick
+   after a tap and the tile stays lifted until you tap elsewhere. */
+@media (hover: hover) {
+  .plant-tile:hover {
+    transform: translateY(-4px) scale(1.015);
+    border-color: rgba(127, 166, 107, 0.4);
+    box-shadow: 0 20px 40px -22px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (hover: none) {
+  .plant-tile:active {
+    transform: scale(0.97);
+    border-color: rgba(127, 166, 107, 0.4);
+  }
 }
 
 .plant-tile__portrait {
@@ -133,18 +180,20 @@
   transition: transform 0.5s var(--ease-soft), background 0.4s var(--ease);
 }
 
-.plant-tile:hover .plant-tile__portrait {
-  transform: scale(1.04);
-}
-
 .plant-tile__portrait svg,
 .plant-tile__portrait img {
   transition: transform 0.5s var(--ease-soft);
 }
 
-.plant-tile:hover .plant-tile__portrait svg,
-.plant-tile:hover .plant-tile__portrait img {
-  transform: translateY(-2px) rotate(-2deg);
+@media (hover: hover) {
+  .plant-tile:hover .plant-tile__portrait {
+    transform: scale(1.04);
+  }
+
+  .plant-tile:hover .plant-tile__portrait svg,
+  .plant-tile:hover .plant-tile__portrait img {
+    transform: translateY(-2px) rotate(-2deg);
+  }
 }
 
 .plant-tile h3,
@@ -229,11 +278,27 @@
   background: var(--bg-raised);
   border: 1px solid var(--line-strong);
   border-radius: 24px;
-  padding: 0 0 40px;
   max-width: 480px;
   width: 100%;
   max-height: 85vh;
+  max-height: 85dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.plant-modal__scroll {
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  /* keep vertical panning available regardless of the sheet's drag setup */
+  touch-action: pan-y;
+  padding-bottom: 40px;
+}
+
+.plant-modal__grab-area,
+.plant-modal__grabber {
+  display: none;
 }
 
 .plant-modal__body {
@@ -244,27 +309,28 @@
   position: absolute;
   top: 18px;
   right: 18px;
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 1px solid var(--line-strong);
   background: var(--bg-translucent-strong);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  font-size: 20px;
   line-height: 1;
   color: var(--text-dim);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 2;
-  transition: all 0.3s var(--ease);
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease), transform 0.3s var(--ease);
 }
 
-.plant-modal__close:hover {
-  border-color: var(--green);
-  color: var(--text);
-  transform: rotate(90deg);
+@media (hover: hover) {
+  .plant-modal__close:hover {
+    border-color: var(--green);
+    color: var(--text);
+    transform: rotate(90deg);
+  }
 }
 
 .plant-modal__portrait {
@@ -367,17 +433,155 @@
   .plants-controls {
     flex-direction: column;
     align-items: stretch;
+    gap: 14px;
+    margin-bottom: 34px;
+    padding-bottom: 20px;
   }
   .plants-search {
     width: 100%;
+    padding: 11px 16px;
+  }
+  .plants-search__clear {
+    display: flex;
+  }
+  /* 16px keeps iOS Safari from zooming the page in on focus */
+  .plants-search input {
+    font-size: 16px;
+  }
+  .plants-count {
+    display: block;
+  }
+
+  /* 16 family pills wrapped into five stacked rows and pushed the grid off
+     screen — one swipeable row instead, bled to the container edges. */
+  .plants-filters {
+    flex-wrap: nowrap;
+    /* without min-width:0 the flex item's automatic minimum size is its
+       min-content width — the row stretches to fit all 16 pills instead of
+       scrolling, and drags the whole page into horizontal overflow */
+    min-width: 0;
+    width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+    margin: 0 -20px;
+    padding: 2px 20px 4px;
+    box-sizing: content-box;
+  }
+  .plants-filters::-webkit-scrollbar {
+    display: none;
+  }
+  .plants-filter {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    min-height: 44px;
+    padding: 10px 16px;
   }
 }
 
 @media (max-width: 480px) {
   .plants-grid {
-    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .plant-tile {
+    border-radius: 15px;
+    padding-bottom: 16px;
+  }
+  .plant-tile__portrait {
+    padding: 16px 0 8px;
+  }
+  .plant-tile h3,
+  .plant-tile > .plant-tile__family,
+  .plant-tile > .plant-tile__alt,
+  .plant-tile > .plant-tile__botanical,
+  .plant-tile > .plant-tile__benefit-count {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+  .plant-tile > .plant-tile__family {
+    margin-top: 12px;
+  }
+  .plant-tile h3 {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  .plant-tile__alt,
+  .plant-tile__botanical {
+    font-size: 11.5px;
+  }
+
+  /* Full-width bottom sheet: reachable with a thumb, dismissed by dragging
+     down. The old rule added padding to a card whose header image is meant
+     to sit flush, which left it floating inside a mismatched frame. */
+  .plant-modal-backdrop {
+    padding: 0;
+    align-items: flex-end;
   }
   .plant-modal {
-    padding: 36px 24px 28px;
+    max-width: none;
+    border-radius: 22px 22px 0 0;
+    border-bottom: none;
+    max-height: 92dvh;
+    padding-bottom: env(safe-area-inset-bottom);
   }
+  /* generous invisible strip so the handle is easy to grab with a thumb */
+  .plant-modal__grab-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 26px;
+    z-index: 3;
+    touch-action: none;
+    cursor: grab;
+  }
+  .plant-modal__grabber {
+    display: block;
+    width: 38px;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--line-strong);
+  }
+  .plant-modal__portrait {
+    padding: 34px 0 20px;
+    border-radius: 22px 22px 0 0;
+  }
+  .plant-modal__body {
+    padding: 24px 22px 0;
+  }
+  .plant-modal__close {
+    top: 14px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+  }
+  .plant-modal h2 {
+    font-size: 24px;
+  }
+}
+
+/* incremental loading footer */
+.plants-more {
+  display: flex;
+  justify-content: center;
+  padding: 34px 0 4px;
+}
+
+.plants-more__btn {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--green-bright);
+  padding: 13px 26px;
+  border-radius: 100px;
+  border: 1px solid var(--line-strong);
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+.plants-more__btn:active {
+  background: var(--bg-raised);
 }

@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { X, MessageCircle, Check } from 'lucide-react';
 import MagneticButton from './MagneticButton';
+import { useScrollLock, useEscapeKey } from '../hooks/useScrollLock';
 import { buildWhatsAppLink } from '../utils/whatsapp';
 import './WelcomePopup.css';
 
@@ -54,8 +55,12 @@ export default function WelcomePopup() {
     }
   };
 
-  const minimize = () => setStage('minimized');
-  const expand = () => setStage('open');
+  const minimize = useCallback(() => setStage('minimized'), []);
+  const expand = useCallback(() => setStage('open'), []);
+
+  // the page used to keep scrolling underneath the open card on phones
+  useScrollLock(stage === 'open');
+  useEscapeKey(stage === 'open', minimize);
 
   return (
     <>

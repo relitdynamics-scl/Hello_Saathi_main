@@ -90,4 +90,15 @@
   .footer {
     padding-top: 48px;
   }
+  /* footer links were 17px tall — well under a comfortable thumb target */
+  .footer__col {
+    gap: 2px;
+  }
+  .footer__col a,
+  .footer__row {
+    min-height: 44px;
+  }
+  .footer__bottom {
+    padding: 22px 20px calc(22px + env(safe-area-inset-bottom));
+  }
 }

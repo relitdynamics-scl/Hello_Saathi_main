@@ -84,7 +84,12 @@ export default function Contact() {
             ))}
 
             <div className="contact-social">
-              <a href="#" className="contact-social__link">
+              <a
+                href="https://instagram.com/hellosaathi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-social__link"
+              >
                 <Camera size={16} /> @hellosaathi
               </a>
               <a

@@ -1,6 +1,7 @@
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,6 +45,10 @@
   display: inline-block;
   overflow: hidden;
   vertical-align: top;
+  /* the mask has to clear the descenders of the italic display face, or the
+     tails of "p" and "g" in "become companions." get shaved off */
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
 }
 
 .hero__title-accent {
@@ -102,8 +107,10 @@
   transition: background 0.4s var(--ease);
 }
 
-.highlight-card:hover {
-  background: var(--bg-card);
+@media (hover: hover) {
+  .highlight-card:hover {
+    background: var(--bg-card);
+  }
 }
 
 .highlight-card__icon {
@@ -119,8 +126,10 @@
   transition: transform 0.4s var(--ease-soft);
 }
 
-.highlight-card:hover .highlight-card__icon {
-  transform: rotate(-8deg) scale(1.08);
+@media (hover: hover) {
+  .highlight-card:hover .highlight-card__icon {
+    transform: rotate(-8deg) scale(1.08);
+  }
 }
 
 .highlight-card h3 {
@@ -228,10 +237,12 @@
   transition: transform 0.5s var(--ease-soft), border-color 0.4s var(--ease), box-shadow 0.5s var(--ease);
 }
 
-.plant-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(127, 166, 107, 0.4);
-  box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.55);
+@media (hover: hover) {
+  .plant-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(127, 166, 107, 0.4);
+    box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.55);
+  }
 }
 
 .plant-card__portrait-wrap {
@@ -246,18 +257,20 @@
   transition: transform 0.5s var(--ease-soft);
 }
 
-.plant-card:hover .plant-card__portrait-wrap {
-  transform: scale(1.04);
-}
-
 .plant-card__portrait-wrap svg,
 .plant-card__portrait-wrap img {
   transition: transform 0.5s var(--ease-soft);
 }
 
-.plant-card:hover .plant-card__portrait-wrap svg,
-.plant-card:hover .plant-card__portrait-wrap img {
-  transform: translateY(-2px) rotate(-3deg);
+@media (hover: hover) {
+  .plant-card:hover .plant-card__portrait-wrap {
+    transform: scale(1.04);
+  }
+
+  .plant-card:hover .plant-card__portrait-wrap svg,
+  .plant-card:hover .plant-card__portrait-wrap img {
+    transform: translateY(-2px) rotate(-3deg);
+  }
 }
 
 .plant-card__body {
@@ -323,8 +336,12 @@
 
 @media (max-width: 640px) {
   .hero {
-    min-height: 92vh;
-    padding-top: 120px;
+    /* svh is the *small* viewport height — the size when the browser's
+       address bar is expanded. Plain vh is the large height, so the hero was
+       taller than the screen on first paint and the layout jumped as soon as
+       you scrolled and the bar collapsed. */
+    min-height: 92svh;
+    padding-top: calc(120px + env(safe-area-inset-top));
     padding-bottom: 40px;
     align-items: flex-start;
   }
@@ -344,5 +361,60 @@
   .cta-band__inner {
     padding: 32px 20px;
     gap: 28px;
+  }
+
+  .hero__title {
+    /* the display face needs a touch more room per line at phone sizes */
+    font-size: clamp(38px, 11vw, 52px);
+    margin: 20px 0 22px;
+  }
+  .hero__subtitle {
+    margin-bottom: 32px;
+  }
+  .hero__actions {
+    gap: 12px;
+    width: 100%;
+  }
+  .hero__actions > span {
+    flex: 1 1 auto;
+    min-width: 150px;
+  }
+  .hero__actions .magnetic-btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 50px;
+  }
+
+  .plant-card__body {
+    padding: 16px 16px 0;
+  }
+  .plant-card__portrait-wrap {
+    padding: 20px 0 10px;
+  }
+  .plant-card__common {
+    font-size: 18px;
+    line-height: 1.25;
+  }
+  .plant-card__botanical {
+    font-size: 12px;
+  }
+  .plant-card__benefits {
+    display: none;
+  }
+  .highlight-card {
+    padding: 26px 22px;
+  }
+
+  /* the divider's decorative sprigs collide with the vine at phone widths */
+  .divider-vine {
+    padding: 30px 0 36px;
+  }
+  .divider-vine__plants {
+    display: none;
+  }
+
+  .featured__see-all {
+    min-height: 44px;
+    padding-bottom: 0;
   }
 }

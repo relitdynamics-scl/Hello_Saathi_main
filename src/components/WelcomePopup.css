@@ -37,10 +37,10 @@
 
 .welcome-card__close {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 32px;
-  height: 32px;
+  top: 14px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 1px solid var(--line-strong);
   background: var(--bg-translucent-strong);
@@ -50,13 +50,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s var(--ease);
+  z-index: 2;
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease), transform 0.3s var(--ease);
 }
 
-.welcome-card__close:hover {
-  border-color: var(--green);
-  color: var(--text);
-  transform: rotate(90deg);
+@media (hover: hover) {
+  .welcome-card__close:hover {
+    border-color: var(--green);
+    color: var(--text);
+    transform: rotate(90deg);
+  }
 }
 
 .welcome-card__eyebrow {
@@ -223,17 +226,52 @@
   }
 }
 
+@media (max-width: 780px) {
+  /* 16px keeps iOS Safari from zooming the whole page on focus, which left
+     the card cropped and the layout stuck when the keyboard closed */
+  .welcome-field input,
+  .welcome-field textarea {
+    font-size: 16px;
+  }
+  .welcome-form > span {
+    align-self: stretch;
+    display: block;
+  }
+  .welcome-form .magnetic-btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+  }
+}
+
 @media (max-width: 480px) {
   .welcome-stage {
-    padding: 16px;
+    padding: 16px calc(16px + env(safe-area-inset-left))
+      calc(16px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-right));
+    align-items: flex-end;
+  }
+  .welcome-card {
+    /* dvh tracks the visible area as the browser bars and keyboard move */
+    max-height: 88dvh;
+    overscroll-behavior: contain;
   }
   .welcome-card__inner {
-    padding: 26px 22px 24px;
+    padding: 26px 20px 24px;
+  }
+  .welcome-card__title {
+    font-size: 20px;
   }
   .welcome-bubble {
-    left: 16px;
-    bottom: 16px;
-    width: 52px;
-    height: 52px;
+    left: calc(16px + env(safe-area-inset-left));
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    width: 54px;
+    height: 54px;
+  }
+}
+
+/* the pulsing ring is decorative — don't burn battery when motion is off */
+@media (prefers-reduced-motion: reduce) {
+  .welcome-bubble__ping {
+    display: none;
   }
 }

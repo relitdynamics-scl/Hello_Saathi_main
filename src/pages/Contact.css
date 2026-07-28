@@ -209,12 +209,43 @@
   }
 }
 
+@media (max-width: 780px) {
+  /* 16px keeps iOS Safari from zooming the page in when a field is focused */
+  .contact-field input,
+  .contact-field textarea {
+    font-size: 16px;
+    padding: 14px 16px;
+  }
+  /* MagneticButton wraps the control in a span — that span is the flex item,
+     so stretching has to happen there, not on the button itself */
+  .contact-form > span {
+    align-self: stretch;
+    display: block;
+  }
+  .contact-form .magnetic-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  /* give the tappable rows a real target height */
+  .contact-social {
+    gap: 4px;
+  }
+  .contact-social__link {
+    min-height: 44px;
+    width: 100%;
+  }
+}
+
 @media (max-width: 640px) {
   .contact-hero {
-    padding: 120px 0 40px;
+    padding: calc(120px + env(safe-area-inset-top)) 0 40px;
   }
   .contact-form-wrap {
-    padding: 28px 22px;
+    padding: 26px 20px;
     border-radius: 18px;
+  }
+  .contact-info__card {
+    gap: 14px;
+    padding: 20px 0;
   }
 }

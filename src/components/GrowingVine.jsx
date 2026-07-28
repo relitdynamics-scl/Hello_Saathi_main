@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useTransform } from 'framer-motion';
 
 /*
   A single continuous vine line that "grows" — stroke-dashoffset
@@ -77,25 +77,36 @@ export default function GrowingVine({
           strokeDashoffset: length ? dashoffset : length,
         }}
       />
-      {leafPoints.map(([px, py], i) => {
-        const t = (i + 1) / (leafPoints.length + 1);
-        const leafOpacity = useTransform(progress, [t - 0.12, t + 0.02], [0, 1]);
-        const leafScale = useTransform(progress, [t - 0.12, t + 0.02], [0.2, 1]);
-        const flip = i % 2 === 0 ? 1 : -1;
-        return (
-          <motion.g
-            key={i}
-            style={{ opacity: leafOpacity, scale: leafScale, originX: `${px}px`, originY: `${py}px` }}
-          >
-            <path
-              transform={`translate(${px}, ${py}) rotate(${flip * 35})`}
-              d="M0,0 C 6,-4 14,-2 16,4 C 14,10 6,10 0,0 Z"
-              fill={color}
-              opacity={0.85}
-            />
-          </motion.g>
-        );
-      })}
+      {leafPoints.map(([px, py], i) => (
+        <VineLeaf
+          key={i}
+          px={px}
+          py={py}
+          color={color}
+          progress={progress}
+          t={(i + 1) / (leafPoints.length + 1)}
+          flip={i % 2 === 0 ? 1 : -1}
+        />
+      ))}
     </svg>
+  );
+}
+
+// Each leaf owns its motion values. Previously these useTransform calls lived
+// inside the .map() callback — hooks in a loop, which only held together
+// because the array length never changes.
+function VineLeaf({ px, py, color, progress, t, flip }) {
+  const opacity = useTransform(progress, [t - 0.12, t + 0.02], [0, 1]);
+  const scale = useTransform(progress, [t - 0.12, t + 0.02], [0.2, 1]);
+
+  return (
+    <motion.g style={{ opacity, scale, originX: `${px}px`, originY: `${py}px` }}>
+      <path
+        transform={`translate(${px}, ${py}) rotate(${flip * 35})`}
+        d="M0,0 C 6,-4 14,-2 16,4 C 14,10 6,10 0,0 Z"
+        fill={color}
+        opacity={0.85}
+      />
+    </motion.g>
   );
 }

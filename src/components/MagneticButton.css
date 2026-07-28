@@ -29,12 +29,14 @@
   z-index: -1;
 }
 
-.magnetic-btn--primary:hover::before {
-  transform: translateY(0%);
-}
+@media (hover: hover) {
+  .magnetic-btn--primary:hover::before {
+    transform: translateY(0%);
+  }
 
-.magnetic-btn--primary:hover {
-  box-shadow: 0 8px 30px -6px rgba(127, 166, 107, 0.55);
+  .magnetic-btn--primary:hover {
+    box-shadow: 0 8px 30px -6px rgba(127, 166, 107, 0.55);
+  }
 }
 
 .magnetic-btn--ghost {
@@ -54,12 +56,14 @@
   z-index: -1;
 }
 
-.magnetic-btn--ghost:hover::before {
-  transform: scale(1);
-}
+@media (hover: hover) {
+  .magnetic-btn--ghost:hover::before {
+    transform: scale(1);
+  }
 
-.magnetic-btn--ghost:hover {
-  border-color: var(--green);
+  .magnetic-btn--ghost:hover {
+    border-color: var(--green);
+  }
 }
 
 .magnetic-btn__label {
@@ -69,4 +73,20 @@
 
 .magnetic-btn:active {
   transform: scale(0.96);
+}
+
+@media (max-width: 780px) {
+  .magnetic-btn {
+    min-height: 48px;
+    padding: 14px 26px;
+  }
+  /* no hover to reveal the fill on touch, so show it on press instead */
+  .magnetic-btn--primary:active::before {
+    transform: translateY(0%);
+    transition-duration: 0.15s;
+  }
+  .magnetic-btn--ghost:active::before {
+    transform: scale(1);
+    transition-duration: 0.15s;
+  }
 }

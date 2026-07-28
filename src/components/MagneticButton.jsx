@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useIsTouch } from '../hooks/useMediaQuery';
 import './MagneticButton.css';
 
 export default function MagneticButton({
@@ -13,8 +14,12 @@ export default function MagneticButton({
 }) {
   const ref = useRef(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
+  // Touch browsers fire a synthetic mousemove on tap but often no mouseleave,
+  // which left the button parked wherever the finger landed.
+  const isTouch = useIsTouch();
 
   const handleMove = (e) => {
+    if (isTouch) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -53,6 +58,7 @@ export default function MagneticButton({
       ref={ref}
       onMouseMove={handleMove}
       onMouseLeave={reset}
+      onPointerCancel={reset}
       animate={{ x: pos.x, y: pos.y }}
       transition={{ type: 'spring', stiffness: 150, damping: 12, mass: 0.4 }}
       style={{ display: 'inline-block' }}

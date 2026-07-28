@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
 import { Leaf, Camera, MessageCircle, MapPin } from 'lucide-react';
+import { WHATSAPP_NUMBER } from '../utils/whatsapp';
 import './Footer.css';
+
+// TODO: point this at the nursery's real profile — it currently follows the
+// @hellosaathi handle shown beside it, which may not be the right account.
+const INSTAGRAM_URL = 'https://instagram.com/hellosaathi';
 
 export default function Footer() {
   return (
@@ -30,8 +35,22 @@ export default function Footer() {
           </div>
           <div className="footer__col">
             <span className="footer__col-title">Say hello</span>
-            <a href="#" className="footer__row"><Camera size={14} /> @hellosaathi</a>
-            <a href="#" className="footer__row"><MessageCircle size={14} /> Chat with us</a>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer__row"
+            >
+              <Camera size={14} /> @hellosaathi
+            </a>
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer__row"
+            >
+              <MessageCircle size={14} /> Chat with us
+            </a>
           </div>
         </div>
       </div>

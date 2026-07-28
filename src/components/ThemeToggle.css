@@ -5,6 +5,15 @@
   padding: 4px;
   border-radius: 100px;
   flex-shrink: 0;
+  touch-action: manipulation;
+}
+
+@media (max-width: 860px) {
+  /* pad out to a 44px target without changing the track's size */
+  .theme-toggle {
+    padding: 10px 8px;
+    margin: -10px -8px;
+  }
 }
 
 .theme-toggle__track {

@@ -83,7 +83,15 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* stop iOS from re-flowing type when the phone is rotated */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   transition: background 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+/* the grey flash Android paints over every tapped control */
+a, button, [role='tab'], input, textarea, select {
+  -webkit-tap-highlight-color: transparent;
 }
 
 body::before {
@@ -186,7 +194,17 @@ ul, ol {
 
 @media (max-width: 640px) {
   .container {
-    padding: 0 20px;
+    padding: 0 calc(20px + env(safe-area-inset-left)) 0 calc(20px + env(safe-area-inset-right));
+  }
+}
+
+/* The grain overlay blends a full-screen layer (mix-blend-mode) on every
+   scroll frame. At 2-3% opacity it is invisible on a phone screen but costs a
+   viewport-sized blend per frame, so phones get the gradient wash without it.
+   The colour palette is untouched. */
+@media (max-width: 780px) {
+  body::after {
+    display: none;
   }
 }
 
