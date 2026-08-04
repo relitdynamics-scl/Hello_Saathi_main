@@ -5,7 +5,10 @@ import { X, MessageCircle, Check } from 'lucide-react';
 import MagneticButton from './MagneticButton';
 import { useScrollLock, useEscapeKey } from '../hooks/useScrollLock';
 import { buildWhatsAppLink } from '../utils/whatsapp';
+import { validateForm, FIELD_RULES } from '../utils/validation';
 import './WelcomePopup.css';
+
+const FIELDS = ['name', 'phone', 'email', 'message'];
 
 const SESSION_KEY = 'hs-welcome-popup-shown';
 
@@ -39,20 +42,14 @@ export default function WelcomePopup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const nextErrors = {};
-    if (!form.name.trim()) nextErrors.name = 'Tell us your name';
-    if (!form.phone.trim()) nextErrors.phone = 'Add a phone number';
-    if (form.email.trim() && !/^\S+@\S+\.\S+$/.test(form.email.trim())) {
-      nextErrors.email = 'That email looks off';
-    }
-    if (!form.message.trim()) nextErrors.message = "What are you looking for?";
-    setErrors(nextErrors);
-    if (Object.keys(nextErrors).length === 0) {
-      const link = buildWhatsAppLink(form);
-      setWaLink(link);
-      setSent(true);
-      window.open(link, '_blank', 'noopener,noreferrer');
-    }
+    const { ok, errors: found, value } = validateForm(form, FIELDS);
+    setErrors(found);
+    if (!ok) return;
+
+    const link = buildWhatsAppLink(value);
+    setWaLink(link);
+    setSent(true);
+    window.open(link, '_blank', 'noopener,noreferrer');
   };
 
   const minimize = useCallback(() => setStage('minimized'), []);
@@ -129,6 +126,8 @@ export default function WelcomePopup() {
                             placeholder="Your name"
                             autoComplete="name"
                             aria-label="Your name"
+                            maxLength={FIELD_RULES.name.max}
+                            aria-invalid={!!errors.name}
                           />
                           {errors.name && <span className="welcome-field__error">{errors.name}</span>}
                         </div>
@@ -141,7 +140,10 @@ export default function WelcomePopup() {
                             onChange={handleChange}
                             placeholder="Phone or WhatsApp"
                             autoComplete="tel"
+                            inputMode="tel"
                             aria-label="Phone or WhatsApp"
+                            maxLength={FIELD_RULES.phone.max}
+                            aria-invalid={!!errors.phone}
                           />
                           {errors.phone && <span className="welcome-field__error">{errors.phone}</span>}
                         </div>
@@ -155,6 +157,8 @@ export default function WelcomePopup() {
                             placeholder="Email address"
                             autoComplete="email"
                             aria-label="Email address"
+                            maxLength={FIELD_RULES.email.max}
+                            aria-invalid={!!errors.email}
                           />
                           {errors.email && <span className="welcome-field__error">{errors.email}</span>}
                         </div>
@@ -167,6 +171,8 @@ export default function WelcomePopup() {
                             onChange={handleChange}
                             placeholder="Low-light plant for a small balcony…"
                             aria-label="What are you looking for?"
+                            maxLength={FIELD_RULES.message.max}
+                            aria-invalid={!!errors.message}
                           />
                           {errors.message && <span className="welcome-field__error">{errors.message}</span>}
                         </div>

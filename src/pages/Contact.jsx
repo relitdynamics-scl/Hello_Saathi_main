@@ -4,7 +4,10 @@ import { MapPin, Phone, Clock, Camera, MessageCircle, Check } from 'lucide-react
 import Reveal from '../components/Reveal';
 import MagneticButton from '../components/MagneticButton';
 import { WHATSAPP_NUMBER, buildWhatsAppLink } from '../utils/whatsapp';
+import { validateForm, FIELD_RULES } from '../utils/validation';
 import './Contact.css';
+
+const FIELDS = ['name', 'phone', 'message'];
 
 const INFO = [
   { icon: MapPin, title: 'Find us', lines: ['Delhi nursery', 'Exact address shared on request'] },
@@ -25,17 +28,15 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const nextErrors = {};
-    if (!form.name.trim()) nextErrors.name = 'Tell us your name';
-    if (!form.phone.trim()) nextErrors.phone = 'Add a phone number so we can reply';
-    if (!form.message.trim()) nextErrors.message = "What are you looking for?";
-    setErrors(nextErrors);
-    if (Object.keys(nextErrors).length === 0) {
-      const link = buildWhatsAppLink(form);
-      setWaLink(link);
-      setSent(true);
-      window.open(link, '_blank', 'noopener,noreferrer');
-    }
+    // reject on any schema failure; only the accepted values are sent on
+    const { ok, errors: found, value } = validateForm(form, FIELDS);
+    setErrors(found);
+    if (!ok) return;
+
+    const link = buildWhatsAppLink(value);
+    setWaLink(link);
+    setSent(true);
+    window.open(link, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -116,8 +117,15 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Ananya Sharma"
                     autoComplete="name"
+                    maxLength={FIELD_RULES.name.max}
+                    aria-invalid={!!errors.name}
+                    aria-describedby={errors.name ? 'name-error' : undefined}
                   />
-                  {errors.name && <span className="contact-field__error">{errors.name}</span>}
+                  {errors.name && (
+                    <span className="contact-field__error" id="name-error" role="alert">
+                      {errors.name}
+                    </span>
+                  )}
                 </div>
 
                 <div className={`contact-field ${errors.phone ? 'contact-field--error' : ''}`}>
@@ -130,8 +138,16 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="+91 98765 43210"
                     autoComplete="tel"
+                    inputMode="tel"
+                    maxLength={FIELD_RULES.phone.max}
+                    aria-invalid={!!errors.phone}
+                    aria-describedby={errors.phone ? 'phone-error' : undefined}
                   />
-                  {errors.phone && <span className="contact-field__error">{errors.phone}</span>}
+                  {errors.phone && (
+                    <span className="contact-field__error" id="phone-error" role="alert">
+                      {errors.phone}
+                    </span>
+                  )}
                 </div>
 
                 <div className={`contact-field ${errors.message ? 'contact-field--error' : ''}`}>
@@ -143,8 +159,15 @@ export default function Contact() {
                     value={form.message}
                     onChange={handleChange}
                     placeholder="Low-light plant for a small balcony in Delhi…"
+                    maxLength={FIELD_RULES.message.max}
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? 'message-error' : undefined}
                   />
-                  {errors.message && <span className="contact-field__error">{errors.message}</span>}
+                  {errors.message && (
+                    <span className="contact-field__error" id="message-error" role="alert">
+                      {errors.message}
+                    </span>
+                  )}
                 </div>
 
                 <MagneticButton variant="primary" type="submit">
