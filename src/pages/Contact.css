@@ -249,3 +249,14 @@
     padding: 20px 0;
   }
 }
+
+/* generic failure notice — never carries the underlying error text */
+.contact-form__error {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--terracotta-bright);
+  background: rgba(201, 123, 74, 0.1);
+  border: 1px solid rgba(201, 123, 74, 0.3);
+  border-radius: 10px;
+  padding: 12px 14px;
+}

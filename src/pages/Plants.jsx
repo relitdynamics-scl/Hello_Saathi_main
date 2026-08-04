@@ -151,7 +151,7 @@ export default function Plants() {
                 >
                   <div className="plant-tile__portrait">
                     {p.photo ? (
-                      <PlantPhoto id={p.id} alt={p.common} size={104} />
+                      <PlantPhoto id={p.id} alt={p.common} size={104} family={p.family} />
                     ) : (
                       <PlantPortrait family={p.family} id={p.id} size={104} />
                     )}
@@ -272,7 +272,7 @@ function PlantModal({ plant, onClose }) {
         <div className="plant-modal__scroll">
           <div className="plant-modal__portrait">
             {plant.photo ? (
-              <PlantPhoto id={plant.id} alt={plant.common} size={140} />
+              <PlantPhoto id={plant.id} alt={plant.common} size={140} family={plant.family} />
             ) : (
               <PlantPortrait family={plant.family} id={plant.id} size={140} />
             )}

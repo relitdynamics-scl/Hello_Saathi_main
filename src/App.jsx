@@ -4,9 +4,11 @@ import { useEffect } from 'react';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import WelcomePopup from './components/WelcomePopup';
+import ErrorBoundary from './components/ErrorBoundary';
 import Home from './pages/Home';
 import Plants from './pages/Plants';
 import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
 import { ThemeProvider } from './context/ThemeContext';
 import './styles/global.css';
 
@@ -60,6 +62,14 @@ function AnimatedRoutes() {
             </PageTransition>
           }
         />
+        <Route
+          path="*"
+          element={
+            <PageTransition>
+              <NotFound />
+            </PageTransition>
+          }
+        />
       </Routes>
     </AnimatePresence>
   );
@@ -71,9 +81,17 @@ export default function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Nav />
-        <AnimatedRoutes />
+        {/* Scoped to the routed content so a page-level throw keeps the nav
+            and footer usable instead of blanking the whole document. */}
+        <ErrorBoundary where="page">
+          <AnimatedRoutes />
+        </ErrorBoundary>
         <Footer />
-        <WelcomePopup />
+        {/* The popup is non-essential; if it throws it must not take the
+            page down with it. */}
+        <ErrorBoundary where="welcome-popup" fallbackSilent>
+          <WelcomePopup />
+        </ErrorBoundary>
       </BrowserRouter>
     </ThemeProvider>
   );

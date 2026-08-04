@@ -5,12 +5,31 @@ import { X, MessageCircle, Check } from 'lucide-react';
 import MagneticButton from './MagneticButton';
 import { useScrollLock, useEscapeKey } from '../hooks/useScrollLock';
 import { buildWhatsAppLink } from '../utils/whatsapp';
+import { reportError } from '../utils/reportError';
 import { validateForm, FIELD_RULES } from '../utils/validation';
 import './WelcomePopup.css';
 
 const FIELDS = ['name', 'phone', 'email', 'message'];
 
 const SESSION_KEY = 'hs-welcome-popup-shown';
+
+// Storage access throws outright in some privacy modes. Failing to read the
+// flag should only mean the popup shows again, never a crash.
+function readFlag(key) {
+  try {
+    return window.sessionStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function writeFlag(key, value) {
+  try {
+    window.sessionStorage.setItem(key, value);
+  } catch {
+    // nothing to do — worst case the popup reappears next visit
+  }
+}
 
 const morphTransition = { type: 'tween', duration: 0.55, ease: [0.16, 1, 0.3, 1] };
 
@@ -25,11 +44,13 @@ export default function WelcomePopup() {
   useEffect(() => {
     if (stage !== 'closed') return;
     if (location.pathname !== '/') return;
-    if (sessionStorage.getItem(SESSION_KEY)) return;
+    // Safari private mode and blocked-cookie settings make sessionStorage
+    // throw on access, which took the whole page down from inside an effect.
+    if (readFlag(SESSION_KEY)) return;
 
     const timer = setTimeout(() => {
       setStage('open');
-      sessionStorage.setItem(SESSION_KEY, '1');
+      writeFlag(SESSION_KEY, '1');
     }, 1500);
 
     return () => clearTimeout(timer);
@@ -46,10 +67,15 @@ export default function WelcomePopup() {
     setErrors(found);
     if (!ok) return;
 
-    const link = buildWhatsAppLink(value);
-    setWaLink(link);
-    setSent(true);
-    window.open(link, '_blank', 'noopener,noreferrer');
+    try {
+      const link = buildWhatsAppLink(value);
+      setWaLink(link);
+      setSent(true);
+      window.open(link, '_blank', 'noopener,noreferrer');
+    } catch (err) {
+      const { message } = reportError(err, { where: 'welcome-popup-submit' });
+      setErrors({ form: message });
+    }
   };
 
   const minimize = useCallback(() => setStage('minimized'), []);
@@ -176,6 +202,12 @@ export default function WelcomePopup() {
                           />
                           {errors.message && <span className="welcome-field__error">{errors.message}</span>}
                         </div>
+
+                        {errors.form && (
+                          <p className="welcome-field__error" role="alert">
+                            {errors.form}
+                          </p>
+                        )}
 
                         <MagneticButton variant="primary" type="submit">
                           Send message

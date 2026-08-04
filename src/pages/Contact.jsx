@@ -5,6 +5,7 @@ import Reveal from '../components/Reveal';
 import MagneticButton from '../components/MagneticButton';
 import { WHATSAPP_NUMBER, buildWhatsAppLink } from '../utils/whatsapp';
 import { validateForm, FIELD_RULES } from '../utils/validation';
+import { reportError } from '../utils/reportError';
 import './Contact.css';
 
 const FIELDS = ['name', 'phone', 'message'];
@@ -33,10 +34,17 @@ export default function Contact() {
     setErrors(found);
     if (!ok) return;
 
-    const link = buildWhatsAppLink(value);
-    setWaLink(link);
-    setSent(true);
-    window.open(link, '_blank', 'noopener,noreferrer');
+    try {
+      const link = buildWhatsAppLink(value);
+      setWaLink(link);
+      setSent(true);
+      // returns null when a popup blocker steps in — the success panel always
+      // shows a tappable fallback link, so there is nothing more to do here
+      window.open(link, '_blank', 'noopener,noreferrer');
+    } catch (err) {
+      const { message } = reportError(err, { where: 'contact-submit' });
+      setErrors({ form: message });
+    }
   };
 
   return (
@@ -169,6 +177,12 @@ export default function Contact() {
                     </span>
                   )}
                 </div>
+
+                {errors.form && (
+                  <p className="contact-form__error" role="alert">
+                    {errors.form}
+                  </p>
+                )}
 
                 <MagneticButton variant="primary" type="submit">
                   Send message
