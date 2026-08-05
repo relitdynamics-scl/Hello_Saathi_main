@@ -2,6 +2,7 @@
 export const PLANTS = [
   {
     id: 1,
+    price: 399, // INR, current retail estimate
     botanical: 'Dypsis lutescens',
     common: 'Areca Palm',
     alt: 'Bamboo Palm',
@@ -12,6 +13,7 @@ export const PLANTS = [
   },
   {
     id: 2,
+    price: 799, // INR, current retail estimate
     botanical: 'Raphis excelsa',
     common: 'Lady Palm',
     benefits: ['Improves indoor air quality', 'Naturally resistant to pathogens'],
@@ -21,6 +23,7 @@ export const PLANTS = [
   },
   {
     id: 3,
+    price: 349, // INR, current retail estimate
     botanical: 'Ficus elastica',
     common: 'Rubber Plant',
     benefits: ['Emits high oxygen', 'Removes formaldehyde, benzene & trichloroethylene'],
@@ -30,6 +33,7 @@ export const PLANTS = [
   },
   {
     id: 4,
+    price: 399, // INR, current retail estimate
     botanical: 'Spathiphyllum wallisii',
     common: 'Peace Lily',
     benefits: ['Removes air pollutants', 'Clears household chemicals & carcinogens'],
@@ -39,6 +43,7 @@ export const PLANTS = [
   },
   {
     id: 5,
+    price: 399, // INR, current retail estimate
     botanical: 'Ficus Alii',
     common: 'Ficus Ali Gold',
     benefits: ['Overall air purifier', 'Resistant to insects'],
@@ -48,6 +53,7 @@ export const PLANTS = [
   },
   {
     id: 6,
+    price: 149, // INR, current retail estimate
     botanical: 'Chlorophytum comosum',
     common: 'Spider Plant',
     benefits: ['Removes formaldehyde and xylene'],
@@ -57,6 +63,7 @@ export const PLANTS = [
   },
   {
     id: 7,
+    price: 149, // INR, current retail estimate
     botanical: 'Gerbera daisy',
     common: 'Daisy Plant',
     benefits: ['Absorbs carbon dioxide', 'Releases oxygen at night', 'Removes benzene'],
@@ -66,6 +73,7 @@ export const PLANTS = [
   },
   {
     id: 9,
+    price: 99, // INR, current retail estimate
     botanical: 'Epipremnum aureum',
     common: 'Money Plant',
     benefits: ['Removes formaldehyde and benzene'],
@@ -75,6 +83,7 @@ export const PLANTS = [
   },
   {
     id: 10,
+    price: 1499, // INR, current retail estimate
     botanical: 'Howea forsteriana',
     common: 'Kentia Palm',
     benefits: ['Removes VOC concentrations', 'Clears benzene and n-hexane'],
@@ -84,6 +93,7 @@ export const PLANTS = [
   },
   {
     id: 11,
+    price: 399, // INR, current retail estimate
     botanical: 'Schefflera actinophylla',
     common: 'Queensland Umbrella',
     benefits: ['Removes benzene and carcinogenic substances'],
@@ -93,6 +103,7 @@ export const PLANTS = [
   },
   {
     id: 12,
+    price: 349, // INR, current retail estimate
     botanical: 'Dracaena deremensis',
     common: 'Janet Craig',
     benefits: ['Removes trichloroethylene from photocopier emissions', 'Absorbs VOC concentrations'],
@@ -102,6 +113,7 @@ export const PLANTS = [
   },
   {
     id: 13,
+    price: 299, // INR, current retail estimate
     botanical: 'Nephrolepis exaltata',
     common: 'Boston Fern',
     benefits: ['Removes formaldehyde', 'Adds humidity indoors'],
@@ -111,6 +123,7 @@ export const PLANTS = [
   },
   {
     id: 14,
+    price: 199, // INR, current retail estimate
     botanical: 'Sansevieria trifasciata',
     common: "Snake Plant",
     alt: "Mother-in-Law's Tongue",
@@ -121,6 +134,7 @@ export const PLANTS = [
   },
   {
     id: 15,
+    price: 149, // INR, current retail estimate
     botanical: 'Aloe barbadensis',
     common: 'Aloe Vera',
     benefits: ['Sun-loving succulent that clears formaldehyde & benzene'],
@@ -130,6 +144,7 @@ export const PLANTS = [
   },
   {
     id: 16,
+    price: 349, // INR, current retail estimate
     botanical: 'Aglaonema sp.',
     common: 'Chinese Evergreen',
     benefits: ['Emits high oxygen', 'Removes formaldehyde and benzene'],
@@ -139,6 +154,7 @@ export const PLANTS = [
   },
   {
     id: 17,
+    price: 129, // INR, current retail estimate
     botanical: 'Epipremnum aureum syn. Scindapsus aureus',
     common: 'Golden Pothos',
     benefits: ['Removes formaldehyde', 'Clears carbon monoxide, boosts air quality'],
@@ -148,6 +164,7 @@ export const PLANTS = [
   },
   {
     id: 18,
+    price: 399, // INR, current retail estimate
     botanical: 'Dracaena marginata',
     common: 'Dragon Tree',
     alt: 'Marginata',
@@ -158,6 +175,7 @@ export const PLANTS = [
   },
   {
     id: 19,
+    price: 199, // INR, current retail estimate
     botanical: 'Philodendron cordatum / scandens / selloum',
     common: 'Philodendron',
     benefits: ['Removes formaldehyde, even at higher concentrations'],
@@ -167,6 +185,7 @@ export const PLANTS = [
   },
   {
     id: 20,
+    price: 129, // INR, current retail estimate
     botanical: 'Chrysanthemum morifolium',
     common: 'Mums',
     benefits: ['Removes benzene and carcinogenic substances'],
@@ -176,6 +195,7 @@ export const PLANTS = [
   },
   {
     id: 21,
+    price: 149, // INR, current retail estimate
     botanical: 'Gerbera jamesonii',
     common: 'Gerbera Daisy',
     benefits: ['Removes benzene', 'Gives oxygen at night — supports better sleep'],
@@ -185,6 +205,7 @@ export const PLANTS = [
   },
   {
     id: 22,
+    price: 199, // INR, current retail estimate
     botanical: 'Hedera helix',
     common: 'English Ivy',
     benefits: ['Removes benzene, pesticides & synthetic off-gassing', 'Good for asthma & allergies', 'Removes formaldehyde'],
@@ -194,6 +215,7 @@ export const PLANTS = [
   },
   {
     id: 23,
+    price: 179, // INR, current retail estimate
     botanical: 'Philodendron oxycardium',
     common: 'Heart Leaf Philodendron',
     benefits: ['Removes VOCs, especially from particle board'],
@@ -203,6 +225,7 @@ export const PLANTS = [
   },
   {
     id: 24,
+    price: 399, // INR, current retail estimate
     botanical: 'Ficus benjamina',
     common: 'Weeping Fig',
     benefits: ['Filters pollutants from carpeting & furniture'],
@@ -212,6 +235,7 @@ export const PLANTS = [
   },
   {
     id: 25,
+    price: 349, // INR, current retail estimate
     botanical: 'Dracaena deremensis warneckei',
     common: 'Warneckii',
     benefits: ['Removes trichloroethylene from photocopier emissions'],
@@ -221,6 +245,7 @@ export const PLANTS = [
   },
   {
     id: 26,
+    price: 599, // INR, current retail estimate
     botanical: 'Phoenix roebelenii',
     common: 'Pygmy Date Palm',
     alt: 'Miniature Date Palm',
@@ -231,6 +256,7 @@ export const PLANTS = [
   },
   {
     id: 27,
+    price: 399, // INR, current retail estimate
     botanical: 'Dracaena fragrans',
     common: 'Corn Plant',
     alt: 'Cornstalk Plant',
@@ -241,6 +267,7 @@ export const PLANTS = [
   },
   {
     id: 28,
+    price: 149, // INR, current retail estimate
     botanical: 'Gerbera jamesonii',
     common: 'Gerbera Daisy',
     benefits: ['Removes trichloroethylene and benzene'],
@@ -250,6 +277,7 @@ export const PLANTS = [
   },
   {
     id: 29,
+    price: 399, // INR, current retail estimate
     botanical: 'Dracaena marginata',
     common: 'Dragon Tree',
     benefits: ['Reduces benzene, formaldehyde, xylene & toluene'],
@@ -259,6 +287,7 @@ export const PLANTS = [
   },
   {
     id: 30,
+    price: 599, // INR, current retail estimate
     botanical: 'Monstera deliciosa',
     common: 'Monstera Deliciosa',
     benefits: ['Enormous dramatically perforated glossy leaves', 'Grows rapidly with minimal care', 'Featured in design publications worldwide'],
@@ -268,6 +297,7 @@ export const PLANTS = [
   },
   {
     id: 31,
+    price: 449, // INR, current retail estimate
     botanical: 'Adenium obesum',
     common: 'Adenium',
     alt: 'Desert Rose',
@@ -278,6 +308,7 @@ export const PLANTS = [
   },
   {
     id: 32,
+    price: 349, // INR, current retail estimate
     botanical: 'Heliconia psittacorum',
     common: 'Heliconia',
     benefits: ['Dramatic waxy bracts in fiery red and orange', 'Fine tropical specimen for hotel and private gardens'],
@@ -287,6 +318,7 @@ export const PLANTS = [
   },
   {
     id: 33,
+    price: 449, // INR, current retail estimate
     botanical: 'Etlingera elatior',
     common: 'Torch Ginger',
     benefits: ['Spectacular torch-like inflorescence of crimson petals', 'Prized ornamental and premium cut flower'],
@@ -296,6 +328,7 @@ export const PLANTS = [
   },
   {
     id: 34,
+    price: 1499, // INR, current retail estimate
     botanical: 'Medinilla magnifica',
     common: 'Medinilla',
     benefits: ['Spectacular pendulous pink flower clusters', 'Genuine trophy plant for serious collectors'],
@@ -305,6 +338,7 @@ export const PLANTS = [
   },
   {
     id: 35,
+    price: 599, // INR, current retail estimate
     botanical: 'Anthurium andraeanum',
     common: 'Anthurium',
     benefits: ['Waxy heart-shaped spathes in red, pink or white', 'Blooms almost continuously year-round'],
@@ -314,6 +348,7 @@ export const PLANTS = [
   },
   {
     id: 36,
+    price: 349, // INR, current retail estimate
     botanical: 'Agave americana',
     common: 'Agave Americana',
     benefits: ['Imposing rosette of blue-grey sword-shaped leaves', 'Thrives in harshest conditions, zero maintenance'],
@@ -323,6 +358,7 @@ export const PLANTS = [
   },
   {
     id: 37,
+    price: 1999, // INR, current retail estimate
     botanical: 'Ravenala madagascariensis',
     common: 'Traveller\'s Palm',
     benefits: ['Enormous banana-like leaves fan out geometrically', 'Majestic specimen for large tropical gardens'],
@@ -332,6 +368,7 @@ export const PLANTS = [
   },
   {
     id: 38,
+    price: 899, // INR, current retail estimate
     botanical: 'Nepenthes sp.',
     common: 'Nepenthes',
     alt: 'Pitcher Plant',
@@ -342,6 +379,7 @@ export const PLANTS = [
   },
   {
     id: 39,
+    price: 1499, // INR, current retail estimate
     botanical: 'Tacca chantrieri',
     common: 'Black Bat Flower',
     benefits: ['Most dramatic flower in the plant world', 'Black bat-shaped blooms with long whisker bracts', 'Rare collector\'s gem from Northeast India'],
@@ -351,6 +389,7 @@ export const PLANTS = [
   },
   {
     id: 40,
+    price: 599, // INR, current retail estimate
     botanical: 'Brugmansia suaveolens',
     common: 'Brugmansia',
     benefits: ['Enormous pendant trumpet flowers up to 30cm', 'Intensely fragrant at night'],
@@ -360,6 +399,7 @@ export const PLANTS = [
   },
   {
     id: 41,
+    price: 199, // INR, current retail estimate
     botanical: 'Canna indica',
     common: 'Canna Lily',
     benefits: ['Bold tropical foliage in green or bronze-purple', 'Instant tropical impact in garden beds'],
@@ -369,6 +409,7 @@ export const PLANTS = [
   },
   {
     id: 42,
+    price: 899, // INR, current retail estimate
     botanical: 'Cycas revoluta',
     common: 'Cycas Revoluta',
     benefits: ['A living fossil unchanged for 300 million years', 'Elegant, prized and long-lived specimen'],
@@ -378,6 +419,7 @@ export const PLANTS = [
   },
   {
     id: 43,
+    price: 1999, // INR, current retail estimate
     botanical: 'Strelitzia nicolai',
     common: 'Giant Bird of Paradise',
     benefits: ['Grows to 8 metres with blue-grey paddle leaves', 'Majestic specimen for large tropical gardens'],
@@ -387,6 +429,7 @@ export const PLANTS = [
   },
   {
     id: 44,
+    price: 349, // INR, current retail estimate
     botanical: 'Colocasia esculenta',
     common: 'Elephant Ear',
     benefits: ['Enormous heart-shaped leaves up to 90cm', 'Creates instant tropical jungle atmosphere'],
@@ -396,6 +439,7 @@ export const PLANTS = [
   },
   {
     id: 45,
+    price: 2999, // INR, current retail estimate
     botanical: 'Dracaena draco',
     common: 'Dragon Blood Tree',
     benefits: ['Legendary tree with a dramatic umbrella-shaped canopy', 'Red resin used medicinally for millennia', 'Rare and precious collector\'s specimen'],
@@ -405,6 +449,7 @@ export const PLANTS = [
   },
   {
     id: 46,
+    price: 399, // INR, current retail estimate
     botanical: 'Pandanus utilis',
     common: 'Pandanus',
     alt: 'Screwpine',
@@ -415,6 +460,7 @@ export const PLANTS = [
   },
   {
     id: 47,
+    price: 599, // INR, current retail estimate
     botanical: 'Philodendron xanadu',
     common: 'Philodendron Xanadu',
     benefits: ['Bold deeply lobed glossy leaves in a spreading mound', 'Low-maintenance for gardens and indoor spaces'],
@@ -424,6 +470,7 @@ export const PLANTS = [
   },
   {
     id: 48,
+    price: 449, // INR, current retail estimate
     botanical: 'Heliconia rostrata',
     common: 'Heliconia Rostrata',
     benefits: ['Pendant inflorescences with red and yellow bracts', 'One of the finest tropical ornamental plants'],
@@ -433,6 +480,7 @@ export const PLANTS = [
   },
   {
     id: 49,
+    price: 449, // INR, current retail estimate
     botanical: 'Vriesea splendens',
     common: 'Vriesea Bromeliad',
     benefits: ['Striking striped foliage with a red flower spike', 'Most ornamental of all bromeliad genera'],
@@ -442,6 +490,7 @@ export const PLANTS = [
   },
   {
     id: 50,
+    price: 1499, // INR, current retail estimate
     botanical: 'Tacca integrifolia',
     common: 'White Bat Flower',
     benefits: ['White bat-shaped blooms with long whisker bracts', 'Rarest and most ethereal of all bat flowers'],
@@ -451,6 +500,7 @@ export const PLANTS = [
   },
   {
     id: 51,
+    price: 799, // INR, current retail estimate
     botanical: 'Ensete ventricosum',
     common: 'Abyssinian Banana',
     benefits: ['Enormous glossy leaves with vivid red midribs', 'Dramatic foliage for large garden beds'],
@@ -460,6 +510,7 @@ export const PLANTS = [
   },
   {
     id: 52,
+    price: 799, // INR, current retail estimate
     botanical: 'Calathea orbifolia',
     common: 'Calathea Orbifolia',
     benefits: ['Beautifully patterned round leaves with silver stripes', 'Folds its leaves at dusk like a prayer plant'],
@@ -469,6 +520,7 @@ export const PLANTS = [
   },
   {
     id: 53,
+    price: 499, // INR, current retail estimate
     botanical: 'Musa ornamental',
     common: 'Ornamental Banana',
     benefits: ['Striking blood-red or bronze foliage', 'Theatrical tropical drama for containers and beds'],
@@ -478,6 +530,7 @@ export const PLANTS = [
   },
   {
     id: 54,
+    price: 599, // INR, current retail estimate
     botanical: 'Alocasia macrorrhiza',
     common: 'Alocasia Macrorrhiza',
     benefits: ['Giant taro with enormous arrow-shaped leaves', 'Dramatically oversized foliage for large gardens'],
@@ -487,6 +540,7 @@ export const PLANTS = [
   },
   {
     id: 55,
+    price: 399, // INR, current retail estimate
     botanical: 'Costus speciosus',
     common: 'Spiral Ginger',
     benefits: ['Spiral-arranged leaves on twisting stems', 'White flowers emerge from red bracts'],
@@ -496,6 +550,7 @@ export const PLANTS = [
   },
   {
     id: 56,
+    price: 399, // INR, current retail estimate
     botanical: 'Curcuma alismatifolia',
     common: 'Siam Tulip',
     benefits: ['Elegant tulip-like blooms in pink or white', 'Rapidly gaining popularity as a cut flower'],
@@ -505,6 +560,7 @@ export const PLANTS = [
   },
   {
     id: 57,
+    price: 449, // INR, current retail estimate
     botanical: 'Alpinia purpurata',
     common: 'Red Ginger',
     benefits: ['Vivid red torch-like flower heads', 'Excellent long-lasting cut flower'],
@@ -514,6 +570,7 @@ export const PLANTS = [
   },
   {
     id: 58,
+    price: 599, // INR, current retail estimate
     botanical: 'Zingiber spectabile',
     common: 'Beehive Ginger',
     benefits: ['Golden-yellow beehive-shaped inflorescences', 'Uniquely sculptural flower heads'],
@@ -523,6 +580,7 @@ export const PLANTS = [
   },
   {
     id: 59,
+    price: 1499, // INR, current retail estimate
     botanical: 'Strongylodon macrobotrys',
     common: 'Jade Vine',
     benefits: ['Luminescent turquoise-jade flower racemes', 'One of the rarest flower colours in the plant kingdom'],
@@ -532,6 +590,7 @@ export const PLANTS = [
   },
   {
     id: 60,
+    price: 349, // INR, current retail estimate
     botanical: 'Gloriosa superba',
     common: 'Gloriosa Lily',
     benefits: ['Spectacular flame petals in red and yellow', 'Highly medicinal and ornamental'],
@@ -541,6 +600,7 @@ export const PLANTS = [
   },
   {
     id: 61,
+    price: 199, // INR, current retail estimate
     botanical: 'Euphorbia milii',
     common: 'Crown of Thorns',
     benefits: ['Vivid flower bracts blooming year-round', 'Extremely drought-tolerant and low-maintenance'],
@@ -550,6 +610,7 @@ export const PLANTS = [
   },
   {
     id: 62,
+    price: 149, // INR, current retail estimate
     botanical: 'Ixora coccinea',
     common: 'Ixora Super King',
     benefits: ['Extra-large flower clusters in vivid scarlet', 'Larger and more vigorous than standard varieties'],
@@ -559,6 +620,7 @@ export const PLANTS = [
   },
   {
     id: 63,
+    price: 349, // INR, current retail estimate
     botanical: 'Plumeria obtusa',
     common: 'Singapore Plumeria',
     benefits: ['Pure white flowers with a delicate yellow centre', 'Extraordinary year-round fragrance'],
@@ -568,6 +630,7 @@ export const PLANTS = [
   },
   {
     id: 64,
+    price: 249, // INR, current retail estimate
     botanical: 'Callistemon citrinus',
     common: 'Bottlebrush',
     benefits: ['Vivid crimson bottlebrush flower spikes', 'Attracts sunbirds and butterflies'],
@@ -577,6 +640,7 @@ export const PLANTS = [
   },
   {
     id: 65,
+    price: 349, // INR, current retail estimate
     botanical: 'Grevillea banksii',
     common: 'Grevillea',
     benefits: ['Dramatic red or yellow spider-like flower clusters', 'One of Australia\'s most spectacular ornamentals'],
@@ -586,6 +650,7 @@ export const PLANTS = [
   },
   {
     id: 66,
+    price: 449, // INR, current retail estimate
     botanical: 'Tibouchina urvilleana',
     common: 'Tibouchina',
     alt: 'Glory Bush',
@@ -596,6 +661,7 @@ export const PLANTS = [
   },
   {
     id: 67,
+    price: 999, // INR, current retail estimate
     botanical: 'Banksia ericifolia',
     common: 'Banksia',
     benefits: ['Large orange-yellow torch-like flower spikes', 'Outstanding Australian ornamental'],
@@ -605,6 +671,7 @@ export const PLANTS = [
   },
   {
     id: 68,
+    price: 1999, // INR, current retail estimate
     botanical: 'Protea cynaroides',
     common: 'King Protea',
     benefits: ['South Africa\'s national flower', 'Dramatic artichoke-like flower heads in deep pink'],
@@ -614,6 +681,7 @@ export const PLANTS = [
   },
   {
     id: 69,
+    price: 1499, // INR, current retail estimate
     botanical: 'Vanda coerulea',
     common: 'Vanda Blue Orchid',
     benefits: ['Sky-blue blooms with a jewel-like quality', 'India\'s rarest and most treasured orchid'],
@@ -623,6 +691,7 @@ export const PLANTS = [
   },
   {
     id: 70,
+    price: 299, // INR, current retail estimate
     botanical: 'Hymenocallis littoralis',
     common: 'Spider Lily',
     benefits: ['Elegant white spider lily flowers', 'Delicate reflexed petals with a central trumpet'],
@@ -632,6 +701,7 @@ export const PLANTS = [
   },
   {
     id: 71,
+    price: 299, // INR, current retail estimate
     botanical: 'Crinum asiaticum',
     common: 'Crinum Lily',
     benefits: ['Dramatic clusters of white trumpet flowers', 'One of the finest large bulbous garden plants'],
@@ -641,6 +711,7 @@ export const PLANTS = [
   },
   {
     id: 72,
+    price: 349, // INR, current retail estimate
     botanical: 'Dendrobium thyrsiflorum',
     common: 'Dendrobium Orchid',
     benefits: ['Pendant clusters of pristine white and gold flowers', 'One of the finest native Indian dendrobium orchids'],
@@ -650,6 +721,7 @@ export const PLANTS = [
   },
   {
     id: 73,
+    price: 349, // INR, current retail estimate
     botanical: 'Jacaranda mimosifolia',
     common: 'Jacaranda',
     benefits: ['Magical cloud of lavender-blue flowers', 'Among the most beautiful boulevard plantings in Asia'],
@@ -659,6 +731,7 @@ export const PLANTS = [
   },
   {
     id: 74,
+    price: 599, // INR, current retail estimate
     botanical: 'Rhododendron arboreum',
     common: 'Rhododendron',
     benefits: ['India\'s state flower of Nagaland', 'Vivid crimson or pink flower trusses'],
@@ -668,6 +741,7 @@ export const PLANTS = [
   },
   {
     id: 75,
+    price: 399, // INR, current retail estimate
     botanical: 'Bauhinia blakeana',
     common: 'Hong Kong Orchid Tree',
     benefits: ['Largest and most spectacular bauhinia flowers', 'Deep orchid-pink blooms up to 15cm across'],
@@ -677,6 +751,7 @@ export const PLANTS = [
   },
   {
     id: 76,
+    price: 999, // INR, current retail estimate
     botanical: 'Magnolia grandiflora',
     common: 'Magnolia',
     benefits: ['Enormous fragrant white flowers up to 30cm', 'One of the world\'s most magnificent flowering trees'],
@@ -686,6 +761,7 @@ export const PLANTS = [
   },
   {
     id: 77,
+    price: 249, // INR, current retail estimate
     botanical: 'Cassia spectabilis',
     common: 'Cassia Spectabilis',
     benefits: ['Massive upright clusters of golden-yellow flowers', 'Vivid and dramatic autumn-flowering tree'],
@@ -695,6 +771,7 @@ export const PLANTS = [
   },
   {
     id: 78,
+    price: 299, // INR, current retail estimate
     botanical: 'Lagerstroemia speciosa',
     common: 'Queen\'s Crepe Myrtle',
     benefits: ['Large clusters of ruffled pink-purple flowers', 'One of India\'s finest large flowering trees'],
@@ -704,6 +781,7 @@ export const PLANTS = [
   },
   {
     id: 79,
+    price: 349, // INR, current retail estimate
     botanical: 'Tabebuia rosea',
     common: 'Pink Trumpet Tree',
     benefits: ['Bare branches covered in vivid pink trumpet flowers', 'Spectacular urban flowering tree'],
@@ -713,6 +791,7 @@ export const PLANTS = [
   },
   {
     id: 80,
+    price: 299, // INR, current retail estimate
     botanical: 'Peltophorum pterocarpum',
     common: 'Yellow Flame Tree',
     benefits: ['Masses of vivid golden-yellow flowers', 'Outstanding flowering tree for parks and avenues'],
@@ -722,6 +801,7 @@ export const PLANTS = [
   },
   {
     id: 81,
+    price: 249, // INR, current retail estimate
     botanical: 'Delonix regia',
     common: 'Gulmohar',
     alt: 'Flamboyant',
@@ -732,6 +812,7 @@ export const PLANTS = [
   },
   {
     id: 82,
+    price: 799, // INR, current retail estimate
     botanical: 'Pachira aquatica',
     common: 'Money Tree',
     benefits: ['Distinctive braided trunk and lush palmate leaves', 'Popular feng shui plant believed to bring fortune'],
@@ -741,6 +822,7 @@ export const PLANTS = [
   },
   {
     id: 83,
+    price: 1499, // INR, current retail estimate
     botanical: 'Ficus lyrata',
     common: 'Fiddle Leaf Fig',
     benefits: ['Enormous violin-shaped glossy leaves', 'Unmatched design statement in any interior'],
@@ -750,6 +832,7 @@ export const PLANTS = [
   },
   {
     id: 84,
+    price: 449, // INR, current retail estimate
     botanical: 'Brachychiton populneus',
     common: 'Bottle Tree',
     benefits: ['Sculptural swollen bottle-shaped trunk', 'Vivid red bell-shaped flowers'],
@@ -759,6 +842,7 @@ export const PLANTS = [
   },
   {
     id: 85,
+    price: 2499, // INR, current retail estimate
     botanical: 'Dypsis decipiens',
     common: 'Masoala Palm',
     benefits: ['Silver-white crownshaft with gracefully arching fronds', 'One of Madagascar\'s finest palms'],
@@ -768,6 +852,7 @@ export const PLANTS = [
   },
   {
     id: 86,
+    price: 3499, // INR, current retail estimate
     botanical: 'Bismarckia nobilis',
     common: 'Bismarck Palm',
     benefits: ['Enormous steel-blue fan fronds', 'Most spectacular of all fan palms'],
@@ -777,6 +862,7 @@ export const PLANTS = [
   },
   {
     id: 87,
+    price: 2999, // INR, current retail estimate
     botanical: 'Licuala grandis',
     common: 'Licuala Fan Palm',
     benefits: ['Perfectly circular pleated fan fronds', 'Premium collector\'s palm for shaded gardens'],
@@ -786,6 +872,7 @@ export const PLANTS = [
   },
   {
     id: 88,
+    price: 3999, // INR, current retail estimate
     botanical: 'Verschaffeltia splendida',
     common: 'Walking Stick Palm',
     benefits: ['Stilt-root supported trunk with large undivided leaves', 'One of the rarest and most unusual ornamental palms'],
@@ -795,6 +882,7 @@ export const PLANTS = [
   },
   {
     id: 89,
+    price: 199, // INR, current retail estimate
     botanical: 'Bougainvillea spectabilis',
     common: 'Bougainvillea',
     benefits: ['Vivid papery bracts in magenta, pink & orange', 'Drought-tolerant, sun-loving', 'Covers walls & pergolas spectacularly'],
@@ -804,6 +892,7 @@ export const PLANTS = [
   },
   {
     id: 90,
+    price: 149, // INR, current retail estimate
     botanical: 'Jasminum sambac',
     common: 'Jasmine',
     alt: 'Mogra',
@@ -814,6 +903,7 @@ export const PLANTS = [
   },
   {
     id: 91,
+    price: 249, // INR, current retail estimate
     botanical: 'Combretum indicum',
     common: 'Rangoon Creeper',
     benefits: ['Flowers open white, turn pink, then red', 'All three colours appear at once', 'Wonderfully fragrant at night'],
@@ -823,6 +913,7 @@ export const PLANTS = [
   },
   {
     id: 92,
+    price: 79, // INR, current retail estimate
     botanical: 'Ipomoea purpurea',
     common: 'Morning Glory',
     benefits: ['Trumpet flowers open fresh each morning', 'Deep purple, blue, pink & white blooms', 'Grows rapidly from seed in one season'],
@@ -832,6 +923,7 @@ export const PLANTS = [
   },
   {
     id: 93,
+    price: 199, // INR, current retail estimate
     botanical: 'Allamanda cathartica',
     common: 'Allamanda',
     benefits: ['Golden trumpet flowers produced freely', 'One of the brightest garden yellows', 'Vigorous grower on walls & fences'],
@@ -841,6 +933,7 @@ export const PLANTS = [
   },
   {
     id: 94,
+    price: 299, // INR, current retail estimate
     botanical: 'Campsis radicans',
     common: 'Trumpet Vine',
     benefits: ['Dramatic orange-red trumpet flowers', 'Attracts sunbirds and butterflies', 'Strong, woody self-clinging climber'],
@@ -850,6 +943,7 @@ export const PLANTS = [
   },
   {
     id: 95,
+    price: 249, // INR, current retail estimate
     botanical: 'Passiflora edulis',
     common: 'Passion Flower',
     benefits: ['One of the world\'s most intricate flowers', 'Complex corona of purple filaments', 'Produces edible passion fruit'],
@@ -859,6 +953,7 @@ export const PLANTS = [
   },
   {
     id: 96,
+    price: 349, // INR, current retail estimate
     botanical: 'Clerodendrum ugandense',
     common: 'Blue Butterfly Bush',
     benefits: ['True blue flowers — rarest garden colour', 'Small flowers resemble blue butterflies', 'Clusters year-round on arching branches'],
@@ -868,6 +963,7 @@ export const PLANTS = [
   },
   {
     id: 97,
+    price: 179, // INR, current retail estimate
     botanical: 'Thunbergia alata',
     common: 'Thunbergia',
     alt: 'Black-Eyed Susan Vine',
@@ -878,6 +974,7 @@ export const PLANTS = [
   },
   {
     id: 98,
+    price: 299, // INR, current retail estimate
     botanical: 'Pyrostegia venusta',
     common: 'Flame Vine',
     alt: 'Flame Creeper',
@@ -888,6 +985,7 @@ export const PLANTS = [
   },
   {
     id: 99,
+    price: 599, // INR, current retail estimate
     botanical: 'Wisteria sinensis',
     common: 'Wisteria',
     benefits: ['Cascading clusters of fragrant lilac-blue flowers', 'One of the world\'s great flowering climbers', 'Spectacular spring display'],
@@ -897,6 +995,7 @@ export const PLANTS = [
   },
   {
     id: 100,
+    price: 149, // INR, current retail estimate
     botanical: 'Antigonon leptopus',
     common: 'Coral Vine',
     alt: 'Mexican Creeper',
@@ -907,6 +1006,7 @@ export const PLANTS = [
   },
   {
     id: 101,
+    price: 399, // INR, current retail estimate
     botanical: 'Mandevilla sanderi',
     common: 'Mandevilla',
     benefits: ['Large, glossy trumpet flowers', 'Blooms continuously in tropical climates', 'Available in pink, red and white'],
@@ -916,6 +1016,7 @@ export const PLANTS = [
   },
   {
     id: 102,
+    price: 179, // INR, current retail estimate
     botanical: 'Ficus pumila',
     common: 'Creeping Fig',
     benefits: ['Covers walls in a seamless tapestry', 'Self-clinging — no training required', 'Can cover a large wall in one season'],
@@ -925,6 +1026,7 @@ export const PLANTS = [
   },
   {
     id: 103,
+    price: 449, // INR, current retail estimate
     botanical: 'Stephanotis floribunda',
     common: 'Stephanotis',
     benefits: ['Waxy white star flowers, exquisite fragrance', 'Premium cut flower for bridal bouquets', 'Used in high-end floral arrangements'],
@@ -934,6 +1036,7 @@ export const PLANTS = [
   },
   {
     id: 104,
+    price: 349, // INR, current retail estimate
     botanical: 'Clerodendrum thomsoniae',
     common: 'Bleeding Heart Vine',
     benefits: ['White heart-shaped calyxes with scarlet flowers', 'One of the most unusual flower forms', 'Magical effect in full bloom'],
@@ -943,6 +1046,7 @@ export const PLANTS = [
   },
   {
     id: 105,
+    price: 99, // INR, current retail estimate
     botanical: 'Ipomoea alba',
     common: 'Moonflower',
     benefits: ['Large snowy white trumpets open at dusk', 'Intoxicating jasmine-like fragrance', 'Magical plant for evening gardens'],
@@ -952,6 +1056,7 @@ export const PLANTS = [
   },
   {
     id: 106,
+    price: 349, // INR, current retail estimate
     botanical: 'Hoya carnosa',
     common: 'Hoya',
     alt: 'Wax Plant',
@@ -962,6 +1067,7 @@ export const PLANTS = [
   },
   {
     id: 107,
+    price: 449, // INR, current retail estimate
     botanical: 'Beaumontia grandiflora',
     common: 'Beaumontia',
     alt: 'Herald\'s Trumpet',
@@ -972,6 +1078,7 @@ export const PLANTS = [
   },
   {
     id: 108,
+    price: 399, // INR, current retail estimate
     botanical: 'Petrea volubilis',
     common: 'Petrea',
     alt: 'Purple Wreath',
@@ -982,6 +1089,7 @@ export const PLANTS = [
   },
   {
     id: 109,
+    price: 299, // INR, current retail estimate
     botanical: 'Lonicera japonica',
     common: 'Lonicera',
     alt: 'Honeysuckle',
@@ -992,6 +1100,7 @@ export const PLANTS = [
   },
   {
     id: 110,
+    price: 99, // INR, current retail estimate
     botanical: 'Clitoria ternatea',
     common: 'Clitoria',
     alt: 'Butterfly Pea',
@@ -1002,6 +1111,7 @@ export const PLANTS = [
   },
   {
     id: 111,
+    price: 149, // INR, current retail estimate
     botanical: 'Mucuna pruriens',
     common: 'Mucuna',
     alt: 'Velvet Bean',
@@ -1012,6 +1122,7 @@ export const PLANTS = [
   },
   {
     id: 112,
+    price: 349, // INR, current retail estimate
     botanical: 'Parthenocissus tricuspidata',
     common: 'Boston Ivy',
     alt: 'Parthenocissus',
@@ -1022,6 +1133,7 @@ export const PLANTS = [
   },
   {
     id: 113,
+    price: 249, // INR, current retail estimate
     botanical: 'Cryptostegia grandiflora',
     common: 'Cryptostegia',
     alt: 'Rubber Vine',
@@ -1032,6 +1144,7 @@ export const PLANTS = [
   },
   {
     id: 114,
+    price: 449, // INR, current retail estimate
     botanical: 'Solandra maxima',
     common: 'Solandra',
     alt: 'Cup of Gold',
@@ -1042,6 +1155,7 @@ export const PLANTS = [
   },
   {
     id: 115,
+    price: 99, // INR, current retail estimate
     botanical: 'Ipomoea indica',
     common: 'Ipomoea Blue Dawn',
     benefits: ['Large brilliant blue morning glory flowers', 'Holds colour better than common varieties', 'Vigorous fast-growing climber'],
@@ -1051,6 +1165,7 @@ export const PLANTS = [
   },
   {
     id: 116,
+    price: 199, // INR, current retail estimate
     botanical: 'Vernonia elaeagnifolia',
     common: 'Vernonia',
     benefits: ['Clusters of bright violet-purple flowers', 'Fast-growing ornamental climber', 'Attracts butterflies and bees'],
@@ -1060,6 +1175,7 @@ export const PLANTS = [
   },
   {
     id: 117,
+    price: 349, // INR, current retail estimate
     botanical: 'Cissus discolor',
     common: 'Cissus',
     alt: 'Rex Begonia Vine',
@@ -1070,6 +1186,7 @@ export const PLANTS = [
   },
   {
     id: 118,
+    price: 249, // INR, current retail estimate
     botanical: 'Senecio macroglossus',
     common: 'Senecio',
     alt: 'Natal Ivy',
@@ -1080,6 +1197,7 @@ export const PLANTS = [
   },
   {
     id: 119,
+    price: 129, // INR, current retail estimate
     botanical: 'Ipomoea batatas',
     common: 'Sweet Potato Vine',
     benefits: ['Dramatic chartreuse, purple or black foliage', 'Outstanding for hanging baskets', 'Edible sweet potato tubers as a bonus'],
@@ -1089,6 +1207,7 @@ export const PLANTS = [
   },
   {
     id: 120,
+    price: 79, // INR, current retail estimate
     botanical: 'Lablab purpureus',
     common: 'Dolichos',
     alt: 'Hyacinth Bean',
@@ -1099,6 +1218,7 @@ export const PLANTS = [
   },
   {
     id: 121,
+    price: 69, // INR, current retail estimate
     botanical: 'Luffa cylindrica',
     common: 'Luffa',
     benefits: ['Bright yellow flowers, ornamental gourds', 'Natural loofah sponge when dried', 'Vigorous coverage of large structures'],
@@ -1108,6 +1228,7 @@ export const PLANTS = [
   },
   {
     id: 122,
+    price: 69, // INR, current retail estimate
     botanical: 'Trichosanthes anguina',
     common: 'Trichosanthes',
     alt: 'Snake Gourd',
@@ -1118,6 +1239,7 @@ export const PLANTS = [
   },
   {
     id: 123,
+    price: 69, // INR, current retail estimate
     botanical: 'Coccinia grandis',
     common: 'Coccinia',
     alt: 'Ivy Gourd',
@@ -1128,6 +1250,7 @@ export const PLANTS = [
   },
   {
     id: 124,
+    price: 99, // INR, current retail estimate
     botanical: 'Abrus precatorius',
     common: 'Abrus',
     alt: 'Rosary Pea',
@@ -1138,6 +1261,7 @@ export const PLANTS = [
   },
   {
     id: 125,
+    price: 199, // INR, current retail estimate
     botanical: 'Cobaea scandens',
     common: 'Cobaea',
     alt: 'Cup-and-Saucer Vine',
@@ -1148,6 +1272,7 @@ export const PLANTS = [
   },
   {
     id: 126,
+    price: 249, // INR, current retail estimate
     botanical: 'Solanum jasminoides',
     common: 'Solanum Potato Vine',
     benefits: ['Delicate white star flowers, purple tinge', 'Almost continuous flowering', 'Light, airy effect on walls & trellises'],
@@ -1157,6 +1282,7 @@ export const PLANTS = [
   },
   {
     id: 127,
+    price: 149, // INR, current retail estimate
     botanical: 'Ipomopsis rubra',
     common: 'Ipomopsis',
     alt: 'Standing Cypress',
@@ -1167,6 +1293,7 @@ export const PLANTS = [
   },
   {
     id: 128,
+    price: 199, // INR, current retail estimate
     botanical: 'Rhodochiton atrosanguineus',
     common: 'Rhodochiton',
     alt: 'Purple Bell Vine',
@@ -1177,6 +1304,7 @@ export const PLANTS = [
   },
   {
     id: 129,
+    price: 199, // INR, current retail estimate
     botanical: 'Eccremocarpus scaber',
     common: 'Eccremocarpus',
     alt: 'Chilean Glory Flower',
@@ -1187,6 +1315,7 @@ export const PLANTS = [
   },
   {
     id: 130,
+    price: 99, // INR, current retail estimate
     botanical: 'Pueraria lobata',
     common: 'Pueraria',
     alt: 'Kudzu',
@@ -1197,6 +1326,7 @@ export const PLANTS = [
   },
   {
     id: 131,
+    price: 149, // INR, current retail estimate
     botanical: 'Araujia sericifera',
     common: 'Araujia',
     alt: 'Cruel Plant',
@@ -1207,6 +1337,7 @@ export const PLANTS = [
   },
   {
     id: 132,
+    price: 69, // INR, current retail estimate
     botanical: 'Canavalia ensiformis',
     common: 'Canavalia',
     alt: 'Jack Bean',
@@ -1217,6 +1348,7 @@ export const PLANTS = [
   },
   {
     id: 133,
+    price: 149, // INR, current retail estimate
     botanical: 'Vernonia amygdalina',
     common: 'Vernonia Iron Weed',
     alt: 'Iron Weed',
@@ -1227,6 +1359,7 @@ export const PLANTS = [
   },
   {
     id: 134,
+    price: 149, // INR, current retail estimate
     botanical: 'Dioscorea oppositifolia',
     common: 'Dioscorea',
     alt: 'Wild Yam',
@@ -1237,6 +1370,7 @@ export const PLANTS = [
   },
   {
     id: 135,
+    price: 59, // INR, current retail estimate
     botanical: 'Lathyrus odoratus',
     common: 'Lathyrus',
     alt: 'Sweet Pea',
@@ -1247,6 +1381,7 @@ export const PLANTS = [
   },
   {
     id: 136,
+    price: 59, // INR, current retail estimate
     botanical: 'Phaseolus coccineus',
     common: 'Phaseolus',
     alt: 'Runner Bean',
@@ -1257,6 +1392,7 @@ export const PLANTS = [
   },
   {
     id: 137,
+    price: 349, // INR, current retail estimate
     botanical: 'Vitis vinifera',
     common: 'Vitis',
     alt: 'Grape Vine',
@@ -1267,6 +1403,7 @@ export const PLANTS = [
   },
   {
     id: 138,
+    price: 449, // INR, current retail estimate
     botanical: 'Scindapsus pictus',
     common: 'Scindapsus',
     alt: 'Satin Pothos',
@@ -1277,6 +1414,7 @@ export const PLANTS = [
   },
   {
     id: 139,
+    price: 79, // INR, current retail estimate
     botanical: 'Ocimum tenuiflorum',
     common: 'Tulsi',
     alt: 'Holy Basil',
@@ -1287,6 +1425,7 @@ export const PLANTS = [
   },
   {
     id: 140,
+    price: 149, // INR, current retail estimate
     botanical: 'Azadirachta indica',
     common: 'Neem',
     benefits: ['India\'s complete pharmacy tree', 'Antibacterial & antifungal, used for skin and dental health'],
@@ -1296,6 +1435,7 @@ export const PLANTS = [
   },
   {
     id: 141,
+    price: 99, // INR, current retail estimate
     botanical: 'Curcuma longa',
     common: 'Turmeric',
     benefits: ['Curcumin-rich anti-inflammatory & antioxidant', 'Used daily as a preventive medicine'],
@@ -1305,6 +1445,7 @@ export const PLANTS = [
   },
   {
     id: 142,
+    price: 99, // INR, current retail estimate
     botanical: 'Zingiber officinale',
     common: 'Ginger',
     benefits: ['Eases nausea, aids digestion', 'Relieves pain comparably to ibuprofen'],
@@ -1314,6 +1455,7 @@ export const PLANTS = [
   },
   {
     id: 143,
+    price: 129, // INR, current retail estimate
     botanical: 'Withania somnifera',
     common: 'Ashwagandha',
     benefits: ['India\'s top adaptogen for stress & fatigue', 'Clinically shown to lower cortisol, boost strength'],
@@ -1323,6 +1465,7 @@ export const PLANTS = [
   },
   {
     id: 144,
+    price: 99, // INR, current retail estimate
     botanical: 'Bacopa monnieri',
     common: 'Brahmi',
     benefits: ['Ayurveda\'s leading brain tonic', 'Improves memory, learning & focus'],
@@ -1332,6 +1475,7 @@ export const PLANTS = [
   },
   {
     id: 145,
+    price: 129, // INR, current retail estimate
     botanical: 'Tinospora cordifolia',
     common: 'Giloy',
     alt: 'Guduchi',
@@ -1342,6 +1486,7 @@ export const PLANTS = [
   },
   {
     id: 146,
+    price: 149, // INR, current retail estimate
     botanical: 'Asparagus racemosus',
     common: 'Shatavari',
     benefits: ['Ayurveda\'s premier herb for women\'s health', 'Supports lactation, fertility & hormonal balance'],
@@ -1351,6 +1496,7 @@ export const PLANTS = [
   },
   {
     id: 147,
+    price: 249, // INR, current retail estimate
     botanical: 'Phyllanthus emblica',
     common: 'Amla',
     benefits: ['Exceptionally high natural Vitamin C', 'Strengthens hair, skin, liver & immunity'],
@@ -1360,6 +1506,7 @@ export const PLANTS = [
   },
   {
     id: 148,
+    price: 199, // INR, current retail estimate
     botanical: 'Glycyrrhiza glabra',
     common: 'Mulethi',
     alt: 'Liquorice / Yashtimadhu',
@@ -1370,6 +1517,7 @@ export const PLANTS = [
   },
   {
     id: 149,
+    price: 79, // INR, current retail estimate
     botanical: 'Calendula officinalis',
     common: 'Marigold',
     alt: 'Calendula',
@@ -1380,6 +1528,7 @@ export const PLANTS = [
   },
   {
     id: 150,
+    price: 99, // INR, current retail estimate
     botanical: 'Mentha piperita',
     common: 'Peppermint',
     benefits: ['Eases IBS & tension headaches', 'Menthol relieves nausea, boosts alertness'],
@@ -1389,6 +1538,7 @@ export const PLANTS = [
   },
   {
     id: 151,
+    price: 149, // INR, current retail estimate
     botanical: 'Stevia rebaudiana',
     common: 'Stevia',
     benefits: ['Zero-calorie natural sweetener', 'Helps manage blood sugar & blood pressure'],
@@ -1398,6 +1548,7 @@ export const PLANTS = [
   },
   {
     id: 152,
+    price: 49, // INR, current retail estimate
     botanical: 'Coriandrum sativum',
     common: 'Coriander',
     benefits: ['Natural detox herb, chelates heavy metals', 'Lowers cholesterol & aids digestion'],
@@ -1407,6 +1558,7 @@ export const PLANTS = [
   },
   {
     id: 153,
+    price: 49, // INR, current retail estimate
     botanical: 'Trigonella foenum-graecum',
     common: 'Fenugreek',
     benefits: ['Clinically validated for diabetes management', 'Boosts lactation, lowers cholesterol'],
@@ -1416,6 +1568,7 @@ export const PLANTS = [
   },
   {
     id: 154,
+    price: 99, // INR, current retail estimate
     botanical: 'Ocimum gratissimum',
     common: 'Vana Tulsi',
     alt: 'Wild Basil',
@@ -1426,6 +1579,7 @@ export const PLANTS = [
   },
   {
     id: 155,
+    price: 69, // INR, current retail estimate
     botanical: 'Cymbopogon citratus',
     common: 'Lemongrass',
     benefits: ['Potent natural antimicrobial oil', 'Eases fever, anxiety & digestion'],
@@ -1435,6 +1589,7 @@ export const PLANTS = [
   },
   {
     id: 156,
+    price: 149, // INR, current retail estimate
     botanical: 'Murraya koenigii',
     common: 'Curry Leaf',
     benefits: ['South India\'s essential medicinal leaf', 'Manages blood sugar, cholesterol & hair health'],
@@ -1444,6 +1599,7 @@ export const PLANTS = [
   },
   {
     id: 157,
+    price: 129, // INR, current retail estimate
     botanical: 'Moringa oleifera',
     common: 'Moringa',
     benefits: ['Most nutrient-dense medicinal tree in the world', 'More iron than spinach, more calcium than milk'],
@@ -1453,6 +1609,7 @@ export const PLANTS = [
   },
   {
     id: 158,
+    price: 149, // INR, current retail estimate
     botanical: 'Andrographis paniculata',
     common: 'Kalmegh',
     benefits: ['Known as the King of Bitters', 'Protects the liver, fights fever & infection'],
@@ -1462,6 +1619,7 @@ export const PLANTS = [
   },
   {
     id: 159,
+    price: 299, // INR, current retail estimate
     botanical: 'Rauvolfia serpentina',
     common: 'Sarpagandha',
     benefits: ['Source of the first hypertension drug, reserpine', 'Traditional remedy for blood pressure & insomnia'],
@@ -1471,6 +1629,7 @@ export const PLANTS = [
   },
   {
     id: 160,
+    price: 199, // INR, current retail estimate
     botanical: 'Valeriana wallichii',
     common: 'Valerian',
     alt: 'Indian Valerian',
@@ -1481,6 +1640,7 @@ export const PLANTS = [
   },
   {
     id: 161,
+    price: 349, // INR, current retail estimate
     botanical: 'Lavandula angustifolia',
     common: 'Lavender',
     benefits: ['Clinically validated aromatherapy plant', 'Eases anxiety, heals wounds topically'],
@@ -1490,6 +1650,7 @@ export const PLANTS = [
   },
   {
     id: 162,
+    price: 149, // INR, current retail estimate
     botanical: 'Matricaria chamomilla',
     common: 'Chamomile',
     benefits: ['One of the world\'s safest natural sleep aids', 'Soothes anxiety, IBS & skin irritation'],
@@ -1499,6 +1660,7 @@ export const PLANTS = [
   },
   {
     id: 163,
+    price: 249, // INR, current retail estimate
     botanical: 'Aegle marmelos',
     common: 'Bael',
     benefits: ['Sacred tri-doshic digestive fruit', 'Relieves diarrhoea, dysentery & IBS'],
@@ -1508,6 +1670,7 @@ export const PLANTS = [
   },
   {
     id: 164,
+    price: 349, // INR, current retail estimate
     botanical: 'Terminalia chebula',
     common: 'Haritaki',
     benefits: ['The \'mother of all medicines\' in Ayurveda', 'Most powerful natural antioxidant activity tested'],
@@ -1517,6 +1680,7 @@ export const PLANTS = [
   },
   {
     id: 165,
+    price: 349, // INR, current retail estimate
     botanical: 'Terminalia bellirica',
     common: 'Baheda',
     benefits: ['One of the three sacred Triphala fruits', 'Supports respiratory health & scalp health'],
@@ -1526,6 +1690,7 @@ export const PLANTS = [
   },
   {
     id: 166,
+    price: 399, // INR, current retail estimate
     botanical: 'Chlorophytum borivilianum',
     common: 'Safed Musli',
     benefits: ['India\'s celebrated vitality tonic root', 'Adaptogenic, boosts immunity & endurance'],
@@ -1535,6 +1700,7 @@ export const PLANTS = [
   },
   {
     id: 167,
+    price: 149, // INR, current retail estimate
     botanical: 'Convolvulus pluricaulis',
     common: 'Shankhpushpi',
     benefits: ['Ayurveda\'s primary brain-enhancing tonic', 'Improves memory, eases insomnia & anxiety'],
@@ -1544,6 +1710,7 @@ export const PLANTS = [
   },
   {
     id: 168,
+    price: 449, // INR, current retail estimate
     botanical: 'Nardostachys jatamansi',
     common: 'Jatamansi',
     benefits: ['Precious Himalayan nervine herb', 'Neuroprotective, eases epilepsy & insomnia'],
@@ -1553,6 +1720,7 @@ export const PLANTS = [
   },
   {
     id: 169,
+    price: 199, // INR, current retail estimate
     botanical: 'Swertia chirata',
     common: 'Chirata',
     benefits: ['One of the most intensely bitter Ayurvedic herbs', 'Powerful liver-protective digestive tonic'],
@@ -1562,6 +1730,7 @@ export const PLANTS = [
   },
   {
     id: 170,
+    price: 129, // INR, current retail estimate
     botanical: 'Boerhavia diffusa',
     common: 'Punarnava',
     benefits: ['\'That which renews the body\'', 'Protects kidneys, liver & heart simultaneously'],
@@ -1571,6 +1740,7 @@ export const PLANTS = [
   },
   {
     id: 171,
+    price: 249, // INR, current retail estimate
     botanical: 'Curcuma aromatica',
     common: 'Haridra',
     alt: 'Wild Turmeric',
@@ -1581,6 +1751,7 @@ export const PLANTS = [
   },
   {
     id: 172,
+    price: 99, // INR, current retail estimate
     botanical: 'Justicia adhatoda',
     common: 'Vasaka',
     benefits: ['Ayurveda\'s foremost respiratory herb', 'Bronchodilator comparable to pharmaceutical drugs'],
@@ -1590,6 +1761,7 @@ export const PLANTS = [
   },
   {
     id: 173,
+    price: 99, // INR, current retail estimate
     botanical: 'Eclipta alba',
     common: 'Bhringraj',
     benefits: ['Leading Ayurvedic herb for hair & liver', 'Accelerates hair growth, protects the liver'],
@@ -1599,6 +1771,7 @@ export const PLANTS = [
   },
   {
     id: 174,
+    price: 499, // INR, current retail estimate
     botanical: 'Picrorhiza kurroa',
     common: 'Kutki',
     benefits: ['Among the most potent hepatoprotective herbs known', 'Used for hepatitis, cirrhosis & allergic asthma'],
@@ -1608,6 +1781,7 @@ export const PLANTS = [
   },
   {
     id: 175,
+    price: 249, // INR, current retail estimate
     botanical: 'Embelia ribes',
     common: 'Vidanga',
     benefits: ['Ayurveda\'s leading antiparasitic plant', 'Clears intestinal worms without pharmaceutical toxicity'],
@@ -1617,6 +1791,7 @@ export const PLANTS = [
   },
   {
     id: 176,
+    price: 99, // INR, current retail estimate
     botanical: 'Trichosanthes dioica',
     common: 'Patol',
     alt: 'Pointed Gourd',
@@ -1627,6 +1802,7 @@ export const PLANTS = [
   },
   {
     id: 177,
+    price: 99, // INR, current retail estimate
     botanical: 'Senna alexandrina',
     common: 'Senna',
     benefits: ['World\'s most trusted herbal laxative', 'WHO Essential Medicines listed'],
@@ -1636,6 +1812,7 @@ export const PLANTS = [
   },
   {
     id: 178,
+    price: 149, // INR, current retail estimate
     botanical: 'Cyperus rotundus',
     common: 'Nagarmotha',
     alt: 'Nut Grass',
@@ -1646,6 +1823,7 @@ export const PLANTS = [
   },
   {
     id: 179,
+    price: 149, // INR, current retail estimate
     botanical: 'Piper longum',
     common: 'Pippali',
     alt: 'Long Pepper',
@@ -1656,6 +1834,7 @@ export const PLANTS = [
   },
   {
     id: 180,
+    price: 349, // INR, current retail estimate
     botanical: 'Terminalia arjuna',
     common: 'Arjuna',
     benefits: ['Ayurveda\'s most important cardiac tonic', 'World\'s oldest continuously used heart medicine'],
@@ -1665,6 +1844,7 @@ export const PLANTS = [
   },
   {
     id: 181,
+    price: 249, // INR, current retail estimate
     botanical: 'Berberis aristata',
     common: 'Daruharidra',
     alt: 'Tree Turmeric',
@@ -1675,6 +1855,7 @@ export const PLANTS = [
   },
   {
     id: 182,
+    price: 599, // INR, current retail estimate
     botanical: 'Cedrus deodara',
     common: 'Devdaru',
     alt: 'Himalayan Cedar',
@@ -1685,6 +1866,7 @@ export const PLANTS = [
   },
   {
     id: 183,
+    price: 129, // INR, current retail estimate
     botanical: 'Tribulus terrestris',
     common: 'Gokshura',
     benefits: ['Ayurveda\'s primary urinary & vitality herb', 'Boosts testosterone & muscle strength'],
@@ -1694,6 +1876,7 @@ export const PLANTS = [
   },
   {
     id: 184,
+    price: 349, // INR, current retail estimate
     botanical: 'Inula racemosa',
     common: 'Pushkarmool',
     benefits: ['Himalayan cardiovascular & respiratory herb', 'Anti-anginal, eases asthma & bronchitis'],
@@ -1703,6 +1886,7 @@ export const PLANTS = [
   },
   {
     id: 185,
+    price: 249, // INR, current retail estimate
     botanical: 'Bauhinia variegata',
     common: 'Kanchnar',
     benefits: ['Key Ayurvedic herb for thyroid & lymphatic health', 'Reduces thyroid size, eases lymphatic disorders'],
@@ -1712,6 +1896,7 @@ export const PLANTS = [
   },
   {
     id: 186,
+    price: 249, // INR, current retail estimate
     botanical: 'Cyclea peltata',
     common: 'Patha',
     benefits: ['Emergency multi-purpose Ayurvedic climber', 'Antidote for fever, snake & scorpion bite'],
@@ -1721,6 +1906,7 @@ export const PLANTS = [
   },
   {
     id: 187,
+    price: 249, // INR, current retail estimate
     botanical: 'Pueraria tuberosa',
     common: 'Vidari Kanda',
     benefits: ['Rejuvenating tonic with large starchy tubers', 'Boosts vitality, lactation & recovery'],
@@ -1730,6 +1916,7 @@ export const PLANTS = [
   },
   {
     id: 188,
+    price: 299, // INR, current retail estimate
     botanical: 'Codiaeum variegatum',
     common: 'Croton',
     benefits: ['Vivid multicolour foliage year-round', 'Tolerant of indoor heat'],
@@ -1738,6 +1925,7 @@ export const PLANTS = [
   },
   {
     id: 189,
+    price: 599, // INR, current retail estimate
     botanical: 'Chamaedorea seifrizii',
     common: 'Bamboo Palm',
     benefits: ['Excellent low-light air purifier', 'Adds humidity indoors'],
@@ -1746,6 +1934,7 @@ export const PLANTS = [
   },
   {
     id: 190,
+    price: 199, // INR, current retail estimate
     botanical: 'Crassula ovata',
     common: 'Jade Plant',
     benefits: ['Symbol of good fortune', 'Extremely drought-tolerant'],
@@ -1754,6 +1943,7 @@ export const PLANTS = [
   },
   {
     id: 191,
+    price: 149, // INR, current retail estimate
     botanical: 'Tradescantia pallida',
     common: 'Purple Heart',
     benefits: ['Vivid purple foliage colour', 'Thrives in full sun'],
@@ -1762,6 +1952,7 @@ export const PLANTS = [
   },
   {
     id: 192,
+    price: 349, // INR, current retail estimate
     botanical: 'Guzmania lingulata',
     common: 'Bromeliad',
     benefits: ['Long-lasting colourful bloom spike', 'Low-maintenance display plant'],
@@ -1770,6 +1961,7 @@ export const PLANTS = [
   },
   {
     id: 193,
+    price: 599, // INR, current retail estimate
     botanical: 'Yucca elephantipes',
     common: 'Yucca',
     alt: 'Spineless Yucca',
@@ -1779,6 +1971,7 @@ export const PLANTS = [
   },
   {
     id: 194,
+    price: 249, // INR, current retail estimate
     botanical: 'Haworthia fasciata',
     common: 'Haworthia',
     alt: 'Zebra Haworthia',
@@ -1788,6 +1981,7 @@ export const PLANTS = [
   },
   {
     id: 195,
+    price: 149, // INR, current retail estimate
     botanical: 'Kalanchoe blossfeldiana',
     common: 'Flaming Katy',
     alt: 'Kalanchoe',
@@ -1797,6 +1991,7 @@ export const PLANTS = [
   },
   {
     id: 196,
+    price: 399, // INR, current retail estimate
     botanical: 'Senecio rowleyanus',
     common: 'String of Pearls',
     benefits: ['Unique bead-like trailing leaves', 'Fragrant spring flowers'],
@@ -1805,6 +2000,7 @@ export const PLANTS = [
   },
   {
     id: 197,
+    price: 449, // INR, current retail estimate
     botanical: 'Chamaedorea elegans',
     common: 'Parlour Palm',
     benefits: ['Thrives in very low light', 'Non-toxic to pets'],
@@ -1813,6 +2009,7 @@ export const PLANTS = [
   },
   {
     id: 198,
+    price: 149, // INR, current retail estimate
     botanical: 'Tradescantia zebrina',
     common: 'Wandering Jew',
     benefits: ['Vivid purple-striped leaves', 'Easy to propagate'],
@@ -1821,6 +2018,7 @@ export const PLANTS = [
   },
   {
     id: 199,
+    price: 449, // INR, current retail estimate
     botanical: 'Zamioculcas zamiifolia',
     common: 'ZZ Plant',
     alt: 'Zanzibar Gem',
@@ -1830,6 +2028,7 @@ export const PLANTS = [
   },
   {
     id: 200,
+    price: 349, // INR, current retail estimate
     botanical: 'Begonia rex',
     common: 'Begonia Rex',
     alt: 'Painted-Leaf Begonia',
@@ -1839,6 +2038,7 @@ export const PLANTS = [
   },
   {
     id: 201,
+    price: 349, // INR, current retail estimate
     botanical: 'Dieffenbachia seguine',
     common: 'Dumb Cane',
     alt: 'Dieffenbachia',
@@ -1848,6 +2048,7 @@ export const PLANTS = [
   },
   {
     id: 202,
+    price: 249, // INR, current retail estimate
     botanical: 'Saintpaulia ionantha',
     common: 'African Violet',
     benefits: ['Near-continuous flowering', 'Compact tabletop bloomer'],
@@ -1856,6 +2057,7 @@ export const PLANTS = [
   },
   {
     id: 203,
+    price: 599, // INR, current retail estimate
     botanical: 'Beaucarnea recurvata',
     common: 'Ponytail Palm',
     benefits: ['Stores water in swollen trunk', 'Extremely low maintenance'],
@@ -1864,6 +2066,7 @@ export const PLANTS = [
   },
   {
     id: 204,
+    price: 449, // INR, current retail estimate
     botanical: 'Ceropegia woodii',
     common: 'String of Hearts',
     benefits: ['Delicate trailing heart leaves', 'Very low water needs'],
@@ -1872,6 +2075,7 @@ export const PLANTS = [
   },
   {
     id: 205,
+    price: 299, // INR, current retail estimate
     botanical: 'Peperomia obtusifolia',
     common: 'Peperomia',
     alt: 'Baby Rubber Plant',
@@ -1881,6 +2085,7 @@ export const PLANTS = [
   },
   {
     id: 206,
+    price: 249, // INR, current retail estimate
     botanical: 'Caladium bicolor',
     common: 'Caladium',
     alt: 'Heart of Jesus',
@@ -1890,6 +2095,7 @@ export const PLANTS = [
   },
   {
     id: 207,
+    price: 699, // INR, current retail estimate
     botanical: 'Strelitzia reginae',
     common: 'Bird of Paradise',
     benefits: ['Bold tropical focal point', 'Exotic orange blooms'],
@@ -1898,6 +2104,7 @@ export const PLANTS = [
   },
   {
     id: 208,
+    price: 149, // INR, current retail estimate
     botanical: 'Tradescantia fluminensis',
     common: 'Wandering Dude',
     benefits: ['Fast-growing colourful trailer', 'Very easy to propagate'],
@@ -1906,6 +2113,7 @@ export const PLANTS = [
   },
   {
     id: 209,
+    price: 99, // INR, current retail estimate
     botanical: 'Dracaena sanderiana',
     common: 'Lucky Bamboo',
     benefits: ['Symbol of luck & prosperity', 'Grows in water or soil'],
@@ -1914,6 +2122,7 @@ export const PLANTS = [
   },
   {
     id: 210,
+    price: 349, // INR, current retail estimate
     botanical: 'Schlumbergera bridgesii',
     common: 'Christmas Cactus',
     benefits: ['Reliable winter blooms', 'Long-lived, low maintenance'],
@@ -1922,6 +2131,7 @@ export const PLANTS = [
   },
   {
     id: 211,
+    price: 249, // INR, current retail estimate
     botanical: 'Oxalis triangularis',
     common: 'Oxalis',
     alt: 'False Shamrock',
@@ -1931,6 +2141,7 @@ export const PLANTS = [
   },
   {
     id: 212,
+    price: 349, // INR, current retail estimate
     botanical: 'Cyclamen persicum',
     common: 'Cyclamen',
     benefits: ['Profuse cool-season blooms', 'Excellent winter gift plant'],
@@ -1939,6 +2150,7 @@ export const PLANTS = [
   },
   {
     id: 213,
+    price: 449, // INR, current retail estimate
     botanical: 'Phlebodium aureum',
     common: 'Blue Star Fern',
     benefits: ['Tolerates low humidity better than most ferns', 'Unusual blue-green fronds'],
@@ -1947,6 +2159,7 @@ export const PLANTS = [
   },
   {
     id: 214,
+    price: 199, // INR, current retail estimate
     botanical: 'Fittonia verschaffeltii',
     common: 'Nerve Plant',
     alt: 'Mosaic Plant',
@@ -1956,6 +2169,7 @@ export const PLANTS = [
   },
   {
     id: 215,
+    price: 249, // INR, current retail estimate
     botanical: 'Gynura aurantiaca',
     common: 'Purple Passion',
     alt: 'Velvet Plant',
@@ -1965,6 +2179,7 @@ export const PLANTS = [
   },
   {
     id: 216,
+    price: 249, // INR, current retail estimate
     botanical: 'Cryptanthus bivittatus',
     common: 'Earth Star',
     benefits: ['Striking striped starfish rosette', 'Grows without soil'],
@@ -1973,6 +2188,7 @@ export const PLANTS = [
   },
   {
     id: 217,
+    price: 249, // INR, current retail estimate
     botanical: 'Cyperus alternifolius',
     common: 'Umbrella Plant',
     benefits: ['Thrives sitting in water', 'Architectural radiating foliage'],
@@ -1981,6 +2197,7 @@ export const PLANTS = [
   },
   {
     id: 218,
+    price: 199, // INR, current retail estimate
     botanical: 'Callisia repens',
     common: 'Inch Plant',
     benefits: ['Dense fast-growing ground cover', 'Easy to propagate'],
@@ -1989,6 +2206,7 @@ export const PLANTS = [
   },
   {
     id: 219,
+    price: 399, // INR, current retail estimate
     botanical: 'Maranta leuconeura',
     common: 'Prayer Plant',
     benefits: ['Leaves fold up at night', 'Beautifully patterned foliage'],
@@ -1997,6 +2215,7 @@ export const PLANTS = [
   },
   {
     id: 220,
+    price: 299, // INR, current retail estimate
     botanical: 'Aloe variegata',
     common: 'Tiger Aloe',
     alt: 'Partridge-Breast Aloe',
@@ -2006,6 +2225,7 @@ export const PLANTS = [
   },
   {
     id: 221,
+    price: 799, // INR, current retail estimate
     botanical: 'Alocasia x amazonica',
     common: 'Alocasia Polly',
     alt: 'African Mask Plant',
@@ -2015,6 +2235,7 @@ export const PLANTS = [
   },
   {
     id: 222,
+    price: 499, // INR, current retail estimate
     botanical: 'Aspidistra elatior',
     common: 'Cast Iron Plant',
     benefits: ['Virtually indestructible', 'Tolerates deep shade & neglect'],
@@ -2023,6 +2244,7 @@ export const PLANTS = [
   },
   {
     id: 223,
+    price: 399, // INR, current retail estimate
     botanical: 'Tradescantia \'Nanouk\'',
     common: 'Tradescantia Nanouk',
     alt: 'Fantasy Venice',
@@ -2032,6 +2254,7 @@ export const PLANTS = [
   },
   {
     id: 224,
+    price: 299, // INR, current retail estimate
     botanical: 'Hemionitis arifolia',
     common: 'Heartleaf Fern',
     benefits: ['Tiny heart-shaped fronds', 'Charming terrarium specimen'],
@@ -2040,6 +2263,7 @@ export const PLANTS = [
   },
   {
     id: 225,
+    price: 399, // INR, current retail estimate
     botanical: 'Sansevieria cylindrica',
     common: 'Sansevieria Cylindrica',
     alt: 'African Spear',
@@ -2049,6 +2273,7 @@ export const PLANTS = [
   },
   {
     id: 226,
+    price: 399, // INR, current retail estimate
     botanical: 'Aeschynanthus radicans',
     common: 'Lipstick Plant',
     benefits: ['Dramatic tubular red blooms', 'Trails beautifully from baskets'],
@@ -2057,6 +2282,7 @@ export const PLANTS = [
   },
   {
     id: 227,
+    price: 249, // INR, current retail estimate
     botanical: 'Pellaea rotundifolia',
     common: 'Button Fern',
     benefits: ['More drought-tolerant than most ferns', 'Charming rounded leaflets'],
@@ -2065,6 +2291,7 @@ export const PLANTS = [
   },
   {
     id: 228,
+    price: 399, // INR, current retail estimate
     botanical: 'Asplenium nidus',
     common: 'Bird\'s Nest Fern',
     benefits: ['Architectural rosette fronds', 'Thrives in warm humidity'],
@@ -2073,6 +2300,7 @@ export const PLANTS = [
   },
   {
     id: 229,
+    price: 349, // INR, current retail estimate
     botanical: 'Streptocarpus hybridus',
     common: 'Streptocarpus',
     alt: 'Cape Primrose',
@@ -2082,6 +2310,7 @@ export const PLANTS = [
   },
   {
     id: 230,
+    price: 499, // INR, current retail estimate
     botanical: 'Calathea lancifolia',
     common: 'Rattlesnake Plant',
     benefits: ['Dramatic patterned leaves', 'Folds up at night'],
@@ -2090,6 +2319,7 @@ export const PLANTS = [
   },
   {
     id: 231,
+    price: 249, // INR, current retail estimate
     botanical: 'Echeveria glauca',
     common: 'Blue Echeveria',
     benefits: ['Perfect powder-blue rosette', 'Very low water needs'],
@@ -2098,6 +2328,7 @@ export const PLANTS = [
   },
   {
     id: 232,
+    price: 349, // INR, current retail estimate
     botanical: 'Rhipsalis baccifera',
     common: 'Mistletoe Cactus',
     alt: 'Rhipsalis',
@@ -2107,6 +2338,7 @@ export const PLANTS = [
   },
   {
     id: 233,
+    price: 349, // INR, current retail estimate
     botanical: 'Euphorbia tirucalli',
     common: 'Euphorbia Tirucalli',
     alt: 'Pencil Cactus',
@@ -2116,6 +2348,7 @@ export const PLANTS = [
   },
   {
     id: 234,
+    price: 449, // INR, current retail estimate
     botanical: 'Ctenanthe setosa',
     common: 'Ctenanthe',
     alt: 'Never Never Plant',
@@ -2125,6 +2358,7 @@ export const PLANTS = [
   },
   {
     id: 235,
+    price: 799, // INR, current retail estimate
     botanical: 'Monstera adansonii',
     common: 'Monstera Adansonii',
     alt: 'Swiss Cheese Vine',
@@ -2134,6 +2368,7 @@ export const PLANTS = [
   },
   {
     id: 236,
+    price: 899, // INR, current retail estimate
     botanical: 'Alocasia zebrina',
     common: 'Alocasia Zebrina',
     benefits: ['Striking zebra-striped stems', 'Conversation-piece foliage'],
@@ -2142,6 +2377,7 @@ export const PLANTS = [
   },
   {
     id: 237,
+    price: 199, // INR, current retail estimate
     botanical: 'Syngonium podophyllum',
     common: 'Syngonium',
     alt: 'Arrowhead Plant',
@@ -2151,6 +2387,7 @@ export const PLANTS = [
   },
   {
     id: 238,
+    price: 349, // INR, current retail estimate
     botanical: 'Peperomia argyreia',
     common: 'Peperomia Watermelon',
     alt: 'Watermelon Peperomia',
@@ -2160,6 +2397,7 @@ export const PLANTS = [
   },
   {
     id: 239,
+    price: 299, // INR, current retail estimate
     botanical: 'Aegagropila linnaei',
     common: 'Marimo Moss Ball',
     benefits: ['Unique living aquatic decoration', 'Grows for hundreds of years'],
@@ -2168,6 +2406,7 @@ export const PLANTS = [
   },
   {
     id: 240,
+    price: 249, // INR, current retail estimate
     botanical: 'Tillandsia usneoides',
     common: 'Air Plant',
     alt: 'Spanish Moss',
@@ -2177,6 +2416,7 @@ export const PLANTS = [
   },
   {
     id: 241,
+    price: 349, // INR, current retail estimate
     botanical: 'Echeveria \'Perle von Nurnberg\'',
     common: 'Echeveria Perle von Nurnberg',
     benefits: ['Pearlescent purple-grey rosette', 'Collector-favourite succulent'],
@@ -2185,6 +2425,7 @@ export const PLANTS = [
   },
   {
     id: 242,
+    price: 599, // INR, current retail estimate
     botanical: 'Ficus triangularis',
     common: 'Ficus Triangularis',
     benefits: ['Delicate weeping branches', 'Elegant unusual ficus form'],
@@ -2193,6 +2434,7 @@ export const PLANTS = [
   },
   {
     id: 243,
+    price: 999, // INR, current retail estimate
     botanical: 'Ficus benghalensis',
     common: 'Ficus Audrey',
     alt: 'Indian Banyan',
@@ -2202,6 +2444,7 @@ export const PLANTS = [
   },
   {
     id: 244,
+    price: 2499, // INR, current retail estimate
     botanical: 'Dioon edule',
     common: 'Dioon Edule',
     alt: 'Mexican Cycad',
@@ -2211,6 +2454,7 @@ export const PLANTS = [
   },
   {
     id: 245,
+    price: 899, // INR, current retail estimate
     botanical: 'Clivia miniata',
     common: 'Clivia',
     alt: 'Natal Lily',
@@ -2220,6 +2464,7 @@ export const PLANTS = [
   },
   {
     id: 246,
+    price: 1899, // INR, current retail estimate
     botanical: 'Anthurium clarinervium',
     common: 'Anthurium Clarinervium',
     alt: 'Velvet Cardboard Anthurium',
@@ -2229,6 +2474,7 @@ export const PLANTS = [
   },
   {
     id: 247,
+    price: 599, // INR, current retail estimate
     botanical: 'Rhododendron simsii',
     common: 'Indoor Azalea',
     alt: 'Rhododendron Simsii',
@@ -2238,6 +2484,7 @@ export const PLANTS = [
   },
   {
     id: 248,
+    price: 249, // INR, current retail estimate
     botanical: 'Muehlenbeckia complexa',
     common: 'Muehlenbeckia',
     alt: 'Wire Vine',
@@ -2247,6 +2494,7 @@ export const PLANTS = [
   },
   {
     id: 249,
+    price: 899, // INR, current retail estimate
     botanical: 'Platycerium bifurcatum',
     common: 'Staghorn Fern',
     alt: 'Platycerium',
@@ -2256,6 +2504,7 @@ export const PLANTS = [
   },
   {
     id: 250,
+    price: 249, // INR, current retail estimate
     botanical: 'Selaginella uncinata',
     common: 'Rainbow Moss',
     alt: 'Selaginella',
@@ -2265,6 +2514,7 @@ export const PLANTS = [
   },
   {
     id: 251,
+    price: 399, // INR, current retail estimate
     botanical: 'Cordyline fruticosa',
     common: 'Cordyline Fruticosa',
     alt: 'Ti Plant',
@@ -2274,6 +2524,7 @@ export const PLANTS = [
   },
   {
     id: 252,
+    price: 199, // INR, current retail estimate
     botanical: 'Hypoestes phyllostachya',
     common: 'Polka Dot Plant',
     benefits: ['Vividly spotted foliage', 'Great for terrariums'],
@@ -2282,6 +2533,7 @@ export const PLANTS = [
   },
   {
     id: 253,
+    price: 349, // INR, current retail estimate
     botanical: 'Pachyphytum oviferum',
     common: 'Pachyphytum Oviferum',
     alt: 'Moonstones',
@@ -2291,6 +2543,7 @@ export const PLANTS = [
   },
   {
     id: 254,
+    price: 1999, // INR, current retail estimate
     botanical: 'Philodendron gloriosum',
     common: 'Philodendron Gloriosum',
     benefits: ['Enormous velvety veined leaves', 'Unique creeping growth habit'],
@@ -2299,6 +2552,7 @@ export const PLANTS = [
   },
   {
     id: 255,
+    price: 699, // INR, current retail estimate
     botanical: 'Begonia maculata',
     common: 'Begonia Maculata',
     alt: 'Polka Dot Begonia',
@@ -2308,6 +2562,7 @@ export const PLANTS = [
   },
   {
     id: 256,
+    price: 2499, // INR, current retail estimate
     botanical: 'Anthurium crystallinum',
     common: 'Anthurium Crystallinum',
     alt: 'Crystal Anthurium',
@@ -2317,6 +2572,7 @@ export const PLANTS = [
   },
   {
     id: 257,
+    price: 349, // INR, current retail estimate
     botanical: 'Haworthia cooperi',
     common: 'Haworthia Cooperi',
     alt: 'Cushion Aloe',
@@ -2326,6 +2582,7 @@ export const PLANTS = [
   },
   {
     id: 258,
+    price: 199, // INR, current retail estimate
     botanical: 'Tillandsia ionantha',
     common: 'Tillandsia Ionantha',
     alt: 'Sky Plant',
@@ -2335,6 +2592,7 @@ export const PLANTS = [
   },
   {
     id: 259,
+    price: 349, // INR, current retail estimate
     botanical: 'Sedum morganianum',
     common: 'Sedum Morganianum',
     alt: 'Donkey\'s Tail',
@@ -2344,6 +2602,7 @@ export const PLANTS = [
   },
   {
     id: 260,
+    price: 349, // INR, current retail estimate
     botanical: 'Dischidia nummularia',
     common: 'Dischidia Nummularia',
     alt: 'String of Coins',
@@ -2353,6 +2612,7 @@ export const PLANTS = [
   },
   {
     id: 261,
+    price: 249, // INR, current retail estimate
     botanical: 'Opuntia microdasys',
     common: 'Opuntia Microdasys',
     alt: 'Bunny Ears Cactus',
@@ -2362,6 +2622,7 @@ export const PLANTS = [
   },
   {
     id: 262,
+    price: 299, // INR, current retail estimate
     botanical: 'Adromischus cristatus',
     common: 'Adromischus Cristatus',
     alt: 'Key Lime Pie Plant',
@@ -2371,6 +2632,7 @@ export const PLANTS = [
   },
   {
     id: 263,
+    price: 2999, // INR, current retail estimate
     botanical: 'Philodendron erubescens',
     common: 'Philodendron Pink Princess',
     benefits: ['Vivid pink leaf variegation', 'Highly desirable collector\'s plant'],
@@ -2379,6 +2641,7 @@ export const PLANTS = [
   },
   {
     id: 264,
+    price: 599, // INR, current retail estimate
     botanical: 'Calathea musaica',
     common: 'Calathea Musaica',
     alt: 'Network Plant',
@@ -2388,6 +2651,7 @@ export const PLANTS = [
   },
   {
     id: 265,
+    price: 399, // INR, current retail estimate
     botanical: 'Hoya kerrii',
     common: 'Hoya Kerrii',
     alt: 'Sweetheart Plant',
@@ -2397,6 +2661,7 @@ export const PLANTS = [
   },
   {
     id: 266,
+    price: 349, // INR, current retail estimate
     botanical: 'Aeonium arboreum',
     common: 'Aeonium Arboreum',
     alt: 'Tree Houseleek',
@@ -2406,6 +2671,7 @@ export const PLANTS = [
   },
   {
     id: 267,
+    price: 249, // INR, current retail estimate
     botanical: 'Crassula perforata',
     common: 'Crassula Perforata',
     alt: 'String of Buttons',
@@ -2415,6 +2681,7 @@ export const PLANTS = [
   },
   {
     id: 268,
+    price: 349, // INR, current retail estimate
     botanical: 'Senecio radicans',
     common: 'Senecio Radicans',
     alt: 'String of Bananas',
@@ -2424,6 +2691,7 @@ export const PLANTS = [
   },
   {
     id: 269,
+    price: 599, // INR, current retail estimate
     botanical: 'Aechmea fasciata',
     common: 'Aechmea',
     alt: 'Urn Plant',
@@ -2433,6 +2701,7 @@ export const PLANTS = [
   },
   {
     id: 270,
+    price: 999, // INR, current retail estimate
     botanical: 'Philodendron \'Birkin\'',
     common: 'Philodendron Birkin',
     benefits: ['Unique white pinstripe variegation', 'Compact & easy to grow'],
@@ -2441,6 +2710,7 @@ export const PLANTS = [
   },
   {
     id: 271,
+    price: 3999, // INR, current retail estimate
     botanical: 'Anthurium veitchii',
     common: 'Anthurium Veitchii',
     alt: 'King Anthurium',
@@ -2450,6 +2720,7 @@ export const PLANTS = [
   },
   {
     id: 272,
+    price: 699, // INR, current retail estimate
     botanical: 'Rhaphidophora tetrasperma',
     common: 'Rhaphidophora Tetrasperma',
     alt: 'Mini Monstera',
@@ -2459,6 +2730,7 @@ export const PLANTS = [
   },
   {
     id: 273,
+    price: 599, // INR, current retail estimate
     botanical: 'Epipremnum pinnatum',
     common: 'Epipremnum Pinnatum Cebu Blue',
     alt: 'Cebu Blue Pothos',
@@ -2468,6 +2740,7 @@ export const PLANTS = [
   },
   {
     id: 274,
+    price: 449, // INR, current retail estimate
     botanical: 'Ceropegia sandersonii',
     common: 'Ceropegia Sandersonii',
     alt: 'Parachute Plant',
@@ -2477,6 +2750,7 @@ export const PLANTS = [
   },
   {
     id: 275,
+    price: 399, // INR, current retail estimate
     botanical: 'Chlorophytum orchidastrum',
     common: 'Chlorophytum Orchidastrum',
     alt: 'Fire Flash Spider Plant',
@@ -2486,6 +2760,7 @@ export const PLANTS = [
   },
   {
     id: 276,
+    price: 349, // INR, current retail estimate
     botanical: 'Begonia bowerae',
     common: 'Begonia Bowerae',
     alt: 'Eyelash Begonia',
@@ -2495,6 +2770,7 @@ export const PLANTS = [
   },
   {
     id: 277,
+    price: 199, // INR, current retail estimate
     botanical: 'Asparagus setaceus',
     common: 'Asparagus Fern',
     benefits: ['Delicate lacy foliage', 'Easy to grow indoors'],
@@ -2503,6 +2779,7 @@ export const PLANTS = [
   },
   {
     id: 278,
+    price: 299, // INR, current retail estimate
     botanical: 'Gynura sarmentosa',
     common: 'Gynura Sarmentosa',
     alt: 'Purple Velvet Plant',
@@ -2512,6 +2789,7 @@ export const PLANTS = [
   },
   {
     id: 279,
+    price: 599, // INR, current retail estimate
     botanical: 'Microsorum musifolium',
     common: 'Microsorum Musifolium',
     alt: 'Crocodile Fern',
@@ -2521,6 +2799,7 @@ export const PLANTS = [
   },
   {
     id: 280,
+    price: 599, // INR, current retail estimate
     botanical: 'Fatsia japonica',
     common: 'Fatsia Japonica',
     alt: 'Japanese Aralia',
@@ -2530,6 +2809,7 @@ export const PLANTS = [
   },
   {
     id: 281,
+    price: 799, // INR, current retail estimate
     botanical: 'Sparrmannia africana',
     common: 'Sparrmannia Africana',
     alt: 'African Hemp',
@@ -2539,6 +2819,7 @@ export const PLANTS = [
   },
   {
     id: 282,
+    price: 449, // INR, current retail estimate
     botanical: 'Impatiens niamniamensis',
     common: 'Impatiens Niamniamensis',
     alt: 'Congo Cockatoo',
@@ -2548,6 +2829,7 @@ export const PLANTS = [
   },
   {
     id: 283,
+    price: 599, // INR, current retail estimate
     botanical: 'Pachira glabra',
     common: 'Pachira Glabra',
     alt: 'Money Tree',
@@ -2557,6 +2839,7 @@ export const PLANTS = [
   },
   {
     id: 284,
+    price: 899, // INR, current retail estimate
     botanical: 'Ficus microcarpa',
     common: 'Ficus Bonsai',
     alt: 'Chinese Banyan',
@@ -2566,6 +2849,7 @@ export const PLANTS = [
   },
   {
     id: 285,
+    price: 449, // INR, current retail estimate
     botanical: 'Sansevieria ehrenbergii',
     common: 'Sansevieria Ehrenbergii',
     alt: 'Blue Sansevieria',
@@ -2575,6 +2859,7 @@ export const PLANTS = [
   },
   {
     id: 286,
+    price: 1799, // INR, current retail estimate
     botanical: 'Alocasia cuprea',
     common: 'Alocasia Cuprea',
     alt: 'Mirror Plant',
@@ -2584,6 +2869,7 @@ export const PLANTS = [
   },
   {
     id: 287,
+    price: 599, // INR, current retail estimate
     botanical: 'Calathea makoyana',
     common: 'Calathea Makoyana',
     alt: 'Peacock Plant',
@@ -2593,6 +2879,7 @@ export const PLANTS = [
   },
   {
     id: 288,
+    price: 899, // INR, current retail estimate
     botanical: 'Philodendron mayoi',
     common: 'Philodendron Mayoi',
     benefits: ['Increasingly deep-lobed leaves', 'Striking star-shaped foliage'],
@@ -2601,6 +2888,7 @@ export const PLANTS = [
   },
   {
     id: 289,
+    price: 1699, // INR, current retail estimate
     botanical: 'Alocasia baginda',
     common: 'Alocasia Baginda',
     alt: 'Dragon Scale Alocasia',
@@ -2610,6 +2898,7 @@ export const PLANTS = [
   },
   {
     id: 290,
+    price: 549, // INR, current retail estimate
     botanical: 'Hoya obovata',
     common: 'Hoya Obovata',
     benefits: ['Fragrant clusters of waxy flowers', 'Robust & floriferous'],
@@ -2618,6 +2907,7 @@ export const PLANTS = [
   },
   {
     id: 291,
+    price: 1299, // INR, current retail estimate
     botanical: 'Begonia pavonina',
     common: 'Begonia Pavonina',
     alt: 'Peacock Begonia',
@@ -2627,6 +2917,7 @@ export const PLANTS = [
   },
   {
     id: 292,
+    price: 4999, // INR, current retail estimate
     botanical: 'Philodendron melanochrysum',
     common: 'Philodendron Melanochrysum',
     alt: 'Black Gold Philodendron',

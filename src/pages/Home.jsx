@@ -7,6 +7,7 @@ import GrowingVine from '../components/GrowingVine';
 import Reveal from '../components/Reveal';
 import PlantPortrait from '../components/PlantPortrait';
 import { PLANTS } from '../data/plants';
+import { formatINR } from '../utils/currency';
 import './Home.css';
 
 const HIGHLIGHTS = [
@@ -181,7 +182,10 @@ function FeaturedCard({ plant }) {
         <PlantPortrait family={plant.family} id={plant.id} size={110} />
       </div>
       <div className="plant-card__body">
-        <span className="plant-card__family">{plant.family}</span>
+        <div className="plant-card__top-row">
+          <span className="plant-card__family">{plant.family}</span>
+          <span className="plant-card__price">{formatINR(plant.price)}</span>
+        </div>
         <h3 className="plant-card__common">{plant.common}</h3>
         <p className="plant-card__botanical">{plant.botanical}</p>
         <ul className="plant-card__benefits">

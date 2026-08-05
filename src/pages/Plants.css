@@ -197,7 +197,7 @@
 }
 
 .plant-tile h3,
-.plant-tile > .plant-tile__family,
+.plant-tile > .plant-tile__top-row,
 .plant-tile > .plant-tile__alt,
 .plant-tile > .plant-tile__botanical,
 .plant-tile > .plant-tile__benefit-count {
@@ -205,8 +205,15 @@
   margin-right: 22px;
 }
 
-.plant-tile > .plant-tile__family {
+.plant-tile > .plant-tile__top-row {
   margin-top: 16px;
+}
+
+.plant-tile__top-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 .plant-tile__family {
@@ -215,6 +222,14 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--terracotta-bright);
+}
+
+.plant-tile__price {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green-bright);
+  white-space: nowrap;
 }
 
 .plant-tile h3 {
@@ -345,6 +360,21 @@
   border-radius: 24px 24px 0 0;
 }
 
+.plant-modal__top-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.plant-modal__price {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--green-bright);
+  white-space: nowrap;
+}
+
 .plant-modal h2 {
   font-family: var(--font-display);
   font-size: 28px;
@@ -415,6 +445,40 @@
 .plant-modal__section p {
   font-size: 14.5px;
   color: var(--text-dim);
+}
+
+.plant-modal__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 28px;
+  padding: 14px 24px;
+  border-radius: 100px;
+  background: var(--green);
+  color: #0f1210;
+  font-size: 14.5px;
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+@media (hover: hover) {
+  .plant-modal__cta:hover {
+    background: var(--green-bright);
+  }
+}
+
+.plant-modal__cta:active {
+  transform: scale(0.97);
+}
+
+.plant-modal__price-note {
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-mute);
+  text-align: center;
 }
 
 @media (max-width: 1080px) {
@@ -493,15 +557,18 @@
     padding: 16px 0 8px;
   }
   .plant-tile h3,
-  .plant-tile > .plant-tile__family,
+  .plant-tile > .plant-tile__top-row,
   .plant-tile > .plant-tile__alt,
   .plant-tile > .plant-tile__botanical,
   .plant-tile > .plant-tile__benefit-count {
     margin-left: 14px;
     margin-right: 14px;
   }
-  .plant-tile > .plant-tile__family {
+  .plant-tile > .plant-tile__top-row {
     margin-top: 12px;
+  }
+  .plant-tile__price {
+    font-size: 12px;
   }
   .plant-tile h3 {
     font-size: 16px;

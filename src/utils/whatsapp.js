@@ -13,3 +13,15 @@ export function buildWhatsAppLink({ name, phone, email, message }) {
   const text = `Hi Hello Saathi, I'm ${name} (${contactLine}).\n\n${message}`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 }
+
+// A one-tap "ask about this plant" link from the catalog — no form behind it,
+// so there's nothing to validate beyond what the catalog itself already
+// guarantees (every entry has a common name).
+export function buildPlantInquiryLink({ common, price }) {
+  if (typeof common !== 'string' || !common.trim()) {
+    throw new Error('buildPlantInquiryLink: "common" must be a non-empty string');
+  }
+  const priceLine = typeof price === 'number' ? ` I saw it listed around ₹${price}.` : '';
+  const text = `Hi Hello Saathi, I'm interested in the ${common}.${priceLine} Is it in stock?`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+}

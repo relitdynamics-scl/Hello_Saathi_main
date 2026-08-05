@@ -8,6 +8,8 @@ import PlantPortrait from '../components/PlantPortrait';
 import { useIsMobile } from '../hooks/useMediaQuery';
 import { useScrollLock, useEscapeKey } from '../hooks/useScrollLock';
 import { PLANTS, FAMILIES } from '../data/plants';
+import { formatINR } from '../utils/currency';
+import { buildPlantInquiryLink } from '../utils/whatsapp';
 import './Plants.css';
 
 // On phones the catalog is rendered in chunks as you scroll. Mounting all 291
@@ -156,7 +158,10 @@ export default function Plants() {
                       <PlantPortrait family={p.family} id={p.id} size={104} />
                     )}
                   </div>
-                  <span className="plant-tile__family">{p.family}</span>
+                  <div className="plant-tile__top-row">
+                    <span className="plant-tile__family">{p.family}</span>
+                    <span className="plant-tile__price">{formatINR(p.price)}</span>
+                  </div>
                   <h3>{p.common}</h3>
                   {p.alt && <p className="plant-tile__alt">a.k.a. {p.alt}</p>}
                   <p className="plant-tile__botanical">{p.botanical}</p>
@@ -278,7 +283,10 @@ function PlantModal({ plant, onClose }) {
             )}
           </div>
           <div className="plant-modal__body">
-            <span className="plant-tile__family">{plant.family}</span>
+            <div className="plant-modal__top-row">
+              <span className="plant-tile__family">{plant.family}</span>
+              <span className="plant-modal__price">{formatINR(plant.price)}</span>
+            </div>
             <h2>{plant.common}</h2>
             {plant.alt && <p className="plant-modal__alt">a.k.a. {plant.alt}</p>}
             <p className="plant-modal__botanical">{plant.botanical}</p>
@@ -296,6 +304,18 @@ function PlantModal({ plant, onClose }) {
               <span className="plant-modal__label">Light &amp; care</span>
               <p>{plant.care}</p>
             </div>
+
+            <a
+              className="plant-modal__cta"
+              href={buildPlantInquiryLink(plant)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ask about this plant on WhatsApp
+            </a>
+            <p className="plant-modal__price-note">
+              Price shown is an estimate — pot, size and season can shift it. We'll confirm on WhatsApp.
+            </p>
           </div>
         </div>
       </motion.div>

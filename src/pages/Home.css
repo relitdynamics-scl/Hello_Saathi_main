@@ -277,12 +277,27 @@
   padding: 20px 26px 0;
 }
 
+.plant-card__top-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 .plant-card__family {
   font-family: var(--font-mono);
   font-size: 10.5px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--terracotta-bright);
+}
+
+.plant-card__price {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green-bright);
+  white-space: nowrap;
 }
 
 .plant-card__common {
