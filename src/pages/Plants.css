@@ -169,6 +169,7 @@
 }
 
 .plant-tile__portrait {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,6 +179,11 @@
     var(--bg-raised);
   border-bottom: 1px solid var(--line);
   transition: transform 0.5s var(--ease-soft), background 0.4s var(--ease);
+}
+
+.plant-tile__portrait .price-badge {
+  font-size: 13px;
+  padding: 5px 11px;
 }
 
 .plant-tile__portrait svg,
@@ -197,7 +203,7 @@
 }
 
 .plant-tile h3,
-.plant-tile > .plant-tile__top-row,
+.plant-tile > .plant-tile__family,
 .plant-tile > .plant-tile__alt,
 .plant-tile > .plant-tile__botanical,
 .plant-tile > .plant-tile__benefit-count {
@@ -205,15 +211,8 @@
   margin-right: 22px;
 }
 
-.plant-tile > .plant-tile__top-row {
+.plant-tile > .plant-tile__family {
   margin-top: 16px;
-}
-
-.plant-tile__top-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 10px;
 }
 
 .plant-tile__family {
@@ -222,14 +221,6 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--terracotta-bright);
-}
-
-.plant-tile__price {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--green-bright);
-  white-space: nowrap;
 }
 
 .plant-tile h3 {
@@ -349,6 +340,7 @@
 }
 
 .plant-modal__portrait {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -360,19 +352,23 @@
   border-radius: 24px 24px 0 0;
 }
 
-.plant-modal__top-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.plant-modal__price {
-  font-family: var(--font-mono);
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--green-bright);
-  white-space: nowrap;
+/*
+  Scoped to .plant-modal__portrait rather than relying on a `--lg` modifier
+  class overriding the base .price-badge on `right` — that put two rules of
+  equal specificity in a cascade order that depends on which stylesheet Vite
+  concatenates first, and when the base `right: 10px` won alongside this
+  block's `left: 16px`, an absolutely-positioned box with both left and right
+  set (and no explicit width) stretches to fill the gap between them instead
+  of sitting compact on one side. The extra class-plus-descendant specificity
+  here makes the override unconditional.
+*/
+.plant-modal__portrait .price-badge {
+  /* left side — .plant-modal__close already occupies the top-right corner */
+  top: 16px;
+  right: auto;
+  left: 16px;
+  font-size: 17px;
+  padding: 8px 16px;
 }
 
 .plant-modal h2 {
@@ -556,19 +552,22 @@
   .plant-tile__portrait {
     padding: 16px 0 8px;
   }
+  .plant-tile__portrait .price-badge {
+    font-size: 12px;
+    padding: 4px 9px;
+    top: 8px;
+    right: 8px;
+  }
   .plant-tile h3,
-  .plant-tile > .plant-tile__top-row,
+  .plant-tile > .plant-tile__family,
   .plant-tile > .plant-tile__alt,
   .plant-tile > .plant-tile__botanical,
   .plant-tile > .plant-tile__benefit-count {
     margin-left: 14px;
     margin-right: 14px;
   }
-  .plant-tile > .plant-tile__top-row {
+  .plant-tile > .plant-tile__family {
     margin-top: 12px;
-  }
-  .plant-tile__price {
-    font-size: 12px;
   }
   .plant-tile h3 {
     font-size: 16px;

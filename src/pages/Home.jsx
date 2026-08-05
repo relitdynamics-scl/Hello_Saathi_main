@@ -180,12 +180,10 @@ function FeaturedCard({ plant }) {
     <div className="plant-card">
       <div className="plant-card__portrait-wrap">
         <PlantPortrait family={plant.family} id={plant.id} size={110} />
+        <span className="price-badge">{formatINR(plant.price)}</span>
       </div>
       <div className="plant-card__body">
-        <div className="plant-card__top-row">
-          <span className="plant-card__family">{plant.family}</span>
-          <span className="plant-card__price">{formatINR(plant.price)}</span>
-        </div>
+        <span className="plant-card__family">{plant.family}</span>
         <h3 className="plant-card__common">{plant.common}</h3>
         <p className="plant-card__botanical">{plant.botanical}</p>
         <ul className="plant-card__benefits">

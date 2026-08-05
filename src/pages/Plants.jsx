@@ -157,11 +157,9 @@ export default function Plants() {
                     ) : (
                       <PlantPortrait family={p.family} id={p.id} size={104} />
                     )}
+                    <span className="price-badge">{formatINR(p.price)}</span>
                   </div>
-                  <div className="plant-tile__top-row">
-                    <span className="plant-tile__family">{p.family}</span>
-                    <span className="plant-tile__price">{formatINR(p.price)}</span>
-                  </div>
+                  <span className="plant-tile__family">{p.family}</span>
                   <h3>{p.common}</h3>
                   {p.alt && <p className="plant-tile__alt">a.k.a. {p.alt}</p>}
                   <p className="plant-tile__botanical">{p.botanical}</p>
@@ -281,12 +279,10 @@ function PlantModal({ plant, onClose }) {
             ) : (
               <PlantPortrait family={plant.family} id={plant.id} size={140} />
             )}
+            <span className="price-badge">{formatINR(plant.price)}</span>
           </div>
           <div className="plant-modal__body">
-            <div className="plant-modal__top-row">
-              <span className="plant-tile__family">{plant.family}</span>
-              <span className="plant-modal__price">{formatINR(plant.price)}</span>
-            </div>
+            <span className="plant-tile__family">{plant.family}</span>
             <h2>{plant.common}</h2>
             {plant.alt && <p className="plant-modal__alt">a.k.a. {plant.alt}</p>}
             <p className="plant-modal__botanical">{plant.botanical}</p>

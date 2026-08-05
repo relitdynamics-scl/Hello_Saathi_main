@@ -225,6 +225,31 @@ textarea:focus-visible {
   border: 1px solid var(--line);
 }
 
+/*
+  Price badge — the same solid green pill used for the primary button and
+  the active filter chip, so a price reads as the same weight of "this is
+  the actionable, important bit" as the rest of the site's calls to action,
+  rather than blending into the small print next to the family label.
+  Shared by the catalog tile, the detail modal, and the Home featured card.
+*/
+.price-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #0f1210;
+  background: var(--green);
+  padding: 6px 12px;
+  border-radius: 100px;
+  box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.45);
+  white-space: nowrap;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

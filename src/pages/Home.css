@@ -246,6 +246,7 @@
 }
 
 .plant-card__portrait-wrap {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -277,27 +278,12 @@
   padding: 20px 26px 0;
 }
 
-.plant-card__top-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 10px;
-}
-
 .plant-card__family {
   font-family: var(--font-mono);
   font-size: 10.5px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--terracotta-bright);
-}
-
-.plant-card__price {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--green-bright);
-  white-space: nowrap;
 }
 
 .plant-card__common {
@@ -405,6 +391,12 @@
   }
   .plant-card__portrait-wrap {
     padding: 20px 0 10px;
+  }
+  .plant-card__portrait-wrap .price-badge {
+    font-size: 12px;
+    padding: 4px 9px;
+    top: 8px;
+    right: 8px;
   }
   .plant-card__common {
     font-size: 18px;
