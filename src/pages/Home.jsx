@@ -1,11 +1,12 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Wind, Droplets, Sun, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Wind, Droplets, Sun, ShieldCheck, ShoppingBag, Check } from 'lucide-react';
 import MagneticButton from '../components/MagneticButton';
 import GrowingVine from '../components/GrowingVine';
 import Reveal from '../components/Reveal';
 import PlantPortrait from '../components/PlantPortrait';
+import { useCart } from '../context/CartContext';
 import { PLANTS } from '../data/plants';
 import { formatINR } from '../utils/currency';
 import './Home.css';
@@ -176,6 +177,15 @@ function AnimatedWord({ word, delay, accent }) {
 }
 
 function FeaturedCard({ plant }) {
+  const { addItem } = useCart();
+  const [justAdded, setJustAdded] = useState(false);
+
+  useEffect(() => {
+    if (!justAdded) return undefined;
+    const t = setTimeout(() => setJustAdded(false), 1600);
+    return () => clearTimeout(t);
+  }, [justAdded]);
+
   return (
     <div className="plant-card">
       <div className="plant-card__portrait-wrap">
@@ -191,6 +201,24 @@ function FeaturedCard({ plant }) {
             <li key={b}>{b}</li>
           ))}
         </ul>
+        <button
+          type="button"
+          className={`plant-card__add ${justAdded ? 'plant-card__add--added' : ''}`}
+          onClick={() => {
+            addItem(plant.id, 1);
+            setJustAdded(true);
+          }}
+        >
+          {justAdded ? (
+            <>
+              <Check size={14} /> Added
+            </>
+          ) : (
+            <>
+              <ShoppingBag size={14} /> Add to cart
+            </>
+          )}
+        </button>
       </div>
     </div>
   );

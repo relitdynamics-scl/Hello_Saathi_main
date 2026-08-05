@@ -113,10 +113,48 @@
   transition: border-color 0.3s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease);
 }
 
-.nav__cta:hover {
-  border-color: var(--green);
-  background: var(--green);
-  color: #0f1210;
+/* touch has no hover — unguarded, this stuck the button green after a tap
+   until the next tap landed somewhere else */
+@media (hover: hover) {
+  .nav__cta:hover {
+    border-color: var(--green);
+    background: var(--green);
+    color: #0f1210;
+  }
+}
+
+.nav__cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+  transition: color 0.3s var(--ease);
+}
+
+@media (hover: hover) {
+  .nav__cart:hover {
+    color: var(--text);
+  }
+}
+
+.nav__cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -9px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  background: var(--terracotta-bright);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .nav__mobile-controls {
@@ -220,6 +258,14 @@
   }
   .nav__mobile-controls {
     display: flex;
+  }
+  .nav__cart {
+    width: 44px;
+    height: 44px;
+  }
+  .nav__cart-badge {
+    top: 3px;
+    right: 3px;
   }
 
   /* Phones get a fixed app bar instead of the floating pill.

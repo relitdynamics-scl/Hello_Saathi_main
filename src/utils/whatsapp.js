@@ -25,3 +25,64 @@ export function buildPlantInquiryLink({ common, price }) {
   const text = `Hi Hello Saathi, I'm interested in the ${common}.${priceLine} Is it in stock?`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 }
+
+const INR = new Intl.NumberFormat('en-IN', {
+  style: 'currency',
+  currency: 'INR',
+  maximumFractionDigits: 0,
+});
+
+/*
+  Builds the WhatsApp message for a cart order: contact details + an itemized
+  line per plant + a grand total.
+
+  `lines` is expected in the shape CartContext already produces —
+  [{ plant: { common, price }, qty, lineTotal }] — where plant/price/lineTotal
+  were derived from the trusted PLANTS catalog by CartContext, never taken
+  from anything a caller could hand-supply as a raw string. This function
+  still doesn't take that on faith: every line is re-checked for a sane
+  shape, and the whole batch throws rather than sending a partial or
+  garbled order if any line fails.
+*/
+export function buildOrderWhatsAppLink({ name, phone, email }, lines) {
+  for (const [field, value] of Object.entries({ name, phone })) {
+    if (typeof value !== 'string' || !value.trim()) {
+      throw new Error(`buildOrderWhatsAppLink: "${field}" must be a validated non-empty string`);
+    }
+  }
+  if (!Array.isArray(lines) || lines.length === 0) {
+    throw new Error('buildOrderWhatsAppLink: "lines" must be a non-empty array');
+  }
+
+  let grandTotal = 0;
+  const itemLines = lines.map((line, i) => {
+    const common = line?.plant?.common;
+    const price = line?.plant?.price;
+    const qty = line?.qty;
+    const lineTotal = line?.lineTotal;
+
+    if (typeof common !== 'string' || !common.trim()) {
+      throw new Error(`buildOrderWhatsAppLink: line ${i} has no plant name`);
+    }
+    if (typeof price !== 'number' || !Number.isFinite(price) || price < 0) {
+      throw new Error(`buildOrderWhatsAppLink: line ${i} has an invalid price`);
+    }
+    if (!Number.isInteger(qty) || qty < 1) {
+      throw new Error(`buildOrderWhatsAppLink: line ${i} has an invalid quantity`);
+    }
+    if (typeof lineTotal !== 'number' || Math.round(lineTotal) !== Math.round(price * qty)) {
+      throw new Error(`buildOrderWhatsAppLink: line ${i} total does not match price × quantity`);
+    }
+
+    grandTotal += lineTotal;
+    return `${i + 1}. ${common} × ${qty} — ${INR.format(lineTotal)}`;
+  });
+
+  const contactLine = email ? `${phone}, ${email}` : phone;
+  const text =
+    `Hi Hello Saathi, I'm ${name} (${contactLine}). I'd like to order:\n\n` +
+    `${itemLines.join('\n')}\n\n` +
+    `Total: ${INR.format(grandTotal)}`;
+
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+}

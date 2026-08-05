@@ -8,9 +8,12 @@ import ErrorBoundary from './components/ErrorBoundary';
 import Home from './pages/Home';
 import Plants from './pages/Plants';
 import Contact from './pages/Contact';
+import Cart from './pages/Cart';
 import Credits from './pages/Credits';
 import NotFound from './pages/NotFound';
 import { ThemeProvider } from './context/ThemeContext';
+import { CartProvider } from './context/CartContext';
+import { CustomerProvider } from './context/CustomerContext';
 import './styles/global.css';
 
 function PageTransition({ children }) {
@@ -64,6 +67,14 @@ function AnimatedRoutes() {
           }
         />
         <Route
+          path="/cart"
+          element={
+            <PageTransition>
+              <Cart />
+            </PageTransition>
+          }
+        />
+        <Route
           path="/credits"
           element={
             <PageTransition>
@@ -87,21 +98,25 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <Nav />
-        {/* Scoped to the routed content so a page-level throw keeps the nav
-            and footer usable instead of blanking the whole document. */}
-        <ErrorBoundary where="page">
-          <AnimatedRoutes />
-        </ErrorBoundary>
-        <Footer />
-        {/* The popup is non-essential; if it throws it must not take the
-            page down with it. */}
-        <ErrorBoundary where="welcome-popup" fallbackSilent>
-          <WelcomePopup />
-        </ErrorBoundary>
-      </BrowserRouter>
+      <CartProvider>
+        <CustomerProvider>
+          <BrowserRouter>
+            <ScrollToTop />
+            <Nav />
+            {/* Scoped to the routed content so a page-level throw keeps the nav
+                and footer usable instead of blanking the whole document. */}
+            <ErrorBoundary where="page">
+              <AnimatedRoutes />
+            </ErrorBoundary>
+            <Footer />
+            {/* The popup is non-essential; if it throws it must not take the
+                page down with it. */}
+            <ErrorBoundary where="welcome-popup" fallbackSilent>
+              <WelcomePopup />
+            </ErrorBoundary>
+          </BrowserRouter>
+        </CustomerProvider>
+      </CartProvider>
     </ThemeProvider>
   );
 }

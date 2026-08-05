@@ -443,30 +443,119 @@
   color: var(--text-dim);
 }
 
+/* Add-to-cart is the primary action now, so the WhatsApp inquiry link
+   below it steps back to a quieter, ghost-style secondary button. */
 .plant-modal__cta {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
-  margin-top: 28px;
-  padding: 14px 24px;
+  min-height: 46px;
+  margin-top: 14px;
+  padding: 13px 24px;
   border-radius: 100px;
-  background: var(--green);
-  color: #0f1210;
-  font-size: 14.5px;
+  border: 1px solid var(--line-strong);
+  color: var(--text-dim);
+  background: none;
+  font-size: 13.5px;
   font-weight: 600;
   text-align: center;
-  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease), transform 0.3s var(--ease);
 }
 
 @media (hover: hover) {
   .plant-modal__cta:hover {
-    background: var(--green-bright);
+    border-color: var(--green);
+    color: var(--text);
   }
 }
 
 .plant-modal__cta:active {
   transform: scale(0.97);
+}
+
+.plant-modal__add {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.plant-modal__stepper {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border: 1px solid var(--line-strong);
+  border-radius: 100px;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.plant-modal__stepper button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--text-dim);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.plant-modal__stepper button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+@media (hover: hover) {
+  .plant-modal__stepper button:not(:disabled):hover {
+    background: var(--bg-card);
+    color: var(--text);
+  }
+}
+
+.plant-modal__stepper span {
+  min-width: 26px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.plant-modal__add-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 14px 20px;
+  border-radius: 100px;
+  background: var(--green);
+  color: #0f1210;
+  font-size: 14.5px;
+  font-weight: 600;
+  transition: background 0.3s var(--ease), transform 0.15s var(--ease);
+}
+
+@media (hover: hover) {
+  .plant-modal__add-btn:hover {
+    background: var(--green-bright);
+  }
+}
+
+.plant-modal__add-btn:active {
+  transform: scale(0.97);
+}
+
+.plant-modal__add-btn--added {
+  background: var(--green-bright);
+}
+
+.plant-modal__in-cart {
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: var(--green-bright);
+  text-align: center;
 }
 
 .plant-modal__price-note {

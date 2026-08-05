@@ -299,6 +299,40 @@
   color: var(--text-mute);
 }
 
+.plant-card__add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  min-height: 40px;
+  margin-top: 16px;
+  padding: 10px 16px;
+  border-radius: 100px;
+  border: 1px solid var(--line-strong);
+  color: var(--text-dim);
+  font-size: 13px;
+  font-weight: 600;
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+@media (hover: hover) {
+  .plant-card__add:hover {
+    border-color: var(--green);
+    color: var(--text);
+  }
+}
+
+.plant-card__add:active {
+  transform: scale(0.97);
+}
+
+.plant-card__add--added {
+  border-color: var(--green);
+  background: rgba(127, 166, 107, 0.12);
+  color: var(--green-bright);
+}
+
 /* CTA band */
 .cta-band {
   padding-top: 40px;

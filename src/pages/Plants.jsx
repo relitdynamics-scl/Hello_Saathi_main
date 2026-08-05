@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, useDragControls } from 'framer-motion';
-import { Search, Sparkles, X } from 'lucide-react';
+import { Search, Sparkles, X, Minus, Plus, ShoppingBag, Check } from 'lucide-react';
 import Reveal from '../components/Reveal';
 import PlantPhoto from '../components/PlantPhoto';
 import PlantPortrait from '../components/PlantPortrait';
 import { useIsMobile } from '../hooks/useMediaQuery';
 import { useScrollLock, useEscapeKey } from '../hooks/useScrollLock';
+import { useCart } from '../context/CartContext';
 import { PLANTS, FAMILIES } from '../data/plants';
 import { formatINR } from '../utils/currency';
 import { buildPlantInquiryLink } from '../utils/whatsapp';
@@ -216,6 +217,30 @@ function PlantModal({ plant, onClose }) {
     closeRef.current?.focus();
   }, []);
 
+  const { lines, addItem, MIN_QTY, MAX_QTY } = useCart();
+  const [addQty, setAddQty] = useState(1);
+  const [justAdded, setJustAdded] = useState(false);
+  const inCartLine = lines.find((l) => l.plant.id === plant.id);
+
+  // reset the "just added" confirmation if the visitor closes and reopens a
+  // different plant's modal without this component unmounting in between
+  useEffect(() => {
+    setAddQty(1);
+    setJustAdded(false);
+  }, [plant.id]);
+
+  useEffect(() => {
+    if (!justAdded) return undefined;
+    const t = setTimeout(() => setJustAdded(false), 1800);
+    return () => clearTimeout(t);
+  }, [justAdded]);
+
+  const handleAddToCart = () => {
+    addItem(plant.id, addQty);
+    setAddQty(1);
+    setJustAdded(true);
+  };
+
   // Drag is started from the grab handle only. Putting the listener on the
   // whole sheet makes framer set touch-action on it, which would swallow the
   // vertical scroll of the content inside.
@@ -301,13 +326,55 @@ function PlantModal({ plant, onClose }) {
               <p>{plant.care}</p>
             </div>
 
+            <div className="plant-modal__add">
+              <div className="plant-modal__stepper">
+                <button
+                  type="button"
+                  aria-label="Decrease quantity"
+                  disabled={addQty <= MIN_QTY}
+                  onClick={() => setAddQty((q) => Math.max(MIN_QTY, q - 1))}
+                >
+                  <Minus size={14} />
+                </button>
+                <span aria-live="polite">{addQty}</span>
+                <button
+                  type="button"
+                  aria-label="Increase quantity"
+                  disabled={addQty >= MAX_QTY}
+                  onClick={() => setAddQty((q) => Math.min(MAX_QTY, q + 1))}
+                >
+                  <Plus size={14} />
+                </button>
+              </div>
+              <button
+                type="button"
+                className={`plant-modal__add-btn ${justAdded ? 'plant-modal__add-btn--added' : ''}`}
+                onClick={handleAddToCart}
+              >
+                {justAdded ? (
+                  <>
+                    <Check size={16} /> Added to cart
+                  </>
+                ) : (
+                  <>
+                    <ShoppingBag size={16} /> Add to cart
+                  </>
+                )}
+              </button>
+            </div>
+            {inCartLine && (
+              <p className="plant-modal__in-cart">
+                {inCartLine.qty} already in your cart — {formatINR(inCartLine.lineTotal)}
+              </p>
+            )}
+
             <a
               className="plant-modal__cta"
               href={buildPlantInquiryLink(plant)}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Ask about this plant on WhatsApp
+              Just asking? Message us on WhatsApp
             </a>
             <p className="plant-modal__price-note">
               Price shown is an estimate — pot, size and season can shift it. We'll confirm on WhatsApp.

@@ -2,9 +2,10 @@ import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Leaf } from 'lucide-react';
+import { Menu, X, Leaf, ShoppingBag } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import { useScrollLock, useEscapeKey } from '../hooks/useScrollLock';
+import { useCart } from '../context/CartContext';
 import './Nav.css';
 
 const LINKS = [
@@ -17,6 +18,7 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const { itemCount } = useCart();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -57,6 +59,7 @@ export default function Nav() {
 
         <div className="nav__right">
           <ThemeToggle />
+          <CartLink count={itemCount} />
           <Link to="/contact" className="nav__cta">
             Visit the nursery
           </Link>
@@ -64,6 +67,7 @@ export default function Nav() {
 
         <div className="nav__mobile-controls">
           <ThemeToggle />
+          <CartLink count={itemCount} />
           <button
             className="nav__menu-btn"
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -138,5 +142,21 @@ export default function Nav() {
         document.body,
       )}
     </header>
+  );
+}
+
+function CartLink({ count }) {
+  // 99+ rather than an ever-widening badge for a cart that's realistically
+  // never going to hold that many distinct lines anyway.
+  const label = count > 99 ? '99+' : String(count);
+  return (
+    <Link
+      to="/cart"
+      className="nav__cart"
+      aria-label={count > 0 ? `Cart, ${count} item${count > 1 ? 's' : ''}` : 'Cart, empty'}
+    >
+      <ShoppingBag size={19} strokeWidth={1.9} />
+      {count > 0 && <span className="nav__cart-badge">{label}</span>}
+    </Link>
   );
 }
