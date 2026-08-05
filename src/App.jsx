@@ -8,6 +8,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import Home from './pages/Home';
 import Plants from './pages/Plants';
 import Contact from './pages/Contact';
+import Credits from './pages/Credits';
 import NotFound from './pages/NotFound';
 import { ThemeProvider } from './context/ThemeContext';
 import './styles/global.css';
@@ -59,6 +60,14 @@ function AnimatedRoutes() {
           element={
             <PageTransition>
               <Contact />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/credits"
+          element={
+            <PageTransition>
+              <Credits />
             </PageTransition>
           }
         />

@@ -27,6 +27,7 @@ export default function Footer() {
             <Link to="/">Home</Link>
             <Link to="/plants">Our plants</Link>
             <Link to="/contact">Contact</Link>
+            <Link to="/credits">Photo credits</Link>
           </div>
           <div className="footer__col">
             <span className="footer__col-title">Visit</span>

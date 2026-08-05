@@ -1,0 +1,130 @@
+.credits-hero {
+  padding: 150px 0 60px;
+}
+
+.credits-hero__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(32px, 5.5vw, 60px);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  max-width: 700px;
+  margin: 18px 0 22px;
+}
+
+.credits-hero__title em {
+  color: var(--green-bright);
+  font-style: italic;
+}
+
+.credits-hero__subtitle {
+  font-size: 16.5px;
+  line-height: 1.6;
+  color: var(--text-dim);
+  max-width: 620px;
+}
+
+.credits-body {
+  padding-top: 20px;
+}
+
+.credits-table {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.credits-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr 0.9fr 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13.5px;
+}
+
+.credits-row:last-child {
+  border-bottom: none;
+}
+
+.credits-row--head {
+  background: var(--bg-raised);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+.credits-row__plant {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.credits-row__artist {
+  color: var(--text-dim);
+}
+
+.credits-licence {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 100px;
+  background: var(--bg-raised);
+  color: var(--text-mute);
+  border: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.credits-licence--attr {
+  background: rgba(127, 166, 107, 0.12);
+  color: var(--green-bright);
+  border-color: rgba(127, 166, 107, 0.3);
+}
+
+.credits-row__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-dim);
+  transition: color 0.3s var(--ease);
+  white-space: nowrap;
+}
+
+@media (hover: hover) {
+  .credits-row__link:hover {
+    color: var(--green-bright);
+  }
+}
+
+@media (max-width: 780px) {
+  .credits-hero {
+    padding: calc(120px + env(safe-area-inset-top)) 0 40px;
+  }
+  .credits-table {
+    border: none;
+    border-radius: 0;
+  }
+  .credits-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 16px 18px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    margin-bottom: 10px;
+  }
+  .credits-row--head {
+    display: none;
+  }
+  .credits-row__plant {
+    font-family: var(--font-display);
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .credits-row__artist::before {
+    content: 'Photo by ';
+    color: var(--text-mute);
+  }
+}

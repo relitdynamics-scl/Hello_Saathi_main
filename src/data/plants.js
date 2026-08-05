@@ -1922,6 +1922,7 @@ export const PLANTS = [
     benefits: ['Vivid multicolour foliage year-round', 'Tolerant of indoor heat'],
     care: 'Bright light',
     family: 'Shrub',
+    photo: true,
   },
   {
     id: 189,
@@ -1931,6 +1932,7 @@ export const PLANTS = [
     benefits: ['Excellent low-light air purifier', 'Adds humidity indoors'],
     care: 'Low to medium light',
     family: 'Palm',
+    photo: true,
   },
   {
     id: 190,
@@ -1940,6 +1942,7 @@ export const PLANTS = [
     benefits: ['Symbol of good fortune', 'Extremely drought-tolerant'],
     care: 'Bright light, minimal water',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 191,
@@ -1949,6 +1952,7 @@ export const PLANTS = [
     benefits: ['Vivid purple foliage colour', 'Thrives in full sun'],
     care: 'Bright light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 192,
@@ -1958,6 +1962,7 @@ export const PLANTS = [
     benefits: ['Long-lasting colourful bloom spike', 'Low-maintenance display plant'],
     care: 'Medium, indirect light',
     family: 'Epiphyte',
+    photo: true,
   },
   {
     id: 193,
@@ -1968,6 +1973,7 @@ export const PLANTS = [
     benefits: ['Extremely drought-tolerant', 'Bold architectural form'],
     care: 'Bright light',
     family: 'Shrub',
+    photo: true,
   },
   {
     id: 194,
@@ -1978,6 +1984,7 @@ export const PLANTS = [
     benefits: ['Zebra-striped rosette', 'Needs watering only rarely'],
     care: 'Bright, indirect light',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 195,
@@ -1988,6 +1995,7 @@ export const PLANTS = [
     benefits: ['Long-lasting colourful blooms', 'Stores water in leaves'],
     care: 'Bright light',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 196,
@@ -1997,6 +2005,7 @@ export const PLANTS = [
     benefits: ['Unique bead-like trailing leaves', 'Fragrant spring flowers'],
     care: 'Bright light, minimal water',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 197,
@@ -2006,6 +2015,7 @@ export const PLANTS = [
     benefits: ['Thrives in very low light', 'Non-toxic to pets'],
     care: 'Low to medium light',
     family: 'Palm',
+    photo: true,
   },
   {
     id: 198,
@@ -2015,6 +2025,7 @@ export const PLANTS = [
     benefits: ['Vivid purple-striped leaves', 'Easy to propagate'],
     care: 'Bright, indirect light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 199,
@@ -2025,6 +2036,7 @@ export const PLANTS = [
     benefits: ['Survives months without water', 'Tolerates very low light'],
     care: 'Very low maintenance',
     family: 'Rhizome',
+    photo: true,
   },
   {
     id: 200,
@@ -2035,6 +2047,7 @@ export const PLANTS = [
     benefits: ['Metallic patterned ornamental leaves', 'Highly decorative foliage'],
     care: 'Bright, indirect light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 201,
@@ -2045,6 +2058,7 @@ export const PLANTS = [
     benefits: ['Effective air purifier', 'Fast-growing statement foliage'],
     care: 'Medium light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 202,
@@ -2063,6 +2077,7 @@ export const PLANTS = [
     benefits: ['Stores water in swollen trunk', 'Extremely low maintenance'],
     care: 'Bright light',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 204,
@@ -2072,6 +2087,7 @@ export const PLANTS = [
     benefits: ['Delicate trailing heart leaves', 'Very low water needs'],
     care: 'Bright, indirect light',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 205,
@@ -2082,6 +2098,7 @@ export const PLANTS = [
     benefits: ['Compact & low-maintenance', 'Rarely needs repotting'],
     care: 'Low to medium light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 206,
@@ -2092,6 +2109,7 @@ export const PLANTS = [
     benefits: ['Dramatic multicolour leaf patterns', 'Unique tropical accent'],
     care: 'Bright, indirect light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 207,
@@ -2101,6 +2119,7 @@ export const PLANTS = [
     benefits: ['Bold tropical focal point', 'Exotic orange blooms'],
     care: 'Bright light',
     family: 'Flowering',
+    photo: true,
   },
   {
     id: 208,
@@ -2110,6 +2129,7 @@ export const PLANTS = [
     benefits: ['Fast-growing colourful trailer', 'Very easy to propagate'],
     care: 'Bright, indirect light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 209,
@@ -2119,6 +2139,7 @@ export const PLANTS = [
     benefits: ['Symbol of luck & prosperity', 'Grows in water or soil'],
     care: 'Low to medium light',
     family: 'Dracaena',
+    photo: true,
   },
   {
     id: 210,
@@ -2128,6 +2149,7 @@ export const PLANTS = [
     benefits: ['Reliable winter blooms', 'Long-lived, low maintenance'],
     care: 'Bright, indirect light',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 211,
@@ -2138,6 +2160,7 @@ export const PLANTS = [
     benefits: ['Leaves fold like wings at dusk', 'Charming delicate flowers'],
     care: 'Bright, indirect light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 212,
@@ -2147,6 +2170,7 @@ export const PLANTS = [
     benefits: ['Profuse cool-season blooms', 'Excellent winter gift plant'],
     care: 'Cool, bright light',
     family: 'Flowering',
+    photo: true,
   },
   {
     id: 213,
@@ -2156,6 +2180,7 @@ export const PLANTS = [
     benefits: ['Tolerates low humidity better than most ferns', 'Unusual blue-green fronds'],
     care: 'Medium light',
     family: 'Fern',
+    photo: true,
   },
   {
     id: 214,
@@ -2166,6 +2191,7 @@ export const PLANTS = [
     benefits: ['Intricate veined foliage', 'Loves warm, humid spaces'],
     care: 'Medium light, high humidity',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 215,
@@ -2176,6 +2202,7 @@ export const PLANTS = [
     benefits: ['Velvety tactile purple hairs', 'Unique textural accent'],
     care: 'Bright, indirect light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 216,
@@ -2185,6 +2212,7 @@ export const PLANTS = [
     benefits: ['Striking striped starfish rosette', 'Grows without soil'],
     care: 'Medium light',
     family: 'Epiphyte',
+    photo: true,
   },
   {
     id: 217,
@@ -2194,6 +2222,7 @@ export const PLANTS = [
     benefits: ['Thrives sitting in water', 'Architectural radiating foliage'],
     care: 'Bright light, likes water',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 218,
@@ -2203,6 +2232,7 @@ export const PLANTS = [
     benefits: ['Dense fast-growing ground cover', 'Easy to propagate'],
     care: 'Medium to bright light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 219,
@@ -2212,6 +2242,7 @@ export const PLANTS = [
     benefits: ['Leaves fold up at night', 'Beautifully patterned foliage'],
     care: 'Warm, humid shade',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 220,
@@ -2222,6 +2253,7 @@ export const PLANTS = [
     benefits: ['Striking tiger-stripe patterned leaves', 'Very easy care'],
     care: 'Bright light',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 221,
@@ -2232,6 +2264,7 @@ export const PLANTS = [
     benefits: ['Dramatic arrowhead leaves', 'Compact collector\'s plant'],
     care: 'Bright, indirect light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 222,
@@ -2241,6 +2274,7 @@ export const PLANTS = [
     benefits: ['Virtually indestructible', 'Tolerates deep shade & neglect'],
     care: 'Low light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 223,
@@ -2260,6 +2294,7 @@ export const PLANTS = [
     benefits: ['Tiny heart-shaped fronds', 'Charming terrarium specimen'],
     care: 'Warm, humid shade',
     family: 'Fern',
+    photo: true,
   },
   {
     id: 225,
@@ -2270,6 +2305,7 @@ export const PLANTS = [
     benefits: ['Architectural cylindrical leaves', 'Extremely drought-tolerant'],
     care: 'Very low maintenance',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 226,
@@ -2279,6 +2315,7 @@ export const PLANTS = [
     benefits: ['Dramatic tubular red blooms', 'Trails beautifully from baskets'],
     care: 'Bright, indirect light',
     family: 'Epiphyte',
+    photo: true,
   },
   {
     id: 227,
@@ -2288,6 +2325,7 @@ export const PLANTS = [
     benefits: ['More drought-tolerant than most ferns', 'Charming rounded leaflets'],
     care: 'Medium light',
     family: 'Fern',
+    photo: true,
   },
   {
     id: 228,
@@ -2297,6 +2335,7 @@ export const PLANTS = [
     benefits: ['Architectural rosette fronds', 'Thrives in warm humidity'],
     care: 'Medium light, high humidity',
     family: 'Fern',
+    photo: true,
   },
   {
     id: 229,
@@ -2307,6 +2346,7 @@ export const PLANTS = [
     benefits: ['Near-continuous tubular blooms', 'Cool-climate flowering houseplant'],
     care: 'Bright, indirect light',
     family: 'Flowering',
+    photo: true,
   },
   {
     id: 230,
@@ -2316,6 +2356,7 @@ export const PLANTS = [
     benefits: ['Dramatic patterned leaves', 'Folds up at night'],
     care: 'Medium light, high humidity',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 231,
@@ -2325,6 +2366,7 @@ export const PLANTS = [
     benefits: ['Perfect powder-blue rosette', 'Very low water needs'],
     care: 'Bright light',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 232,
@@ -2335,6 +2377,7 @@ export const PLANTS = [
     benefits: ['Unusual spineless cascading cactus', 'Excellent for hanging baskets'],
     care: 'Indirect light',
     family: 'Epiphyte',
+    photo: true,
   },
   {
     id: 233,
@@ -2345,6 +2388,7 @@ export const PLANTS = [
     benefits: ['Extraordinary architectural form', 'Extremely drought-tolerant'],
     care: 'Bright light',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 234,
@@ -2355,6 +2399,7 @@ export const PLANTS = [
     benefits: ['Striking herringbone patterned leaves', 'Moves leaves toward light'],
     care: 'Medium light, high humidity',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 235,
@@ -2365,6 +2410,7 @@ export const PLANTS = [
     benefits: ['Heavily perforated leaves', 'Vigorous climber'],
     care: 'Bright, indirect light',
     family: 'Vine',
+    photo: true,
   },
   {
     id: 236,
@@ -2374,6 +2420,7 @@ export const PLANTS = [
     benefits: ['Striking zebra-striped stems', 'Conversation-piece foliage'],
     care: 'Bright, indirect light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 237,
@@ -2384,6 +2431,7 @@ export const PLANTS = [
     benefits: ['Leaves change shape as they mature', 'Very easy to propagate'],
     care: 'Medium light',
     family: 'Vine',
+    photo: true,
   },
   {
     id: 238,
@@ -2394,6 +2442,7 @@ export const PLANTS = [
     benefits: ['Watermelon-patterned leaves', 'Rarely needs repotting'],
     care: 'Medium light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 239,
@@ -2403,6 +2452,7 @@ export const PLANTS = [
     benefits: ['Unique living aquatic decoration', 'Grows for hundreds of years'],
     care: 'Indirect light, in water',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 240,
@@ -2413,6 +2463,7 @@ export const PLANTS = [
     benefits: ['Grows without any soil', 'Zero-fuss air purifier'],
     care: 'Bright light, mist weekly',
     family: 'Epiphyte',
+    photo: true,
   },
   {
     id: 241,
@@ -2422,6 +2473,7 @@ export const PLANTS = [
     benefits: ['Pearlescent purple-grey rosette', 'Collector-favourite succulent'],
     care: 'Bright light',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 242,
@@ -2431,6 +2483,7 @@ export const PLANTS = [
     benefits: ['Delicate weeping branches', 'Elegant unusual ficus form'],
     care: 'Bright, indirect light',
     family: 'Tree',
+    photo: true,
   },
   {
     id: 243,
@@ -2441,6 +2494,7 @@ export const PLANTS = [
     benefits: ['India\'s national tree as an indoor specimen', 'More light-tolerant than fiddle leaf fig'],
     care: 'Medium to bright light',
     family: 'Tree',
+    photo: true,
   },
   {
     id: 244,
@@ -2451,6 +2505,7 @@ export const PLANTS = [
     benefits: ['Ancient living-fossil form', 'Long-lived, low maintenance'],
     care: 'Bright light',
     family: 'Cycad',
+    photo: true,
   },
   {
     id: 245,
@@ -2461,6 +2516,7 @@ export const PLANTS = [
     benefits: ['Blooms in deep shade', 'Long-lived & increasingly floriferous'],
     care: 'Low to medium light',
     family: 'Flowering',
+    photo: true,
   },
   {
     id: 246,
@@ -2471,6 +2527,7 @@ export const PLANTS = [
     benefits: ['Velvety leaves with vivid white veins', 'Collector\'s aroid'],
     care: 'Bright, indirect light, high humidity',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 247,
@@ -2481,6 +2538,7 @@ export const PLANTS = [
     benefits: ['Breathtaking mass winter blooms', 'Excellent cool-season display'],
     care: 'Cool, bright light',
     family: 'Flowering',
+    photo: true,
   },
   {
     id: 248,
@@ -2491,6 +2549,7 @@ export const PLANTS = [
     benefits: ['Delicate wire-like sculptural stems', 'Very low maintenance'],
     care: 'Bright, indirect light',
     family: 'Vine',
+    photo: true,
   },
   {
     id: 249,
@@ -2501,6 +2560,7 @@ export const PLANTS = [
     benefits: ['Dramatic living wall ornament', 'Grows without soil'],
     care: 'Bright, indirect light, mist weekly',
     family: 'Fern',
+    photo: true,
   },
   {
     id: 250,
@@ -2511,6 +2571,7 @@ export const PLANTS = [
     benefits: ['Iridescent metallic foliage', 'Ideal terrarium ground cover'],
     care: 'Indirect light, high humidity',
     family: 'Fern',
+    photo: true,
   },
   {
     id: 251,
@@ -2521,6 +2582,7 @@ export const PLANTS = [
     benefits: ['Vivid tropical foliage colour', 'Outstanding container accent'],
     care: 'Bright light',
     family: 'Shrub',
+    photo: true,
   },
   {
     id: 252,
@@ -2530,6 +2592,7 @@ export const PLANTS = [
     benefits: ['Vividly spotted foliage', 'Great for terrariums'],
     care: 'Medium, indirect light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 253,
@@ -2540,6 +2603,7 @@ export const PLANTS = [
     benefits: ['Plump moonstone-shaped leaves', 'Produces arching flower stems'],
     care: 'Bright light',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 254,
@@ -2549,6 +2613,7 @@ export const PLANTS = [
     benefits: ['Enormous velvety veined leaves', 'Unique creeping growth habit'],
     care: 'Medium, indirect light',
     family: 'Vine',
+    photo: true,
   },
   {
     id: 255,
@@ -2559,6 +2624,7 @@ export const PLANTS = [
     benefits: ['Vivid silver polka-dot leaves', 'Highly photographed variety'],
     care: 'Bright, indirect light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 256,
@@ -2569,6 +2635,7 @@ export const PLANTS = [
     benefits: ['Jewel-like crystalline leaf veins', 'Premium collector\'s plant'],
     care: 'Warm, humid, bright indirect light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 257,
@@ -2579,6 +2646,7 @@ export const PLANTS = [
     benefits: ['Translucent light-catching leaf tips', 'Fascinating natural adaptation'],
     care: 'Bright, indirect light',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 258,
@@ -2589,6 +2657,7 @@ export const PLANTS = [
     benefits: ['Colours vividly before flowering', 'Grows without soil'],
     care: 'Bright light, mist weekly',
     family: 'Epiphyte',
+    photo: true,
   },
   {
     id: 259,
@@ -2599,6 +2668,7 @@ export const PLANTS = [
     benefits: ['Cascading trailing succulent', 'Thrives in bright light'],
     care: 'Bright light',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 260,
@@ -2609,6 +2679,7 @@ export const PLANTS = [
     benefits: ['Coin-shaped trailing leaves', 'Grows mounted without soil'],
     care: 'Bright, indirect light',
     family: 'Epiphyte',
+    photo: true,
   },
   {
     id: 261,
@@ -2619,6 +2690,7 @@ export const PLANTS = [
     benefits: ['Recognisable decorative cactus', 'Extremely drought-tolerant'],
     care: 'Bright light',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 262,
@@ -2629,6 +2701,7 @@ export const PLANTS = [
     benefits: ['Unusual crinkled leaf margins', 'Fascinating compact form'],
     care: 'Bright light',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 263,
@@ -2648,6 +2721,7 @@ export const PLANTS = [
     benefits: ['Intricate mosaic leaf pattern', 'Unique among calatheas'],
     care: 'Warm, humid, indirect light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 265,
@@ -2658,6 +2732,7 @@ export const PLANTS = [
     benefits: ['Iconic heart-shaped leaves', 'Fragrant waxy flowers'],
     care: 'Bright, indirect light',
     family: 'Vine',
+    photo: true,
   },
   {
     id: 266,
@@ -2668,6 +2743,7 @@ export const PLANTS = [
     benefits: ['Dramatic architectural rosettes', 'Striking dark foliage colour'],
     care: 'Bright light',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 267,
@@ -2678,6 +2754,7 @@ export const PLANTS = [
     benefits: ['Geometric stacked leaf towers', 'Great for small pots'],
     care: 'Bright light',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 268,
@@ -2688,6 +2765,7 @@ export const PLANTS = [
     benefits: ['Banana-shaped trailing succulent', 'Fragrant small flowers'],
     care: 'Bright light',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 269,
@@ -2698,6 +2776,7 @@ export const PLANTS = [
     benefits: ['Long-lasting vivid flower spike', 'Water-holding urn rosette'],
     care: 'Medium, indirect light',
     family: 'Epiphyte',
+    photo: true,
   },
   {
     id: 270,
@@ -2707,6 +2786,7 @@ export const PLANTS = [
     benefits: ['Unique white pinstripe variegation', 'Compact & easy to grow'],
     care: 'Medium, indirect light',
     family: 'Vine',
+    photo: true,
   },
   {
     id: 271,
@@ -2717,6 +2797,7 @@ export const PLANTS = [
     benefits: ['Enormous dramatic pendant leaves', 'One of the most striking aroids'],
     care: 'Bright, indirect light, high humidity',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 272,
@@ -2727,6 +2808,7 @@ export const PLANTS = [
     benefits: ['Compact mini-monstera look', 'Fast-growing climber'],
     care: 'Bright, indirect light',
     family: 'Vine',
+    photo: true,
   },
   {
     id: 273,
@@ -2737,6 +2819,7 @@ export const PLANTS = [
     benefits: ['Unusual silvery-blue foliage', 'Develops fenestrations with age'],
     care: 'Bright, indirect light',
     family: 'Vine',
+    photo: true,
   },
   {
     id: 274,
@@ -2747,6 +2830,7 @@ export const PLANTS = [
     benefits: ['Unique parachute-shaped flowers', 'Fascinating botanical curiosity'],
     care: 'Bright, indirect light',
     family: 'Vine',
+    photo: true,
   },
   {
     id: 275,
@@ -2757,6 +2841,7 @@ export const PLANTS = [
     benefits: ['Bold orange-red stems', 'More dramatic than common spider plant'],
     care: 'Medium light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 276,
@@ -2767,6 +2852,7 @@ export const PLANTS = [
     benefits: ['Tiny eyelash-edged leaves', 'Masses of small pink flowers'],
     care: 'Bright, indirect light',
     family: 'Rhizome',
+    photo: true,
   },
   {
     id: 277,
@@ -2776,6 +2862,7 @@ export const PLANTS = [
     benefits: ['Delicate lacy foliage', 'Easy to grow indoors'],
     care: 'Indirect light',
     family: 'Fern',
+    photo: true,
   },
   {
     id: 278,
@@ -2786,6 +2873,7 @@ export const PLANTS = [
     benefits: ['Shimmering purple-haired trailing stems', 'Unusual tactile foliage'],
     care: 'Bright light',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 279,
@@ -2796,6 +2884,7 @@ export const PLANTS = [
     benefits: ['Unusual crocodile-skin leaf pattern', 'Memorable ornamental fern'],
     care: 'Warm, humid shade',
     family: 'Fern',
+    photo: true,
   },
   {
     id: 280,
@@ -2806,6 +2895,7 @@ export const PLANTS = [
     benefits: ['One of the best plants for deep shade', 'Bold glossy architectural leaves'],
     care: 'Low to medium light',
     family: 'Shrub',
+    photo: true,
   },
   {
     id: 281,
@@ -2816,6 +2906,7 @@ export const PLANTS = [
     benefits: ['Fast-growing large-space specimen', 'Velvety pale-green foliage'],
     care: 'Bright, indirect light',
     family: 'Shrub',
+    photo: true,
   },
   {
     id: 282,
@@ -2826,6 +2917,7 @@ export const PLANTS = [
     benefits: ['Bizarre parrot-beak flowers', 'Blooms almost continuously'],
     care: 'Medium light',
     family: 'Flowering',
+    photo: true,
   },
   {
     id: 283,
@@ -2836,6 +2928,7 @@ export const PLANTS = [
     benefits: ['Popular feng shui money tree', 'Compact braided trunk form'],
     care: 'Bright, indirect light',
     family: 'Tree',
+    photo: true,
   },
   {
     id: 284,
@@ -2846,6 +2939,7 @@ export const PLANTS = [
     benefits: ['Classic bonsai specimen', 'Long-lived with attractive surface roots'],
     care: 'Bright, indirect light',
     family: 'Tree',
+    photo: true,
   },
   {
     id: 285,
@@ -2856,6 +2950,7 @@ export const PLANTS = [
     benefits: ['Dramatically architectural fan form', 'Very low maintenance'],
     care: 'Bright light, drought-tolerant',
     family: 'Succulent',
+    photo: true,
   },
   {
     id: 286,
@@ -2866,6 +2961,7 @@ export const PLANTS = [
     benefits: ['Metallic copper-red leaf sheen', 'Premium collector\'s plant'],
     care: 'Bright, indirect light, high humidity',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 287,
@@ -2876,6 +2972,7 @@ export const PLANTS = [
     benefits: ['Feather-like peacock leaf pattern', 'Moves leaves at night'],
     care: 'Medium light, high humidity',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 288,
@@ -2885,6 +2982,7 @@ export const PLANTS = [
     benefits: ['Increasingly deep-lobed leaves', 'Striking star-shaped foliage'],
     care: 'Bright, indirect light',
     family: 'Vine',
+    photo: true,
   },
   {
     id: 289,
@@ -2895,6 +2993,7 @@ export const PLANTS = [
     benefits: ['Rough dragon-scale leaf texture', 'Visually extraordinary foliage'],
     care: 'Bright, indirect light, high humidity',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 290,
@@ -2904,6 +3003,7 @@ export const PLANTS = [
     benefits: ['Fragrant clusters of waxy flowers', 'Robust & floriferous'],
     care: 'Bright, indirect light',
     family: 'Vine',
+    photo: true,
   },
   {
     id: 291,
@@ -2914,6 +3014,7 @@ export const PLANTS = [
     benefits: ['Iridescent blue-green shimmer', 'Rare botanical gem'],
     care: 'Warm, humid shade',
     family: 'Foliage',
+    photo: true,
   },
   {
     id: 292,
@@ -2924,6 +3025,7 @@ export const PLANTS = [
     benefits: ['Velvety golden-bronze sheen leaves', 'Highly desirable collector\'s philodendron'],
     care: 'Medium, indirect light, high humidity',
     family: 'Vine',
+    photo: true,
   },
 ];
 
