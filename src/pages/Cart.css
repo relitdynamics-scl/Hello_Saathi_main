@@ -136,29 +136,20 @@
 
 .cart-line__bulk {
   display: flex;
-  gap: 4px;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
-.cart-line__bulk button {
-  padding: 4px 9px;
+/* -10/+10 and -100/+100 reuse .cart-line__qty's exact pill treatment (same
+   base class, applied twice below) — just without the number in the middle,
+   and auto-width text buttons instead of fixed-size circular icon ones. */
+.cart-line__qty--bulk button {
+  width: auto;
+  height: 28px;
+  padding: 0 10px;
   border-radius: 100px;
-  border: 1px solid var(--line-strong);
   font-family: var(--font-mono);
   font-size: 10.5px;
-  font-weight: 600;
-  color: var(--text-dim);
-  transition: border-color 0.2s var(--ease), color 0.2s var(--ease), transform 0.15s var(--ease);
-}
-
-@media (hover: hover) {
-  .cart-line__bulk button:hover {
-    border-color: var(--green);
-    color: var(--text);
-  }
-}
-
-.cart-line__bulk button:active {
-  transform: scale(0.93);
 }
 
 .cart-line__qty button {
@@ -169,7 +160,7 @@
   justify-content: center;
   border-radius: 50%;
   color: var(--text-dim);
-  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease), transform 0.15s var(--ease);
 }
 
 .cart-line__qty button:disabled {
@@ -182,6 +173,10 @@
     background: var(--bg-raised);
     color: var(--text);
   }
+}
+
+.cart-line__qty button:not(:disabled):active {
+  transform: scale(0.9);
 }
 
 .cart-line__qty input {
@@ -570,10 +565,10 @@
   }
   .cart-line__qty-group {
     grid-area: qty;
-    /* the 1fr track's implicit min-width is its content's natural width, so
-       four unwrapped bulk buttons (-100/-10/+10/+100) were forcing the whole
-       row — and the page — wider than the viewport. min-width: 0 lets the
-       track actually shrink and hand off to flex-wrap below instead. */
+    /* the 1fr track's implicit min-width is its content's natural width —
+       without this, three pills side by side can still force the row (and
+       the page) wider than the viewport. min-width: 0 lets the track
+       actually shrink and hand off to flex-wrap on .cart-line__bulk. */
     min-width: 0;
     justify-self: start;
     align-items: flex-start;
@@ -583,11 +578,16 @@
     height: 36px;
   }
   .cart-line__bulk {
-    flex-wrap: wrap;
     max-width: 100%;
   }
-  .cart-line__bulk button {
-    padding: 6px 11px;
+  /* two-class selector, so this has to be repeated here rather than relying
+     on the .cart-line__qty button rule above — that rule is one class and
+     loses to the (also two-class) desktop .cart-line__qty--bulk button rule
+     regardless of media query order, which would otherwise leave the bulk
+     pills stuck at their smaller desktop size on a touch screen */
+  .cart-line__qty--bulk button {
+    height: 34px;
+    padding: 0 12px;
     font-size: 11px;
   }
   .cart-line__total {

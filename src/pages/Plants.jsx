@@ -347,9 +347,27 @@ function PlantModal({ plant, onClose }) {
                     <Plus size={14} />
                   </button>
                 </div>
-                <div className="plant-modal__bulk">
+                <div className="plant-modal__stepper plant-modal__stepper--bulk">
                   <button
                     type="button"
+                    aria-label="Decrease quantity by 10"
+                    disabled={addQty <= MIN_QTY}
+                    onClick={() => setAddQty((q) => Math.max(MIN_QTY, q - 10))}
+                  >
+                    -10
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Increase quantity by 10"
+                    onClick={() => setAddQty((q) => Math.min(MAX_QTY, q + 10))}
+                  >
+                    +10
+                  </button>
+                </div>
+                <div className="plant-modal__stepper plant-modal__stepper--bulk">
+                  <button
+                    type="button"
+                    aria-label="Decrease quantity by 100"
                     disabled={addQty <= MIN_QTY}
                     onClick={() => setAddQty((q) => Math.max(MIN_QTY, q - 100))}
                   >
@@ -357,15 +375,9 @@ function PlantModal({ plant, onClose }) {
                   </button>
                   <button
                     type="button"
-                    disabled={addQty <= MIN_QTY}
-                    onClick={() => setAddQty((q) => Math.max(MIN_QTY, q - 10))}
+                    aria-label="Increase quantity by 100"
+                    onClick={() => setAddQty((q) => Math.min(MAX_QTY, q + 100))}
                   >
-                    -10
-                  </button>
-                  <button type="button" onClick={() => setAddQty((q) => Math.min(MAX_QTY, q + 10))}>
-                    +10
-                  </button>
-                  <button type="button" onClick={() => setAddQty((q) => Math.min(MAX_QTY, q + 100))}>
                     +100
                   </button>
                 </div>
