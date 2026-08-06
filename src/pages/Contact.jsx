@@ -1,26 +1,25 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Clock, Camera, MessageCircle, Check } from 'lucide-react';
 import Reveal from '../components/Reveal';
 import MagneticButton from '../components/MagneticButton';
-import { WHATSAPP_NUMBER, buildWhatsAppLink } from '../utils/whatsapp';
-import { validateForm, FIELD_RULES } from '../utils/validation';
-import { reportError } from '../utils/reportError';
+import { WHATSAPP_NUMBER } from '../utils/whatsapp';
+import { FIELD_RULES } from '../utils/validation';
+import { useCustomer } from '../context/CustomerContext';
 import './Contact.css';
-
-const FIELDS = ['name', 'phone', 'message'];
 
 const INFO = [
   { icon: MapPin, title: 'Find us', lines: ['Delhi nursery', 'Exact address shared on request'] },
   { icon: Clock, title: 'Hours', lines: ['Open daily', '9:00 AM – 7:00 PM'] },
-  { icon: Phone, title: 'Reach us', lines: ['We reply fastest on WhatsApp', 'Or drop a message below'] },
+  { icon: Phone, title: 'Reach us', lines: ['Save your details below', "We'll have them ready when you check out"] },
 ];
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', phone: '', message: '' });
-  const [sent, setSent] = useState(false);
+  const { saveDetails } = useCustomer();
+  const [form, setForm] = useState({ name: '', phone: '', note: '' });
+  const [saved, setSaved] = useState(false);
   const [errors, setErrors] = useState({});
-  const [waLink, setWaLink] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,22 +28,22 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // reject on any schema failure; only the accepted values are sent on
-    const { ok, errors: found, value } = validateForm(form, FIELDS);
-    setErrors(found);
-    if (!ok) return;
 
-    try {
-      const link = buildWhatsAppLink(value);
-      setWaLink(link);
-      setSent(true);
-      // returns null when a popup blocker steps in — the success panel always
-      // shows a tappable fallback link, so there is nothing more to do here
-      window.open(link, '_blank', 'noopener,noreferrer');
-    } catch (err) {
-      const { message } = reportError(err, { where: 'contact-submit' });
-      setErrors({ form: message });
+    // "note" is optional at the shared-schema level (CustomerContext.saveDetails
+    // is also called from the cart's own details modal, which never collects
+    // one), but this page's entire premise is "tell us what you're looking
+    // for" — so that requirement is enforced locally, before saveDetails ever
+    // runs, rather than loosened at the schema.
+    if (!form.note.trim()) {
+      setErrors({ note: "What are you looking for?" });
+      return;
     }
+
+    // Saving does not open WhatsApp — it only stores the details (and the
+    // note) so a later "place order" from the cart can use them.
+    const { ok, errors: found } = saveDetails(form);
+    setErrors(found);
+    if (ok) setSaved(true);
   };
 
   return (
@@ -113,7 +112,7 @@ export default function Contact() {
           </Reveal>
 
           <Reveal delay={0.1} className="contact-form-wrap">
-            {!sent ? (
+            {!saved ? (
               <form className="contact-form" onSubmit={handleSubmit} noValidate>
                 <div className={`contact-field ${errors.name ? 'contact-field--error' : ''}`}>
                   <label htmlFor="name">Your name</label>
@@ -158,22 +157,22 @@ export default function Contact() {
                   )}
                 </div>
 
-                <div className={`contact-field ${errors.message ? 'contact-field--error' : ''}`}>
-                  <label htmlFor="message">What are you looking for?</label>
+                <div className={`contact-field ${errors.note ? 'contact-field--error' : ''}`}>
+                  <label htmlFor="note">What are you looking for?</label>
                   <textarea
-                    id="message"
-                    name="message"
+                    id="note"
+                    name="note"
                     rows={4}
-                    value={form.message}
+                    value={form.note}
                     onChange={handleChange}
                     placeholder="Low-light plant for a small balcony in Delhi…"
-                    maxLength={FIELD_RULES.message.max}
-                    aria-invalid={!!errors.message}
-                    aria-describedby={errors.message ? 'message-error' : undefined}
+                    maxLength={FIELD_RULES.note.max}
+                    aria-invalid={!!errors.note}
+                    aria-describedby={errors.note ? 'note-error' : undefined}
                   />
-                  {errors.message && (
-                    <span className="contact-field__error" id="message-error" role="alert">
-                      {errors.message}
+                  {errors.note && (
+                    <span className="contact-field__error" id="note-error" role="alert">
+                      {errors.note}
                     </span>
                   )}
                 </div>
@@ -185,7 +184,7 @@ export default function Contact() {
                 )}
 
                 <MagneticButton variant="primary" type="submit">
-                  Send message
+                  Save my details
                 </MagneticButton>
               </form>
             ) : (
@@ -198,11 +197,11 @@ export default function Contact() {
                 <div className="contact-success__icon">
                   <Check size={26} strokeWidth={2.4} />
                 </div>
-                <h3>Opening WhatsApp…</h3>
-                <p>Finish sending your message there — we reply fastest on WhatsApp.</p>
-                <a href={waLink} target="_blank" rel="noopener noreferrer" className="contact-success__link">
-                  Didn't open? Tap here
-                </a>
+                <h3>Details saved.</h3>
+                <p>Add plants to your cart whenever you're ready — checkout will already know who you are.</p>
+                <Link to="/plants" className="contact-success__link">
+                  Browse plants
+                </Link>
               </motion.div>
             )}
           </Reveal>

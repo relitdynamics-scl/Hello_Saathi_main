@@ -3,11 +3,14 @@ import { validateForm } from '../utils/validation';
 
 const CustomerContext = createContext(null);
 const STORAGE_KEY = 'hello-saathi-customer';
-const FIELDS = ['name', 'phone', 'email'];
-const EMPTY = { name: '', phone: '', email: '' };
+// "note" is optional and shared across three different forms (the welcome
+// popup, the contact page, and the cart's own details modal) that don't all
+// collect it — see the schema comment in validation.js.
+const FIELDS = ['name', 'phone', 'email', 'note'];
+const EMPTY = { name: '', phone: '', email: '', note: '' };
 
 // Same "read once, guard every access" shape as ThemeContext/CartContext.
-// This one holds PII (name, phone, email), so on top of the usual
+// This one holds PII (name, phone, email, note), so on top of the usual
 // storage-can-throw guard, everything read back out is re-validated through
 // the same schema the form used to collect it — a value that reaches this
 // context without going through validateForm (a tampered localStorage entry,
@@ -20,7 +23,11 @@ function readStoredDetails() {
     const parsed = JSON.parse(raw);
     if (!parsed || typeof parsed !== 'object') return null;
     const { ok, value } = validateForm(parsed, FIELDS);
-    return ok ? value : null;
+    // validateForm omits a key entirely when an optional field wasn't
+    // provided (rather than defaulting it), and this record may also predate
+    // "note" existing at all — merge over EMPTY so every caller always gets
+    // all four keys rather than having to guard against `undefined`.
+    return ok ? { ...EMPTY, ...value } : null;
   } catch {
     return null;
   }
@@ -49,10 +56,14 @@ export function CustomerProvider({ children }) {
   }, [details, hydrated]);
 
   // Re-validates before saving rather than trusting the caller's word that a
-  // form already checked it — the one path this can't skip.
+  // form already checked it — the one path this can't skip. Every save fully
+  // replaces the stored record (merged over EMPTY, not over the previous
+  // details), matching how the underlying form always submits a complete
+  // set of fields — a caller that omits "note" is saying "no note", not
+  // "leave whatever was there before".
   const saveDetails = useCallback((raw) => {
     const { ok, value, errors } = validateForm(raw, FIELDS);
-    if (ok) setDetails(value);
+    if (ok) setDetails({ ...EMPTY, ...value });
     return { ok, errors };
   }, []);
 

@@ -1,15 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { X, MessageCircle, Check } from 'lucide-react';
 import MagneticButton from './MagneticButton';
 import { useScrollLock, useEscapeKey } from '../hooks/useScrollLock';
-import { buildWhatsAppLink } from '../utils/whatsapp';
-import { reportError } from '../utils/reportError';
-import { validateForm, FIELD_RULES } from '../utils/validation';
+import { useCustomer } from '../context/CustomerContext';
+import { FIELD_RULES } from '../utils/validation';
 import './WelcomePopup.css';
-
-const FIELDS = ['name', 'phone', 'email', 'message'];
 
 const SESSION_KEY = 'hs-welcome-popup-shown';
 
@@ -35,11 +32,11 @@ const morphTransition = { type: 'tween', duration: 0.55, ease: [0.16, 1, 0.3, 1]
 
 export default function WelcomePopup() {
   const location = useLocation();
+  const { saveDetails } = useCustomer();
   const [stage, setStage] = useState('closed'); // closed | open | minimized
-  const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: '', phone: '', email: '', note: '' });
   const [errors, setErrors] = useState({});
-  const [sent, setSent] = useState(false);
-  const [waLink, setWaLink] = useState('');
+  const [saved, setSaved] = useState(false);
 
   useEffect(() => {
     if (stage !== 'closed') return;
@@ -63,19 +60,11 @@ export default function WelcomePopup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { ok, errors: found, value } = validateForm(form, FIELDS);
+    // Saving does not open WhatsApp — it only stores the details (and the
+    // optional note) so a later "place order" from the cart can use them.
+    const { ok, errors: found } = saveDetails(form);
     setErrors(found);
-    if (!ok) return;
-
-    try {
-      const link = buildWhatsAppLink(value);
-      setWaLink(link);
-      setSent(true);
-      window.open(link, '_blank', 'noopener,noreferrer');
-    } catch (err) {
-      const { message } = reportError(err, { where: 'welcome-popup-submit' });
-      setErrors({ form: message });
-    }
+    if (ok) setSaved(true);
   };
 
   const minimize = useCallback(() => setStage('minimized'), []);
@@ -126,7 +115,7 @@ export default function WelcomePopup() {
                 </button>
 
                 <AnimatePresence mode="wait">
-                  {!sent ? (
+                  {!saved ? (
                     <motion.div
                       key="form"
                       initial={{ opacity: 0 }}
@@ -139,7 +128,7 @@ export default function WelcomePopup() {
                         Tell us what your plant needs, <em>we'll find it.</em>
                       </h3>
                       <p className="welcome-card__subtitle">
-                        Drop your details — we usually reply the same day.
+                        Save your details once — checkout is a single tap from here on.
                       </p>
 
                       <form className="welcome-form" onSubmit={handleSubmit} noValidate>
@@ -180,7 +169,7 @@ export default function WelcomePopup() {
                             type="email"
                             value={form.email}
                             onChange={handleChange}
-                            placeholder="Email address"
+                            placeholder="Email address (optional)"
                             autoComplete="email"
                             aria-label="Email address"
                             maxLength={FIELD_RULES.email.max}
@@ -189,18 +178,18 @@ export default function WelcomePopup() {
                           {errors.email && <span className="welcome-field__error">{errors.email}</span>}
                         </div>
 
-                        <div className={`welcome-field ${errors.message ? 'welcome-field--error' : ''}`}>
+                        <div className={`welcome-field ${errors.note ? 'welcome-field--error' : ''}`}>
                           <textarea
-                            name="message"
+                            name="note"
                             rows={2}
-                            value={form.message}
+                            value={form.note}
                             onChange={handleChange}
-                            placeholder="Low-light plant for a small balcony…"
-                            aria-label="What are you looking for?"
-                            maxLength={FIELD_RULES.message.max}
-                            aria-invalid={!!errors.message}
+                            placeholder="Low-light plant for a small balcony… (optional)"
+                            aria-label="Anything we should know?"
+                            maxLength={FIELD_RULES.note.max}
+                            aria-invalid={!!errors.note}
                           />
-                          {errors.message && <span className="welcome-field__error">{errors.message}</span>}
+                          {errors.note && <span className="welcome-field__error">{errors.note}</span>}
                         </div>
 
                         {errors.form && (
@@ -210,7 +199,7 @@ export default function WelcomePopup() {
                         )}
 
                         <MagneticButton variant="primary" type="submit">
-                          Send message
+                          Save my details
                         </MagneticButton>
                       </form>
                     </motion.div>
@@ -226,11 +215,11 @@ export default function WelcomePopup() {
                       <div className="welcome-success__icon">
                         <Check size={22} strokeWidth={2.4} />
                       </div>
-                      <h3>Opening WhatsApp…</h3>
-                      <p>Finish sending your message there — we reply fastest on WhatsApp.</p>
-                      <a href={waLink} target="_blank" rel="noopener noreferrer" className="welcome-success__link">
-                        Didn't open? Tap here
-                      </a>
+                      <h3>Details saved.</h3>
+                      <p>Add plants to your cart whenever you're ready — checkout will already know who you are.</p>
+                      <Link to="/plants" className="welcome-success__link" onClick={minimize}>
+                        Browse plants
+                      </Link>
                     </motion.div>
                   )}
                 </AnimatePresence>

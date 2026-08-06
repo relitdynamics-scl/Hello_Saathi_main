@@ -198,6 +198,19 @@ function CartLine({ plant, qty, lineTotal, min, max, onChangeQty, onRemove }) {
     setDraft(String(qty));
   }, [qty]);
 
+  // Applies an already-numeric quantity — what every stepper/bulk-add button
+  // passes (qty - 1, qty + 10, ...). Kept separate from commit() below: an
+  // earlier version ran both through one function that called value.trim()
+  // unconditionally, which threw for a plain number and silently broke every
+  // +1/-1/+10/+100 button, since a thrown event-handler error is swallowed
+  // by React's dispatch rather than surfacing as a visible crash.
+  const applyQty = (n) => {
+    const clamped = Math.min(max, Math.max(min, n));
+    onChangeQty(clamped);
+    setDraft(String(clamped));
+  };
+
+  // Text-input-specific: parses and clamps a string from the number field.
   const commit = (value) => {
     // A native <input type="number"> silently sanitizes any non-numeric text
     // to '' at the DOM property level — before onChange even sees it. So
@@ -210,9 +223,11 @@ function CartLine({ plant, qty, lineTotal, min, max, onChangeQty, onRemove }) {
       return;
     }
     const n = Math.trunc(Number(value));
-    const clamped = Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : qty;
-    onChangeQty(clamped);
-    setDraft(String(clamped));
+    if (!Number.isFinite(n)) {
+      setDraft(String(qty));
+      return;
+    }
+    applyQty(n);
   };
 
   return (
@@ -238,36 +253,46 @@ function CartLine({ plant, qty, lineTotal, min, max, onChangeQty, onRemove }) {
         <span className="cart-line__unit">{formatINR(plant.price)} each</span>
       </div>
 
-      <div className="cart-line__qty">
-        <button
-          type="button"
-          aria-label="Decrease quantity"
-          disabled={qty <= min}
-          onClick={() => commit(qty - 1)}
-        >
-          <Minus size={14} />
-        </button>
-        <input
-          type="number"
-          inputMode="numeric"
-          aria-label={`Quantity for ${plant.common}`}
-          value={draft}
-          min={min}
-          max={max}
-          onChange={(e) => setDraft(e.target.value)}
-          onBlur={(e) => commit(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') e.currentTarget.blur();
-          }}
-        />
-        <button
-          type="button"
-          aria-label="Increase quantity"
-          disabled={qty >= max}
-          onClick={() => commit(qty + 1)}
-        >
-          <Plus size={14} />
-        </button>
+      <div className="cart-line__qty-group">
+        <div className="cart-line__qty">
+          <button
+            type="button"
+            aria-label="Decrease quantity"
+            disabled={qty <= min}
+            onClick={() => applyQty(qty - 1)}
+          >
+            <Minus size={14} />
+          </button>
+          <input
+            type="number"
+            inputMode="numeric"
+            aria-label={`Quantity for ${plant.common}`}
+            value={draft}
+            min={min}
+            max={max}
+            onChange={(e) => setDraft(e.target.value)}
+            onBlur={(e) => commit(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') e.currentTarget.blur();
+            }}
+          />
+          <button
+            type="button"
+            aria-label="Increase quantity"
+            disabled={qty >= max}
+            onClick={() => applyQty(qty + 1)}
+          >
+            <Plus size={14} />
+          </button>
+        </div>
+        <div className="cart-line__bulk">
+          <button type="button" aria-label="Add 10 more" onClick={() => applyQty(qty + 10)}>
+            +10
+          </button>
+          <button type="button" aria-label="Add 100 more" onClick={() => applyQty(qty + 100)}>
+            +100
+          </button>
+        </div>
       </div>
 
       <div className="cart-line__total">{formatINR(lineTotal)}</div>

@@ -15,6 +15,7 @@ export const FIELD_RULES = {
   phone: { minDigits: 7, maxDigits: 15, max: 24 },
   email: { max: 254, maxLocal: 64 },
   message: { min: 4, max: 800 },
+  note: { min: 4, max: 800 },
 };
 
 // C0/C1 control characters — never legitimate in a single-line form value and
@@ -90,6 +91,26 @@ export const SCHEMAS = {
       if (value.length < FIELD_RULES.message.min) return { error: 'Tell us a little more' };
       if (value.length > FIELD_RULES.message.max) {
         return { error: `Please keep it under ${FIELD_RULES.message.max} characters` };
+      }
+      return { value };
+    },
+  },
+
+  // Same content rules as "message", but optional — this is the field shared
+  // across three different forms (the welcome popup, the contact page, and
+  // the cart's own details modal) that don't all agree on whether a note is
+  // required. Each form enforces its own "must not be empty" requirement
+  // locally, if it wants one; the schema itself has to stay lenient so
+  // CustomerContext.saveDetails never rejects a caller that omits it.
+  note: {
+    type: 'string',
+    required: false,
+    validate(raw) {
+      const value = raw.trim();
+      if (!value) return { value: '' };
+      if (value.length < FIELD_RULES.note.min) return { error: 'Tell us a little more' };
+      if (value.length > FIELD_RULES.note.max) {
+        return { error: `Please keep it under ${FIELD_RULES.note.max} characters` };
       }
       return { value };
     },

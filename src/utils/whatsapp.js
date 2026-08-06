@@ -44,7 +44,7 @@ const INR = new Intl.NumberFormat('en-IN', {
   shape, and the whole batch throws rather than sending a partial or
   garbled order if any line fails.
 */
-export function buildOrderWhatsAppLink({ name, phone, email }, lines) {
+export function buildOrderWhatsAppLink({ name, phone, email, note }, lines) {
   for (const [field, value] of Object.entries({ name, phone })) {
     if (typeof value !== 'string' || !value.trim()) {
       throw new Error(`buildOrderWhatsAppLink: "${field}" must be a validated non-empty string`);
@@ -79,8 +79,14 @@ export function buildOrderWhatsAppLink({ name, phone, email }, lines) {
   });
 
   const contactLine = email ? `${phone}, ${email}` : phone;
+  // "note" is whatever was saved earlier from the welcome popup or the
+  // contact page — e.g. "low-light plant for a small balcony" — and rides
+  // along into the order if one was ever given. Optional: most orders won't
+  // have one, since the cart's own details modal never collects it.
+  const noteLine = typeof note === 'string' && note.trim() ? `Note: ${note.trim()}\n\n` : '';
   const text =
-    `Hi Hello Saathi, I'm ${name} (${contactLine}). I'd like to order:\n\n` +
+    `Hi Hello Saathi, I'm ${name} (${contactLine}).\n\n` +
+    `${noteLine}I'd like to order:\n\n` +
     `${itemLines.join('\n')}\n\n` +
     `Total: ${INR.format(grandTotal)}`;
 

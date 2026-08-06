@@ -4,12 +4,16 @@ import { PLANTS } from '../data/plants';
 const CartContext = createContext(null);
 const STORAGE_KEY = 'hello-saathi-cart';
 
-// Hard bounds on a single line's quantity. Not just a UX nicety — this is the
-// one place raw numbers from localStorage (editable via devtools, or simply
-// corrupted) reach the app, and an unclamped quantity would flow straight
-// into a currency total and then into the WhatsApp message text.
+// No business-logic ceiling on quantity — a customer can order as many of a
+// plant as they want. MIN_QTY still guards against zero/negative garbage
+// from localStorage (editable via devtools, or simply corrupted), and
+// MAX_QTY is not "infinity" as a business rule but as a technical safety
+// net: literal Infinity is not an integer per Number.isInteger, which
+// buildOrderWhatsAppLink relies on, so an actually-unbounded value would
+// make a legitimate huge order fail to build. MAX_SAFE_INTEGER keeps every
+// quantity an exact integer no real order will ever come close to reaching.
 const MIN_QTY = 1;
-const MAX_QTY = 99;
+const MAX_QTY = Number.MAX_SAFE_INTEGER;
 
 const PLANTS_BY_ID = new Map(PLANTS.map((p) => [p.id, p]));
 
