@@ -286,6 +286,22 @@ function CartLine({ plant, qty, lineTotal, min, max, onChangeQty, onRemove }) {
           </button>
         </div>
         <div className="cart-line__bulk">
+          <button
+            type="button"
+            aria-label="Remove 100"
+            disabled={qty <= min}
+            onClick={() => applyQty(qty - 100)}
+          >
+            -100
+          </button>
+          <button
+            type="button"
+            aria-label="Remove 10"
+            disabled={qty <= min}
+            onClick={() => applyQty(qty - 10)}
+          >
+            -10
+          </button>
           <button type="button" aria-label="Add 10 more" onClick={() => applyQty(qty + 10)}>
             +10
           </button>

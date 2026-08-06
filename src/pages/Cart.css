@@ -570,12 +570,21 @@
   }
   .cart-line__qty-group {
     grid-area: qty;
+    /* the 1fr track's implicit min-width is its content's natural width, so
+       four unwrapped bulk buttons (-100/-10/+10/+100) were forcing the whole
+       row — and the page — wider than the viewport. min-width: 0 lets the
+       track actually shrink and hand off to flex-wrap below instead. */
+    min-width: 0;
     justify-self: start;
     align-items: flex-start;
   }
   .cart-line__qty button {
     width: 36px;
     height: 36px;
+  }
+  .cart-line__bulk {
+    flex-wrap: wrap;
+    max-width: 100%;
   }
   .cart-line__bulk button {
     padding: 6px 11px;

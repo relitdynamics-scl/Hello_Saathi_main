@@ -348,6 +348,20 @@ function PlantModal({ plant, onClose }) {
                   </button>
                 </div>
                 <div className="plant-modal__bulk">
+                  <button
+                    type="button"
+                    disabled={addQty <= MIN_QTY}
+                    onClick={() => setAddQty((q) => Math.max(MIN_QTY, q - 100))}
+                  >
+                    -100
+                  </button>
+                  <button
+                    type="button"
+                    disabled={addQty <= MIN_QTY}
+                    onClick={() => setAddQty((q) => Math.max(MIN_QTY, q - 10))}
+                  >
+                    -10
+                  </button>
                   <button type="button" onClick={() => setAddQty((q) => Math.min(MAX_QTY, q + 10))}>
                     +10
                   </button>
