@@ -66,9 +66,18 @@
   color: var(--text-dim);
   transition: color 0.3s var(--ease);
   display: flex;
-  align-items: center;
+  /* the address row wraps to two lines on both breakpoints; centering the
+     icon against the wrapped block left it floating between the lines
+     instead of sitting next to the first one */
+  align-items: flex-start;
   gap: 8px;
   width: fit-content;
+}
+
+.footer__row svg,
+.footer__col a svg {
+  flex-shrink: 0;
+  margin-top: 3px;
 }
 
 .footer__col a:hover {

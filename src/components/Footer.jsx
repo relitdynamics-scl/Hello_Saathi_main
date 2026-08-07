@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Leaf, Camera, MessageCircle, MapPin } from 'lucide-react';
+import { Leaf, Camera, MessageCircle, MapPin, Mail } from 'lucide-react';
 import { WHATSAPP_NUMBER } from '../utils/whatsapp';
 import './Footer.css';
+
+const CONTACT_EMAIL = 'hellosaathiagro@gmail.com';
 
 // TODO: point this at the nursery's real profile — it currently follows the
 // @hellosaathi handle shown beside it, which may not be the right account.
@@ -31,7 +33,9 @@ export default function Footer() {
           </div>
           <div className="footer__col">
             <span className="footer__col-title">Visit</span>
-            <span className="footer__row"><MapPin size={14} /> Delhi</span>
+            <span className="footer__row">
+              <MapPin size={14} /> House No. 4, GH-14, Paschim Vihar, New Delhi – 110087
+            </span>
             <span className="footer__row">Open daily, 9am – 7pm</span>
           </div>
           <div className="footer__col">
@@ -51,6 +55,9 @@ export default function Footer() {
               className="footer__row"
             >
               <MessageCircle size={14} /> Chat with us
+            </a>
+            <a href={`mailto:${CONTACT_EMAIL}`} className="footer__row">
+              <Mail size={14} /> {CONTACT_EMAIL}
             </a>
           </div>
         </div>

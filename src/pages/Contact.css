@@ -73,6 +73,21 @@
   line-height: 1.5;
 }
 
+.contact-info__link {
+  display: block;
+  font-size: 14px;
+  color: var(--text-mute);
+  line-height: 1.5;
+  width: fit-content;
+  transition: color 0.3s var(--ease);
+}
+
+@media (hover: hover) {
+  .contact-info__link:hover {
+    color: var(--green-bright);
+  }
+}
+
 .contact-social {
   display: flex;
   flex-direction: column;
@@ -247,6 +262,17 @@
   .contact-info__card {
     gap: 14px;
     padding: 20px 0;
+  }
+  /* the tel:/mailto: links are only 21px tall by content — a real tap
+     target now that they're actionable, not just copy. display had to
+     move to flex here too, since align-items does nothing on the base
+     rule's display: block */
+  .contact-info__link {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 8px 0;
+    margin: -8px 0;
   }
 }
 

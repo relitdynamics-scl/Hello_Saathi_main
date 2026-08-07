@@ -10,9 +10,25 @@ import { useCustomer } from '../context/CustomerContext';
 import './Contact.css';
 
 const INFO = [
-  { icon: MapPin, title: 'Find us', lines: ['Delhi nursery', 'Exact address shared on request'] },
+  {
+    icon: MapPin,
+    title: 'Find us',
+    lines: [
+      'Hello Saathi Agro',
+      'Vikas Gautam',
+      'House No. 4, GH-14, Paschim Vihar',
+      'New Delhi – 110087',
+    ],
+  },
   { icon: Clock, title: 'Hours', lines: ['Open daily', '9:00 AM – 7:00 PM'] },
-  { icon: Phone, title: 'Reach us', lines: ['Save your details below', "We'll have them ready when you check out"] },
+  {
+    icon: Phone,
+    title: 'Reach us',
+    lines: [
+      { text: '+91 75035 23510', href: 'tel:+917503523510' },
+      { text: 'hellosaathiagro@gmail.com', href: 'mailto:hellosaathiagro@gmail.com' },
+    ],
+  },
 ];
 
 export default function Contact() {
@@ -84,9 +100,18 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3>{item.title}</h3>
-                  {item.lines.map((l) => (
-                    <p key={l}>{l}</p>
-                  ))}
+                  {/* a line is either plain text, or { text, href } for a
+                      tappable phone/email — tel:/mailto: links, not just
+                      copy someone has to retype by hand */}
+                  {item.lines.map((l) =>
+                    typeof l === 'string' ? (
+                      <p key={l}>{l}</p>
+                    ) : (
+                      <a key={l.text} href={l.href} className="contact-info__link">
+                        {l.text}
+                      </a>
+                    ),
+                  )}
                 </div>
               </motion.div>
             ))}
