@@ -5,10 +5,11 @@ import { Search, Sparkles, X, Minus, Plus, ShoppingBag, Check } from 'lucide-rea
 import Reveal from '../components/Reveal';
 import PlantPhoto from '../components/PlantPhoto';
 import PlantPortrait from '../components/PlantPortrait';
-import { useIsMobile } from '../hooks/useMediaQuery';
+import WishlistHeart from '../components/WishlistHeart';
+import { useIsMobile, usePrefersReducedMotion } from '../hooks/useMediaQuery';
 import { useScrollLock, useEscapeKey } from '../hooks/useScrollLock';
 import { useCart } from '../context/CartContext';
-import { PLANTS, FAMILIES } from '../data/plants';
+import { PLANTS, FAMILIES, getSimilarPlants } from '../data/plants';
 import { formatINR } from '../utils/currency';
 import { buildPlantInquiryLink } from '../utils/whatsapp';
 import './Plants.css';
@@ -142,32 +143,38 @@ export default function Plants() {
           <motion.div layout={!isMobile} className="plants-grid">
             <AnimatePresence mode={isMobile ? 'sync' : 'popLayout'} initial={false}>
               {visible.map((p) => (
-                <motion.button
+                // A heart toggle can't nest inside the tile's own click-to-open
+                // button (a <button> inside a <button> is invalid HTML), so
+                // this wrapper carries the tile's motion/layout instead, and
+                // the heart sits beside the button rather than inside it.
+                <motion.div
                   key={p.id}
                   layout={!isMobile}
                   initial={isMobile ? { opacity: 0 } : { opacity: 0, scale: 0.85 }}
                   animate={isMobile ? { opacity: 1 } : { opacity: 1, scale: 1 }}
                   exit={isMobile ? { opacity: 0 } : { opacity: 0, scale: 0.85 }}
                   transition={{ duration: isMobile ? 0.22 : 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="plant-tile"
-                  onClick={() => setActive(p)}
+                  className="plant-tile-wrap"
                 >
-                  <div className="plant-tile__portrait">
-                    {p.photo ? (
-                      <PlantPhoto id={p.id} alt={p.common} size={104} family={p.family} />
-                    ) : (
-                      <PlantPortrait family={p.family} id={p.id} size={104} />
-                    )}
-                    <span className="price-badge">{formatINR(p.price)}</span>
-                  </div>
-                  <span className="plant-tile__family">{p.family}</span>
-                  <h3>{p.common}</h3>
-                  {p.alt && <p className="plant-tile__alt">a.k.a. {p.alt}</p>}
-                  <p className="plant-tile__botanical">{p.botanical}</p>
-                  <span className="plant-tile__benefit-count">
-                    <Sparkles size={12} /> {p.benefits.length} highlight{p.benefits.length > 1 ? 's' : ''}
-                  </span>
-                </motion.button>
+                  <WishlistHeart plantId={p.id} plantName={p.common} />
+                  <button type="button" className="plant-tile" onClick={() => setActive(p)}>
+                    <div className="plant-tile__portrait">
+                      {p.photo ? (
+                        <PlantPhoto id={p.id} alt={p.common} size={104} family={p.family} />
+                      ) : (
+                        <PlantPortrait family={p.family} id={p.id} size={104} />
+                      )}
+                      <span className="price-badge">{formatINR(p.price)}</span>
+                    </div>
+                    <span className="plant-tile__family">{p.family}</span>
+                    <h3>{p.common}</h3>
+                    {p.alt && <p className="plant-tile__alt">a.k.a. {p.alt}</p>}
+                    <p className="plant-tile__botanical">{p.botanical}</p>
+                    <span className="plant-tile__benefit-count">
+                      <Sparkles size={12} /> {p.benefits.length} highlight{p.benefits.length > 1 ? 's' : ''}
+                    </span>
+                  </button>
+                </motion.div>
               ))}
             </AnimatePresence>
           </motion.div>
@@ -201,14 +208,17 @@ export default function Plants() {
       </section>
 
       <AnimatePresence>
-        {active && <PlantModal plant={active} onClose={closeModal} />}
+        {active && <PlantModal plant={active} onClose={closeModal} onSelectPlant={setActive} />}
       </AnimatePresence>
     </>
   );
 }
 
-function PlantModal({ plant, onClose }) {
+// Exported so the Wishlist page can open the exact same detail modal — one
+// modal implementation, not two near-identical copies.
+export function PlantModal({ plant, onClose, onSelectPlant }) {
   const isMobile = useIsMobile();
+  const reducedMotion = usePrefersReducedMotion();
   useScrollLock(true);
   useEscapeKey(true, onClose);
 
@@ -216,6 +226,16 @@ function PlantModal({ plant, onClose }) {
   useEffect(() => {
     closeRef.current?.focus();
   }, []);
+
+  // A visitor jumping here from "You might also like" swaps `plant` without
+  // this component unmounting — reset the scroll position so they don't land
+  // mid-scroll in a plant they haven't seen the top of yet.
+  const scrollRef = useRef(null);
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: 0, behavior: 'instant' });
+  }, [plant.id]);
+
+  const similar = useMemo(() => getSimilarPlants(plant, 4), [plant]);
 
   const { lines, addItem, MIN_QTY, MAX_QTY } = useCart();
   const [addQty, setAddQty] = useState(1);
@@ -297,125 +317,166 @@ function PlantModal({ plant, onClose }) {
         >
           <X size={18} />
         </button>
-        <div className="plant-modal__scroll">
-          <div className="plant-modal__portrait">
-            {plant.photo ? (
-              <PlantPhoto id={plant.id} alt={plant.common} size={140} family={plant.family} />
-            ) : (
-              <PlantPortrait family={plant.family} id={plant.id} size={140} />
-            )}
-            <span className="price-badge">{formatINR(plant.price)}</span>
-          </div>
-          <div className="plant-modal__body">
-            <span className="plant-tile__family">{plant.family}</span>
-            <h2>{plant.common}</h2>
-            {plant.alt && <p className="plant-modal__alt">a.k.a. {plant.alt}</p>}
-            <p className="plant-modal__botanical">{plant.botanical}</p>
-
-            <div className="plant-modal__section">
-              <span className="plant-modal__label">Highlights</span>
-              <ul>
-                {plant.benefits.map((b) => (
-                  <li key={b}>{b}</li>
-                ))}
-              </ul>
+        <div className="plant-modal__scroll" ref={scrollRef}>
+          {/* Keyed on plant.id so switching plants (via "You might also like")
+              fades the new content in rather than hard-cutting to it — the old
+              content simply unmounts as this remounts, which is a lighter
+              touch than a full crossfade and avoids a layout jump between two
+              differently-sized bodies overlapping mid-transition. */}
+          <motion.div
+            key={plant.id}
+            initial={reducedMotion ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="plant-modal__portrait">
+              {plant.photo ? (
+                <PlantPhoto id={plant.id} alt={plant.common} size={140} family={plant.family} />
+              ) : (
+                <PlantPortrait family={plant.family} id={plant.id} size={140} />
+              )}
+              <span className="price-badge">{formatINR(plant.price)}</span>
             </div>
-
-            <div className="plant-modal__section">
-              <span className="plant-modal__label">Light &amp; care</span>
-              <p>{plant.care}</p>
-            </div>
-
-            <div className="plant-modal__add">
-              <div className="plant-modal__add-row">
-                <div className="plant-modal__stepper">
-                  <button
-                    type="button"
-                    aria-label="Decrease quantity"
-                    disabled={addQty <= MIN_QTY}
-                    onClick={() => setAddQty((q) => Math.max(MIN_QTY, q - 1))}
-                  >
-                    <Minus size={14} />
-                  </button>
-                  <span aria-live="polite">{addQty}</span>
-                  <button
-                    type="button"
-                    aria-label="Increase quantity"
-                    disabled={addQty >= MAX_QTY}
-                    onClick={() => setAddQty((q) => Math.min(MAX_QTY, q + 1))}
-                  >
-                    <Plus size={14} />
-                  </button>
-                </div>
-                <div className="plant-modal__stepper plant-modal__stepper--bulk">
-                  <button
-                    type="button"
-                    aria-label="Decrease quantity by 10"
-                    disabled={addQty <= MIN_QTY}
-                    onClick={() => setAddQty((q) => Math.max(MIN_QTY, q - 10))}
-                  >
-                    -10
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Increase quantity by 10"
-                    onClick={() => setAddQty((q) => Math.min(MAX_QTY, q + 10))}
-                  >
-                    +10
-                  </button>
-                </div>
-                <div className="plant-modal__stepper plant-modal__stepper--bulk">
-                  <button
-                    type="button"
-                    aria-label="Decrease quantity by 100"
-                    disabled={addQty <= MIN_QTY}
-                    onClick={() => setAddQty((q) => Math.max(MIN_QTY, q - 100))}
-                  >
-                    -100
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Increase quantity by 100"
-                    onClick={() => setAddQty((q) => Math.min(MAX_QTY, q + 100))}
-                  >
-                    +100
-                  </button>
-                </div>
+            <div className="plant-modal__body">
+              <span className="plant-tile__family">{plant.family}</span>
+              <div className="plant-modal__title-row">
+                <h2>{plant.common}</h2>
+                <WishlistHeart plantId={plant.id} plantName={plant.common} size={18} inline label />
               </div>
-              <button
-                type="button"
-                className={`plant-modal__add-btn ${justAdded ? 'plant-modal__add-btn--added' : ''}`}
-                onClick={handleAddToCart}
-              >
-                {justAdded ? (
-                  <>
-                    <Check size={16} /> Added to cart
-                  </>
-                ) : (
-                  <>
-                    <ShoppingBag size={16} /> Add to cart
-                  </>
-                )}
-              </button>
-            </div>
-            {inCartLine && (
-              <p className="plant-modal__in-cart">
-                {inCartLine.qty} already in your cart — {formatINR(inCartLine.lineTotal)}
-              </p>
-            )}
+              {plant.alt && <p className="plant-modal__alt">a.k.a. {plant.alt}</p>}
+              <p className="plant-modal__botanical">{plant.botanical}</p>
 
-            <a
-              className="plant-modal__cta"
-              href={buildPlantInquiryLink(plant)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Just asking? Message us on WhatsApp
-            </a>
-            <p className="plant-modal__price-note">
-              Price shown is an estimate — pot, size and season can shift it. We'll confirm on WhatsApp.
-            </p>
-          </div>
+              <div className="plant-modal__section">
+                <span className="plant-modal__label">Highlights</span>
+                <ul>
+                  {plant.benefits.map((b) => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="plant-modal__section">
+                <span className="plant-modal__label">Light &amp; care</span>
+                <p>{plant.care}</p>
+              </div>
+
+              <div className="plant-modal__add">
+                <div className="plant-modal__add-row">
+                  <div className="plant-modal__stepper">
+                    <button
+                      type="button"
+                      aria-label="Decrease quantity"
+                      disabled={addQty <= MIN_QTY}
+                      onClick={() => setAddQty((q) => Math.max(MIN_QTY, q - 1))}
+                    >
+                      <Minus size={14} />
+                    </button>
+                    <span aria-live="polite">{addQty}</span>
+                    <button
+                      type="button"
+                      aria-label="Increase quantity"
+                      disabled={addQty >= MAX_QTY}
+                      onClick={() => setAddQty((q) => Math.min(MAX_QTY, q + 1))}
+                    >
+                      <Plus size={14} />
+                    </button>
+                  </div>
+                  <div className="plant-modal__stepper plant-modal__stepper--bulk">
+                    <button
+                      type="button"
+                      aria-label="Decrease quantity by 10"
+                      disabled={addQty <= MIN_QTY}
+                      onClick={() => setAddQty((q) => Math.max(MIN_QTY, q - 10))}
+                    >
+                      -10
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Increase quantity by 10"
+                      onClick={() => setAddQty((q) => Math.min(MAX_QTY, q + 10))}
+                    >
+                      +10
+                    </button>
+                  </div>
+                  <div className="plant-modal__stepper plant-modal__stepper--bulk">
+                    <button
+                      type="button"
+                      aria-label="Decrease quantity by 100"
+                      disabled={addQty <= MIN_QTY}
+                      onClick={() => setAddQty((q) => Math.max(MIN_QTY, q - 100))}
+                    >
+                      -100
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Increase quantity by 100"
+                      onClick={() => setAddQty((q) => Math.min(MAX_QTY, q + 100))}
+                    >
+                      +100
+                    </button>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  className={`plant-modal__add-btn ${justAdded ? 'plant-modal__add-btn--added' : ''}`}
+                  onClick={handleAddToCart}
+                >
+                  {justAdded ? (
+                    <>
+                      <Check size={16} /> Added to cart
+                    </>
+                  ) : (
+                    <>
+                      <ShoppingBag size={16} /> Add to cart
+                    </>
+                  )}
+                </button>
+              </div>
+              {inCartLine && (
+                <p className="plant-modal__in-cart">
+                  {inCartLine.qty} already in your cart — {formatINR(inCartLine.lineTotal)}
+                </p>
+              )}
+
+              <a
+                className="plant-modal__cta"
+                href={buildPlantInquiryLink(plant)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Just asking? Message us on WhatsApp
+              </a>
+              <p className="plant-modal__price-note">
+                Price shown is an estimate — pot, size and season can shift it. We'll confirm on WhatsApp.
+              </p>
+
+              {similar.length > 0 && (
+                <div className="plant-modal__section plant-modal__similar">
+                  <span className="plant-modal__label">You might also like</span>
+                  <div className="plant-modal__similar-row">
+                    {similar.map((sp) => (
+                      <button
+                        key={sp.id}
+                        type="button"
+                        className="similar-plant"
+                        onClick={() => onSelectPlant(sp)}
+                      >
+                        <span className="similar-plant__portrait">
+                          {sp.photo ? (
+                            <PlantPhoto id={sp.id} alt={sp.common} size={64} family={sp.family} />
+                          ) : (
+                            <PlantPortrait family={sp.family} id={sp.id} size={64} />
+                          )}
+                        </span>
+                        <span className="similar-plant__name">{sp.common}</span>
+                        <span className="similar-plant__price">{formatINR(sp.price)}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </motion.div>
         </div>
       </motion.div>
     </motion.div>,

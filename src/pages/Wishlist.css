@@ -1,0 +1,186 @@
+/* Page shell — same treatment as the cart page's hero/empty state, kept as
+   its own rules rather than importing Cart.css from here: a page's CSS
+   file stays self-contained, and "cart-hero" on the wishlist page would
+   read oddly to anyone skimming the JSX later. */
+.wishlist-hero {
+  padding: 150px 0 40px;
+}
+
+.wishlist-hero__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(28px, 5vw, 48px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  max-width: 700px;
+  margin: 18px 0 0;
+}
+
+.wishlist-hero__title em {
+  color: var(--green-bright);
+  font-style: italic;
+}
+
+.wishlist-body {
+  padding-top: 20px;
+}
+
+.wishlist-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 70px 20px;
+  color: var(--text-mute);
+}
+
+.wishlist-empty__cta {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f1210;
+  background: var(--green);
+  padding: 13px 26px;
+  border-radius: 100px;
+  transition: background 0.3s var(--ease);
+}
+
+@media (hover: hover) {
+  .wishlist-empty__cta:hover {
+    background: var(--green-bright);
+  }
+}
+
+/* Grid — same card width/rhythm as the catalog, since these are plants
+   someone already recognizes from browsing there. */
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.wishlist-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+@media (hover: hover) {
+  .wishlist-card:hover {
+    border-color: rgba(127, 166, 107, 0.4);
+    box-shadow: 0 20px 40px -22px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.wishlist-card__open {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wishlist-card__portrait {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0 10px;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 30%, rgba(127, 166, 107, 0.14), transparent 70%),
+    var(--bg-raised);
+  border-bottom: 1px solid var(--line);
+}
+
+.wishlist-card__portrait .price-badge {
+  font-size: 13px;
+  padding: 5px 11px;
+}
+
+.wishlist-card__info {
+  padding: 14px 18px 4px;
+}
+
+.wishlist-card__info h3 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.wishlist-card__botanical {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--text-mute);
+  margin-top: 2px;
+}
+
+.wishlist-card__actions {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px 14px 18px;
+}
+
+.wishlist-card__add {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 38px;
+  border-radius: 100px;
+  border: 1px solid var(--line-strong);
+  color: var(--text-dim);
+  font-size: 12.5px;
+  font-weight: 600;
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+@media (hover: hover) {
+  .wishlist-card__add:hover {
+    border-color: var(--green);
+    color: var(--text);
+  }
+}
+
+.wishlist-card__add--added {
+  border-color: var(--green);
+  background: var(--green);
+  color: #0f1210;
+}
+
+@media (max-width: 1080px) {
+  .wishlist-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 780px) {
+  .wishlist-hero {
+    padding: calc(120px + env(safe-area-inset-top)) 0 32px;
+  }
+  .wishlist-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .wishlist-card__info {
+    padding: 12px 14px 4px;
+  }
+  .wishlist-card__actions {
+    padding: 8px 10px 12px 14px;
+  }
+}
+
+@media (max-width: 420px) {
+  .wishlist-grid {
+    grid-template-columns: 1fr;
+  }
+}

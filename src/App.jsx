@@ -9,11 +9,13 @@ import Home from './pages/Home';
 import Plants from './pages/Plants';
 import Contact from './pages/Contact';
 import Cart from './pages/Cart';
+import Wishlist from './pages/Wishlist';
 import Credits from './pages/Credits';
 import NotFound from './pages/NotFound';
 import { ThemeProvider } from './context/ThemeContext';
 import { CartProvider } from './context/CartContext';
 import { CustomerProvider } from './context/CustomerContext';
+import { WishlistProvider } from './context/WishlistContext';
 import './styles/global.css';
 
 function PageTransition({ children }) {
@@ -75,6 +77,14 @@ function AnimatedRoutes() {
           }
         />
         <Route
+          path="/wishlist"
+          element={
+            <PageTransition>
+              <Wishlist />
+            </PageTransition>
+          }
+        />
+        <Route
           path="/credits"
           element={
             <PageTransition>
@@ -99,23 +109,25 @@ export default function App() {
   return (
     <ThemeProvider>
       <CartProvider>
-        <CustomerProvider>
-          <BrowserRouter>
-            <ScrollToTop />
-            <Nav />
-            {/* Scoped to the routed content so a page-level throw keeps the nav
-                and footer usable instead of blanking the whole document. */}
-            <ErrorBoundary where="page">
-              <AnimatedRoutes />
-            </ErrorBoundary>
-            <Footer />
-            {/* The popup is non-essential; if it throws it must not take the
-                page down with it. */}
-            <ErrorBoundary where="welcome-popup" fallbackSilent>
-              <WelcomePopup />
-            </ErrorBoundary>
-          </BrowserRouter>
-        </CustomerProvider>
+        <WishlistProvider>
+          <CustomerProvider>
+            <BrowserRouter>
+              <ScrollToTop />
+              <Nav />
+              {/* Scoped to the routed content so a page-level throw keeps the nav
+                  and footer usable instead of blanking the whole document. */}
+              <ErrorBoundary where="page">
+                <AnimatedRoutes />
+              </ErrorBoundary>
+              <Footer />
+              {/* The popup is non-essential; if it throws it must not take the
+                  page down with it. */}
+              <ErrorBoundary where="welcome-popup" fallbackSilent>
+                <WelcomePopup />
+              </ErrorBoundary>
+            </BrowserRouter>
+          </CustomerProvider>
+        </WishlistProvider>
       </CartProvider>
     </ThemeProvider>
   );

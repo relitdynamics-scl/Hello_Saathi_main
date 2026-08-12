@@ -3030,3 +3030,16 @@ export const PLANTS = [
 ];
 
 export const FAMILIES = ['All', ...Array.from(new Set(PLANTS.map((p) => p.family)))];
+
+// Same family first (closest price within it), then top up from the rest of
+// the catalog by closest price, so this always returns exactly `count`
+// plants rather than sometimes 4 and sometimes 1 — a thin family (the
+// catalog has some with just one or two members) should never leave the
+// "you might also like" row looking sparse or broken.
+export function getSimilarPlants(plant, count = 4) {
+  const byPriceDistance = (a, b) => Math.abs(a.price - plant.price) - Math.abs(b.price - plant.price);
+  const pool = PLANTS.filter((p) => p.id !== plant.id);
+  const sameFamily = pool.filter((p) => p.family === plant.family).sort(byPriceDistance);
+  const rest = pool.filter((p) => p.family !== plant.family).sort(byPriceDistance);
+  return [...sameFamily, ...rest].slice(0, count);
+}

@@ -2,10 +2,11 @@ import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Leaf, ShoppingBag } from 'lucide-react';
+import { Menu, X, Leaf, ShoppingBag, Heart } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import { useScrollLock, useEscapeKey } from '../hooks/useScrollLock';
 import { useCart } from '../context/CartContext';
+import { useWishlist } from '../context/WishlistContext';
 import './Nav.css';
 
 const LINKS = [
@@ -19,6 +20,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
   const { itemCount } = useCart();
+  const { count: wishlistCount } = useWishlist();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -59,6 +61,7 @@ export default function Nav() {
 
         <div className="nav__right">
           <ThemeToggle />
+          <WishlistLink count={wishlistCount} />
           <CartLink count={itemCount} />
           <Link to="/contact" className="nav__cta">
             Visit the nursery
@@ -67,6 +70,7 @@ export default function Nav() {
 
         <div className="nav__mobile-controls">
           <ThemeToggle />
+          <WishlistLink count={wishlistCount} />
           <CartLink count={itemCount} />
           <button
             className="nav__menu-btn"
@@ -156,6 +160,23 @@ function CartLink({ count }) {
       aria-label={count > 0 ? `Cart, ${count} item${count > 1 ? 's' : ''}` : 'Cart, empty'}
     >
       <ShoppingBag size={19} strokeWidth={1.9} />
+      {count > 0 && <span className="nav__cart-badge">{label}</span>}
+    </Link>
+  );
+}
+
+// Same chrome as CartLink (shares .nav__cart and .nav__cart-badge — one
+// small icon-with-count treatment, not two near-identical ones) since a
+// saved-for-later list and a cart are the same kind of nav affordance.
+function WishlistLink({ count }) {
+  const label = count > 99 ? '99+' : String(count);
+  return (
+    <Link
+      to="/wishlist"
+      className="nav__cart"
+      aria-label={count > 0 ? `Wishlist, ${count} plant${count > 1 ? 's' : ''}` : 'Wishlist, empty'}
+    >
+      <Heart size={19} strokeWidth={1.9} />
       {count > 0 && <span className="nav__cart-badge">{label}</span>}
     </Link>
   );

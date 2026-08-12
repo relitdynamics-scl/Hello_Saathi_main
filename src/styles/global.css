@@ -250,6 +250,113 @@ textarea:focus-visible {
   white-space: nowrap;
 }
 
+/*
+  Wishlist heart toggle — shared by the catalog tile, the detail modal, and
+  the Home featured card, the same three surfaces .price-badge above is
+  shared across. One visual treatment, so "save this" looks and behaves
+  identically no matter where you tap it.
+
+  Default (unfilled) sits opposite .price-badge — top-left where the price
+  sits top-right — as an absolutely-positioned chip over a plant portrait.
+  The --inline modifier drops that positioning for the one place it isn't
+  floating over an image: next to the plant name in the detail modal.
+*/
+.wishlist-heart {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--bg-translucent-strong);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--text-dim);
+  transition: color 0.3s var(--ease), transform 0.15s var(--ease);
+}
+
+.wishlist-heart svg {
+  transition: fill 0.25s var(--ease);
+}
+
+@media (hover: hover) {
+  .wishlist-heart:hover {
+    color: var(--green-bright);
+  }
+}
+
+.wishlist-heart:active {
+  transform: scale(0.82);
+}
+
+/*
+  Compounded with the base class (.wishlist-heart.wishlist-heart--active,
+  not just .wishlist-heart--active alone) so this unambiguously outranks
+  the base rule's color on specificity (two classes beats one) rather than
+  depending on which of two equal-specificity rules happens to sit later —
+  the fragile version of this actually lost that tie in testing.
+*/
+.wishlist-heart.wishlist-heart--active {
+  color: var(--green-bright);
+}
+
+.wishlist-heart.wishlist-heart--active svg {
+  fill: currentColor;
+}
+
+/* Same reasoning as the .wishlist-heart--active compound above: this
+   overrides position/width/height/background, the exact same properties
+   the base rule sets, so it gets the same defensive compounding. */
+.wishlist-heart.wishlist-heart--inline {
+  position: static;
+  width: 34px;
+  height: 34px;
+  background: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  flex-shrink: 0;
+}
+
+/*
+  Icon-only reads fine as a floating corner chip on a photo, but tested
+  badly as a standalone control sitting in plain text next to a title — a
+  real person looking for "the wishlist button" didn't register a bare
+  heart glyph as one. This gives it a word, matching the same
+  bordered-pill ghost-button language as .plant-modal__cta, so it's
+  unmistakably a button rather than a loose icon.
+
+  Selector is the full inline+labeled combination, not just --labeled
+  alone, for the same reason --active/--inline above compound with the
+  base class: avoids relying on which of two same-specificity rules
+  happens to sit later in the file.
+*/
+.wishlist-heart.wishlist-heart--inline.wishlist-heart--labeled {
+  width: auto;
+  height: auto;
+  padding: 9px 16px 9px 14px;
+  gap: 7px;
+  border-radius: 100px;
+  border: 1px solid var(--line-strong);
+  font-size: 13px;
+  font-weight: 600;
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+@media (hover: hover) {
+  .wishlist-heart.wishlist-heart--inline.wishlist-heart--labeled:hover {
+    border-color: var(--green);
+  }
+}
+
+.wishlist-heart.wishlist-heart--inline.wishlist-heart--labeled.wishlist-heart--active {
+  border-color: var(--green);
+  background: rgba(127, 166, 107, 0.12);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
