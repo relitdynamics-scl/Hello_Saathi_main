@@ -208,6 +208,22 @@ ul, ol {
   }
 }
 
+/* Visually hidden but still readable by screen readers and search crawlers
+   — the standard accessible pattern (not display:none, which both ignore).
+   Used to put the brand name literally inside the hero <h1> without
+   disturbing the crafted animated tagline that's the actual visible copy. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* visible keyboard focus */
 a:focus-visible,
 button:focus-visible,

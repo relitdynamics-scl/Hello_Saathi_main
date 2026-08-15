@@ -49,6 +49,12 @@ export default function Home() {
           style={{ y: heroTextY, opacity: heroOpacity }}
         >
           <h1 className="hero__title">
+            {/* The visible tagline is the deliberate creative copy — this
+                just makes sure the brand name itself is literally present
+                in the page's one <h1>, for search crawlers and screen
+                readers, without putting "Hello Saathi" in front of a
+                visitor who can already see it in the nav bar above. */}
+            <span className="sr-only">Hello Saathi — </span>
             {'Plants that'.split(' ').map((w, i) => (
               <AnimatedWord key={i} word={w} delay={0.15 + i * 0.06} />
             ))}
