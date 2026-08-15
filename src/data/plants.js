@@ -2068,6 +2068,7 @@ export const PLANTS = [
     benefits: ['Near-continuous flowering', 'Compact tabletop bloomer'],
     care: 'Indirect light, bottom watering',
     family: 'Flowering',
+    photo: true,
   },
   {
     id: 203,
@@ -2711,6 +2712,7 @@ export const PLANTS = [
     benefits: ['Vivid pink leaf variegation', 'Highly desirable collector\'s plant'],
     care: 'Bright, indirect light',
     family: 'Vine',
+    photo: true,
   },
   {
     id: 264,

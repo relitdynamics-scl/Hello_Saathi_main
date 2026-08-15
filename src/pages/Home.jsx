@@ -5,6 +5,7 @@ import { ArrowRight, Wind, Droplets, Sun, ShieldCheck, ShoppingBag, Check } from
 import MagneticButton from '../components/MagneticButton';
 import GrowingVine from '../components/GrowingVine';
 import Reveal from '../components/Reveal';
+import PlantPhoto from '../components/PlantPhoto';
 import PlantPortrait from '../components/PlantPortrait';
 import WishlistHeart from '../components/WishlistHeart';
 import { useCart } from '../context/CartContext';
@@ -191,7 +192,11 @@ function FeaturedCard({ plant }) {
     <div className="plant-card">
       <div className="plant-card__portrait-wrap">
         <WishlistHeart plantId={plant.id} plantName={plant.common} />
-        <PlantPortrait family={plant.family} id={plant.id} size={110} />
+        {plant.photo ? (
+          <PlantPhoto id={plant.id} alt={plant.common} size={110} family={plant.family} />
+        ) : (
+          <PlantPortrait family={plant.family} id={plant.id} size={110} />
+        )}
         <span className="price-badge">{formatINR(plant.price)}</span>
       </div>
       <div className="plant-card__body">

@@ -819,4 +819,20 @@ export const PHOTO_CREDITS = [
     licence: 'Public domain',
     artist: 'Chhe (talk)',
   },
+  {
+    plantId: 202,
+    common: 'African Violet',
+    file: 'File:2007-04-20Saintpaulia ionantha01.jpg',
+    source: 'https://commons.wikimedia.org/wiki/File:2007-04-20Saintpaulia_ionantha01.jpg',
+    licence: 'CC BY-SA 3.0',
+    artist: 'Wildfeuer',
+  },
+  {
+    plantId: 263,
+    common: 'Philodendron Pink Princess',
+    file: 'File:Philodendron Pink Princess.jpg',
+    source: 'https://commons.wikimedia.org/wiki/File:Philodendron_Pink_Princess.jpg',
+    licence: 'CC BY-SA 4.0',
+    artist: 'Srikandi73',
+  },
 ];
