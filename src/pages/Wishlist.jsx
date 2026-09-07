@@ -98,7 +98,10 @@ function WishlistCard({ plant, onOpen }) {
           ) : (
             <PlantPortrait family={plant.family} id={plant.id} size={96} />
           )}
-          <span className="price-badge">{formatINR(plant.price)}</span>
+          <span className="price-badge">
+            {formatINR(plant.price)}
+            {plant.unit && <span className="price-badge__unit">/{plant.unit}</span>}
+          </span>
         </div>
         <div className="wishlist-card__info">
           <span className="plant-tile__family">{plant.family}</span>

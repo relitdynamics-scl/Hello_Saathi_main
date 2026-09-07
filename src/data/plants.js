@@ -3029,6 +3029,54 @@ export const PLANTS = [
     family: 'Vine',
     photo: true,
   },
+  {
+    id: 293,
+    price: 55, // INR per sq ft, includes labor & maintenance
+    unit: 'sq ft',
+    botanical: 'Lawn turf grass',
+    common: 'Grass — Selection 1',
+    benefits: ['Our densest, most manicured coverage', 'Labor & maintenance included'],
+    care: 'Site visit & area measurement confirmed on WhatsApp before installation',
+    family: 'Lawn Grass',
+    photo: true,
+  },
+  {
+    id: 294,
+    price: 38, // INR per sq ft, includes labor & maintenance
+    unit: 'sq ft',
+    botanical: 'Lawn turf grass',
+    common: 'Grass — Selection 2',
+    benefits: ['Balanced density and price', 'Labor & maintenance included'],
+    care: 'Site visit & area measurement confirmed on WhatsApp before installation',
+    family: 'Lawn Grass',
+    photo: true,
+  },
+  {
+    id: 295,
+    price: 25, // INR per sq ft, includes labor & maintenance
+    unit: 'sq ft',
+    botanical: 'Lawn turf grass',
+    common: 'Grass — Selection 3',
+    benefits: ['Our most affordable everyday lawn', 'Labor & maintenance included'],
+    care: 'Site visit & area measurement confirmed on WhatsApp before installation',
+    family: 'Lawn Grass',
+    photo: true,
+  },
+  {
+    id: 296,
+    price: 210, // INR per sq ft, additional — an upgrade on top of any selection
+    unit: 'sq ft',
+    botanical: 'Imported specialty turf',
+    common: 'Grass — Premium Import',
+    alt: 'Nepal · Bhutan · China',
+    benefits: [
+      'Specialty turf imported from Nepal, Bhutan & China',
+      'Add it on top of any selection above',
+    ],
+    care: 'Site visit & area measurement confirmed on WhatsApp before installation',
+    family: 'Lawn Grass',
+    photo: false,
+  },
 ];
 
 export const FAMILIES = ['All', ...Array.from(new Set(PLANTS.map((p) => p.family)))];

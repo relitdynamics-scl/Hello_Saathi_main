@@ -164,7 +164,10 @@ export default function Plants() {
                       ) : (
                         <PlantPortrait family={p.family} id={p.id} size={104} />
                       )}
-                      <span className="price-badge">{formatINR(p.price)}</span>
+                      <span className="price-badge">
+                        {formatINR(p.price)}
+                        {p.unit && <span className="price-badge__unit">/{p.unit}</span>}
+                      </span>
                     </div>
                     <span className="plant-tile__family">{p.family}</span>
                     <h3>{p.common}</h3>
@@ -335,7 +338,10 @@ export function PlantModal({ plant, onClose, onSelectPlant }) {
               ) : (
                 <PlantPortrait family={plant.family} id={plant.id} size={140} />
               )}
-              <span className="price-badge">{formatINR(plant.price)}</span>
+              <span className="price-badge">
+                {formatINR(plant.price)}
+                {plant.unit && <span className="price-badge__unit">/{plant.unit}</span>}
+              </span>
             </div>
             <div className="plant-modal__body">
               <span className="plant-tile__family">{plant.family}</span>
@@ -447,7 +453,9 @@ export function PlantModal({ plant, onClose, onSelectPlant }) {
                 Just asking? Message us on WhatsApp
               </a>
               <p className="plant-modal__price-note">
-                Price shown is an estimate — pot, size and season can shift it. We'll confirm on WhatsApp.
+                {plant.unit
+                  ? `Price shown is per ${plant.unit} — the exact area is confirmed on WhatsApp.`
+                  : "Price shown is an estimate — pot, size and season can shift it. We'll confirm on WhatsApp."}
               </p>
 
               {similar.length > 0 && (
@@ -469,7 +477,10 @@ export function PlantModal({ plant, onClose, onSelectPlant }) {
                           )}
                         </span>
                         <span className="similar-plant__name">{sp.common}</span>
-                        <span className="similar-plant__price">{formatINR(sp.price)}</span>
+                        <span className="similar-plant__price">
+                          {formatINR(sp.price)}
+                          {sp.unit && <span className="price-badge__unit">/{sp.unit}</span>}
+                        </span>
                       </button>
                     ))}
                   </div>

@@ -250,7 +250,9 @@ function CartLine({ plant, qty, lineTotal, min, max, onChangeQty, onRemove }) {
       <div className="cart-line__body">
         <h3>{plant.common}</h3>
         <p className="cart-line__botanical">{plant.botanical}</p>
-        <span className="cart-line__unit">{formatINR(plant.price)} each</span>
+        <span className="cart-line__unit">
+          {formatINR(plant.price)} {plant.unit ? `per ${plant.unit}` : 'each'}
+        </span>
       </div>
 
       <div className="cart-line__qty-group">

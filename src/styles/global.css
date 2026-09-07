@@ -266,6 +266,14 @@ textarea:focus-visible {
   white-space: nowrap;
 }
 
+/* Suffix on .price-badge for per-unit pricing (e.g. "/sq ft" on grass) —
+   same pill, quieter weight so the number still reads as the headline. */
+.price-badge__unit {
+  font-weight: 500;
+  opacity: 0.75;
+  margin-left: 1px;
+}
+
 /*
   Wishlist heart toggle — shared by the catalog tile, the detail modal, and
   the Home featured card, the same three surfaces .price-badge above is
